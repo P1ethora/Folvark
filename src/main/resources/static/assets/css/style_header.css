@@ -1,0 +1,189 @@
+@font-face {
+font-family: "TriodPostnaja";
+src: url("/fonts/TriodPostnaja.ttf") format("truetype");
+font-style: normal;
+font-weight: normal;
+}
+
+@font-face {
+font-family: "Ponter";
+src: url("/fonts/Ponter.ttf") format("truetype");
+font-style: normal;
+font-weight: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+
+
+}
+
+.wrapper .multi_color_border {
+  width: 100%;
+  height: 5px;
+  background: #890000;
+}
+
+.wrapper .top_nav {
+  width: 100%;
+  height: 60px;
+ background: #FFFFFF;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wrapper .top_nav .left {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-right: 150px;
+}
+
+.wrapper .top_nav .left .logo p{
+  font-size: 24px;
+  font-weight: bold;
+  color: #890000;
+  margin-left: 10px;
+  margin-right: 20px;
+  font-family: 'TriodPostnaja' ,sans-serif;
+}
+
+.wrapper .top_nav .left .logo  p span{
+  color: #890000;
+  font-family: 'TriodPostnaja' ,sans-serif;
+}
+
+.wrapper .top_nav .left .search_bar {
+  overflow: hidden;
+  margin-left: 150px;
+  position: relative;
+  width: 100%;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.1), inset 0 1px 2px rgba(0,0,0,0.3);
+  border-radius: 20px;
+  border: 1px solid #890000;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+.wrapper .top_nav .left .search_bar input[type="text"]{
+  width: calc(100% - 84px);
+  height: 100%;
+  text-indent: 10px;
+  background: none;
+  border: none;
+  /*position:relative;*/
+  /*border: 1px solid rgb(133, 133, 133);*/
+  /*width: 100%;*/
+  /*margin-right: 300px;*/
+  /*padding: 7px 5px 7px 7px;*/
+  /*box-shadow: inset 0 0 5px rgba(0,0,0,0.1), inset 0 1px 2px rgba(0,0,0,0.3);*/
+  /*border-radius: 20px;*/
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.btn_area {
+  border-left: 1px solid #890000;
+  font-family: 'TriodPostnaja' ,sans-serif;
+  width: 80px;
+  height: 36px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #890000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.btn_area:hover{
+  text-shadow: 0 0 5px #890000;
+  border-left: 1px solid #FFFFFF;
+
+}
+
+
+/*.wrapper .top_nav .left .search_bar input[type="text"]:hover {*/
+/*  box-shadow: 0 0 7px #890000;*/
+/*}*/
+
+.wrapper .top_nav .left .search_bar:hover {
+  box-shadow: 0 0 7px #890000;
+}
+
+.wrapper .top_nav .left .search_bar:focus {
+  border: 1px solid #890000;
+  	color: #333;
+}
+
+/*.wrapper .top_nav .left .search_bar input[type="text"]:focus {*/
+/*  border: 1px solid #890000;*/
+/*	color: #333;*/
+/*}*/
+
+.wrapper .top_nav .right ul{
+  display: flex;
+}
+
+.wrapper .top_nav .right ul li{
+  margin: 0 15px;
+}
+
+.wrapper .top_nav .right ul li a{
+  font-family: 'TriodPostnaja' ,sans-serif;
+  font-size: 20px;
+  display: block;
+  padding: 8px 10px;
+  color: #890000;
+}
+
+.wrapper .top_nav .right ul li a:after {
+  display: block; /*превращаем его в блочный элемент*/
+  content: ""; /*контента в данном блоке не будет поэтому в кавычках ничего не ставим*/
+  height: 1px; /*задаём высоту линии*/
+  width: 0; /*задаём начальную ширину элемента (линии)*/
+  background-color: #890000; /*цвет фона элемента*/
+  transition: width 0.3s ease-in-out; /*данное свойство отвечает за плавное изменение ширины. Здесь можно задать время анимации в секундах (в данном случае задано 0.4 секунды)*/
+  }
+
+.wrapper .top_nav .right ul li a:hover:after {
+  width: 100%;
+}
+
+.bottom_nav {
+  width: 100%;
+  background:  #890000;
+  box-shadow:  0 5px 5px -5px #890000;
+  height: 60px;
+  padding: 0 50px;
+}
+
+.bottom_nav ul{
+  padding-right: 120px;
+  padding-left: 120px;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom_nav ul li a{
+  color: #FFFFFF;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-family: 'Ponter' ,sans-serif;
+}
+
+.bottom_nav ul li a:hover {
+
+  text-shadow: 0 0 7px #FFFFFF;
+}
