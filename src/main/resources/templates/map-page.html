@@ -4,9 +4,51 @@
     <title>Карты</title>
     <link rel="stylesheet" type="text/css" media="all"
           th:href="@{assets/css/style_header.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{assets/css/style_mapa-page.css}"/>
 </head>
 
 <body>
-<header th:insert="blocks/header :: header" ></header>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="box">
+    <h3>Категории</h3>
+    <ul>
+        <li><span></span>Пгм</li>
+        <li><span></span>10 верст</li>
+        <li><span></span>3 версты</li>
+        <li><span></span>Планы городов</li>
+        <li><span></span>Аэрофотоснимки Люфтваффе</li>
+        <li><span></span>Карты боевых позиций. Великая отечественная</li>
+    </ul>
+</div>
+
+<div class="products">
+    <div class="container">
+        <div class="heading">
+            <h3>Список</h3>
+            <div class="underline"></div>
+        </div>
+        <div class="row">
+<div class="column">
+    <div class="product-grid">
+        <div class="product-img">
+            <a href="#">
+                <img src="" alt="">
+                <img src="" alt="">
+            </a>
+            <span class="product-label">Sale</span>
+            <span class="product-label-discount">20%</span>
+
+            <ul class="icon">
+                <li><a href="#"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
