@@ -289,3 +289,111 @@ color: #890000;
   color: black;
   font-size: 14px;
 }
+
+/*footer*/
+
+footer {
+  background: #890000;
+  padding: 70px 0;
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  color: white;
+}
+
+.footer-container h1 {
+  font-size: 25px;
+  font-family: "A_La_Russ",sans-serif;
+}
+
+.footer-container .name {
+  display: flex;
+}
+
+.footer-container .name p{
+  padding-left: 4px;
+}
+
+.social-media {
+  margin: 20px 0;
+  display: flex;
+}
+
+.social-media li a{
+  color: #ffffff;
+  margin-right: 25px;
+  font-size: 22px;
+  text-decoration: none;
+  transition: .3s linear;
+}
+
+
+
+.social-media a:hover {
+  box-shadow: white;
+}
+
+.right-text {
+  color: #f9f9f9;
+}
+
+/*RIGHT*/
+
+.right-col h1{
+font-size: 26px;
+  padding-bottom: 10px;
+  color: white;
+}
+
+.border {
+  width: 100px;
+  height: 4px;
+  background: #f9f9f9;
+  margin-bottom: 5px;
+}
+
+.newsletter-form {
+  padding-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.txtb {
+  flex: 1;
+  padding: 18px 40px;
+  font-size: 16px;
+  color: #1a181b;
+  border: none;
+  font-weight: 700;
+  outline: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  min-width: 260px;
+}
+
+.btn {
+  padding: 18px 40px;
+  font-size: 16px;
+  background: #1a181b;
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  outline: none;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  cursor: pointer;
+  transition: opacity .3s linear;
+}
+
+.btn:hover {
+  opacity: .7;
+}
