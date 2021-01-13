@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Контакты</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{assets/css/style_footer.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{fontawesome/css/all.min.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{assets/css/style_header.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{assets/css/style_contact-page.css}"/>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="question-user">
+    <h5>Хотите задать вопрос?</h5>
+    <p>Заполните, пожалуйста, форму обратной связи и наш менеджер с вами свяжется</p>
+
+    <form class="feedback_form" method="post">
+        <input data-format=".+" data-notice="Введите имя" value="" placeholder="ФИО" name="name" maxlength="255" type="text">
+        <input data-format="email" data-notice="Введите email" placeholder="Email" value="" name="email" maxlength="255" type="text">
+        <input data-format=".+" data-notice="Введите телефон" placeholder="Телефон" value="" name="phone" maxlength="255" type="text">
+        <textarea data-format=".+" placeholder="Комментарий" data-notice="Введите сообщение" value="" name="message"></textarea>
+
+
+        <a class=""><span><input class="button" type="submit" name="feedback" value="Отправить"></span><span class="pseudo"></span></a>
+    </form>
+</div>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+
+</body>
+</html>

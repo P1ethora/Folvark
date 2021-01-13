@@ -5,8 +5,6 @@ font-style: normal;
 font-weight: normal;
 }
 
-
-
 @font-face {
   font-family: 'A_La_Russ';
   src: url('fonts/ALaRuss.eot');
@@ -65,61 +63,7 @@ border-top-right-radius: 10px;
   margin: 50px 80px 80px;
 }
 /*PAGER*/
-.pager {
-    width: 100%;
-    padding: 50px;
-    position:relative;
-    color: white;
-}
 
-.pager ul {
-    border-radius: 30px;
-    box-shadow: 0 6px 8px rgba(0,0,0,.1);
-    position: absolute;
-top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background: #1a181b;
-    display: flex;
-}
-
-.pager ul li {
-    transform: scale(1.1);
-    z-index: 100;
-    display: flex;
-    padding: 15px;
-    transition: .5s;
-}
-
-.pager ul li:nth-child(1) {
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-}
-.pager ul li:last-child {
-    border-right: none;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-}
-
-.pager ul li a{
-    font-family: "Ponter", sans-serif;
-    color: white;
-    font-weight: bold;
-    font-size: 14px;
-    letter-spacing: 1px;
-}
-
-.pager ul li a:hover{
-   text-shadow: 0 0 10px #fff;
-}
-
-.pager ul li:hover {
-    transform: scale(1.3);
-    z-index: 100;
-    background: #890000;
-    box-shadow: 0 5px 25px rgba(0,0,0,.2);
-    /*background: rgba(0,0,0, .3);*/
-}
 
 .wrap {
   display: table;
@@ -145,7 +89,6 @@ top: 50%;
   padding-top: 30px;
   display: flex;
   font-size: 12px;
-  ;
 }
 
 .underhead .count_maps {
@@ -347,112 +290,4 @@ color: #890000;
   padding-top: 5px;
   color: #fff;
   font-size: 14px;
-}
-
-/*footer*/
-
-footer {
-  background: #890000;
-  padding: 70px 0;
-}
-
-.footer-container {
-  max-width: 1300px;
-  margin: auto;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap-reverse;
-  color: white;
-}
-
-.footer-container h1 {
-  font-size: 25px;
-  font-family: "A_La_Russ",sans-serif;
-}
-
-.footer-container .name {
-  display: flex;
-}
-
-.footer-container .name p{
-  padding-left: 4px;
-}
-
-.social-media {
-  margin: 20px 0;
-  display: flex;
-}
-
-.social-media li a{
-  color: #ffffff;
-  margin-right: 25px;
-  font-size: 22px;
-  text-decoration: none;
-  transition: .3s linear;
-}
-
-
-
-.social-media a:hover {
-  box-shadow: white;
-}
-
-.right-text {
-  color: #f9f9f9;
-}
-
-/*RIGHT*/
-
-.right-col h1{
-font-size: 26px;
-  padding-bottom: 10px;
-  color: white;
-}
-
-.border {
-  width: 100px;
-  height: 4px;
-  background: #f9f9f9;
-  margin-bottom: 5px;
-}
-
-.newsletter-form {
-  padding-top: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.txtb {
-  flex: 1;
-  padding: 18px 40px;
-  font-size: 16px;
-  color: #1a181b;
-  border: none;
-  font-weight: 700;
-  outline: none;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  min-width: 260px;
-}
-
-.btn {
-  padding: 18px 40px;
-  font-size: 16px;
-  background: #1a181b;
-  color: #fff;
-  border: none;
-  font-weight: 700;
-  outline: none;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-  cursor: pointer;
-  transition: opacity .3s linear;
-}
-
-.btn:hover {
-  opacity: .7;
 }

@@ -1,0 +1,62 @@
+@font-face {
+    font-family: "Ponter";
+    src: url("fonts/Ponter.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+.pager {
+    width: 100%;
+    padding: 50px;
+    position:relative;
+    color: white;
+}
+
+.pager ul {
+    border-radius: 30px;
+    box-shadow: 0 6px 8px rgba(0,0,0,.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #1a181b;
+    display: flex;
+}
+
+.pager ul li {
+    transform: scale(1.1);
+    z-index: 100;
+    display: flex;
+    padding: 15px;
+    transition: .5s;
+}
+
+.pager ul li:nth-child(1) {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.pager ul li:last-child {
+    border-right: none;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.pager ul li a{
+    font-family: "Ponter", sans-serif;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.pager ul li a:hover{
+    text-shadow: 0 0 10px #fff;
+}
+
+.pager ul li:hover {
+    transform: scale(1.3);
+    z-index: 100;
+    background: #890000;
+    box-shadow: 0 5px 25px rgba(0,0,0,.2);
+    /*background: rgba(0,0,0, .3);*/
+}

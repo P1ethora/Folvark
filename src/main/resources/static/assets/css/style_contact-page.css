@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'A_La_Russ';
+    src: url('fonts/ALaRuss.eot');
+    src: local('A La Russ'), local('ALaRuss'),
+    url('fonts/ALaRuss.eot?#iefix') format('embedded-opentype'),
+    url('fonts/ALaRuss.woff') format('woff'),
+    url('fonts/ALaRuss.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+.question-user {
+    position: relative;
+    text-align: center;
+    align-items: center;
+   display: inline-block;
+    padding: 50px;
+    height: 100%;
+    width: 100%;
+}
+
+.question-user .feedback_form {
+    position: center;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: max-content;
+
+    justify-content: space-around;
+}
+
+.feedback_form > * {
+    position: center;
+    padding: 10px;
+    margin: 10px;
+}
+
+.feedback_form input[type=text] textarea {
+    position: center;
+    padding-top: 20px;
+    border: 1px solid #444;
+}
+

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Археопортал</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{assets/css/style_header.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{fontawesome/css/all.min.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{assets/css/style_archportal-page.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{assets/css/style_footer.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{assets/css/style_pager.css}"/>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+
+<div class="head">
+    <h3>Археопортал</h3>
+</div>
+
+<div class="undhead">
+    <div class="count_el">Всего новостей: 56</div>
+</div>
+
+<div class="gridGood">
+
+    <div class="el-img" >
+
+        <div class="image-place">
+        <a href="#"><img class="pic" src="images/igor.jpg" alt="">
+
+        <ul class="icon">
+            <li>10 <a href="#"><i class="fas fa-comments"></i></a></li>
+            <li>8 <a href="#"><i class="fas fa-heart"></i></a></li>
+            <li>44 <a href="#"><i class="fas fa-eye"></i></a></li>
+        </ul>
+        </a>
+    </div>
+        <div class="el-detail">
+            <div class="el-date">11.01.2021</div>
+            <div class="el-title">
+                <h3><a href="#">Игорь Рюрикович. Игорь Рюрикович. Игорь Рюрикович. Игорь Рюрикович. Игорь Рюрикович.</a></h3>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="el-img" >
+
+        <div class="image-place">
+            <a href="#"><img class="pic" src="images/igor.jpg" alt="">
+
+                <ul class="icon">
+                    <li><a href="#"><i class="fas fa-comments"></i></a></li>
+                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                    <li><a href="#"><i class="fas fa-eye"></i></a></li>
+                </ul>
+            </a>
+        </div>
+        <div class="el-detail">
+            <div class="el-date">11.01.2021</div>
+            <div class="el-title">
+                <h3><a href="#">Игорь Рюрикович</a></h3>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="el-img" >
+
+        <div class="image-place">
+            <a href="#"><img class="pic" src="images/igor.jpg" alt="">
+
+                <ul class="icon">
+                    <li><a href="#"><i class="fas fa-comments"></i></a></li>
+                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                    <li><a href="#"><i class="fas fa-eye"></i></a></li>
+                </ul>
+            </a>
+        </div>
+        <div class="el-detail">
+            <div class="el-date">11.01.2021</div>
+            <div class="el-title">
+                <h3><a href="#">Игорь Рюрикович</a></h3>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="el-img" >
+
+        <div class="image-place">
+            <a href="#"><img class="pic" src="images/igor.jpg" alt="">
+
+                <ul class="icon">
+                    <li><a href="#"><i class="fas fa-comments"></i></a></li>
+                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                    <li><a href="#"><i class="fas fa-eye"></i></a></li>
+                </ul>
+            </a>
+        </div>
+        <div class="el-detail">
+            <div class="el-date">11.01.2021</div>
+            <div class="el-title">
+                <h3><a href="#">Игорь Рюрикович. Игорь Рюрикович. Игорь Рюрикович. Игорь Рюрикович. Игорь Рюрикович. Игорь Рюрикович.</a></h3>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="el-img" >
+
+        <div class="image-place">
+            <a href="#"><img class="pic" src="images/igor.jpg" alt="">
+
+                <ul class="icon">
+                    <li><a href="#"><i class="fas fa-comments"></i></a></li>
+                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                    <li><a href="#"><i class="fas fa-eye"></i></a></li>
+                </ul>
+            </a>
+        </div>
+        <div class="el-detail">
+            <div class="el-date">11.01.2021</div>
+            <div class="el-title">
+                <h3><a href="#">Игорь Рюрикович</a></h3>
+            </div>
+        </div>
+
+    </div>
+
+        </div>
+
+    <div class="pager">
+        <ul>
+            <li><a href="#">Back</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">Next</a></li>
+        </ul>
+    </div>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>
