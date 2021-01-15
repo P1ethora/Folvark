@@ -19,10 +19,15 @@
 }
 
 
+.content-place {
+    width: 100%;
+    height: 100%;
+    padding: 50px 80px 50px;
+}
 
 
 .head{
-    padding-top: 40px;
+    padding-bottom: 10px;
     letter-spacing: .05em;
     font-family: 'A_La_Russ', sans-serif;
     position: relative;
@@ -44,9 +49,7 @@
 }
 
 .undhead .count_el {
-    position:absolute;
-    left: 110px;
-    bottom: 0;
+    padding-left: 10px;
     color: #333333;
 }
 
@@ -144,21 +147,24 @@
     color: #890000;
 }
 
+
+
 .gridGood {
-    align-self: stretch;
-    padding-left: 100px;
-    padding-right: 100px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
     flex-direction: row;
+    width: 100%;
+justify-content: flex-start;
 }
+
+
 
 .gridGood > div {
     background-color: #1a181b;
     border: 1px solid #890000;
     height: auto;
-    margin: 10px;
-    max-width: calc(33.333% - 40px);
-}
+        margin: 10px;
+        width: 31.6%;
+        max-width: 50%!important;
+        flex-grow: 1;
+    }
