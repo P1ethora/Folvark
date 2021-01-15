@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Слайдер на CSS</title>
+    <title>Фольварк Искателя - Главная страница</title>
     <link rel="stylesheet" type="text/css" media="all"
           th:href="@{assets/css/style_pager.css}"/>
     <link rel="stylesheet" type="text/css" media="all"
@@ -194,13 +194,29 @@
 
     </div>
     <ul class="space-catalog">
-       <li><a href="#"><h3>ПГМ</h3></a></li>
-       <li><a href="#"><h3> 10 верст</h3></a></li>
-       <li><a href="#"><h3>3 версты</h3></a></li>
-       <li><a href="#"><h3>Планы городов</h3></a></li>
-       <li><a href="#"><h3>Аэрофотоснимки Люфтваффе</h3></a></li>
-       <li><a href="#"><h3>Карты боевых действий. Великая отечественная</h3></a></li>
+       <li><a href="#">
+           <img src="/images/pgm_fon.jpg">
+           <h3>ПГМ</h3></a></li>
+       <li><a href="#">
+           <img src="/images/10verst_fon.jpg">
+           <h3> 10 верст</h3></a></li>
+       <li><a href="#">
+           <img src="/images/3verst_fon.jpg">
+           <h3>3 версты</h3></a></li>
+       <li><a href="#">
+           <img src="/images/plan_gorod_fon.jpg">
+           <h3>Планы городов</h3></a></li>
+       <li><a href="#">
+           <img src="/images/luftvaffe_fon.jpg">
+           <h3>Аэрофотоснимки Люфтваффе</h3></a></li>
+       <li><a href="#">
+           <img src="/images/boevie_deistvia_fon.jpg">
+           <h3>Карты боевых действий. Великая отечественная</h3></a></li>
 </ul>
+
+    <div class="btn-archportal">
+        <a href="/maps">Перейти в раздел</a>
+    </div>
 
     <div class="place-last-news"></div>
     <div class="head">
@@ -210,6 +226,11 @@
         <li><a href="#"><h3>Игорь Рюрикович</h3></a></li>
         <li><a href="#"><h3>Игорь Рюрикович</h3></a></li>
     </ul>
+
+    <div class="btn-archportal">
+        <a href="/archportal">Перейти в раздел</a>
+    </div>
+
 </div>
 
 <footer th:insert="blocks/footer :: footer"></footer>
