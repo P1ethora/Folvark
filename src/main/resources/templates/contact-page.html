@@ -15,20 +15,67 @@
 <body>
 <header th:insert="blocks/header :: header"></header>
 
-<div class="question-user">
-    <h5>Хотите задать вопрос?</h5>
-    <p>Заполните, пожалуйста, форму обратной связи и наш менеджер с вами свяжется</p>
-
-    <form class="feedback_form" method="post">
-        <input data-format=".+" data-notice="Введите имя" value="" placeholder="ФИО" name="name" maxlength="255" type="text">
-        <input data-format="email" data-notice="Введите email" placeholder="Email" value="" name="email" maxlength="255" type="text">
-        <input data-format=".+" data-notice="Введите телефон" placeholder="Телефон" value="" name="phone" maxlength="255" type="text">
-        <textarea data-format=".+" placeholder="Комментарий" data-notice="Введите сообщение" value="" name="message"></textarea>
-
-
-        <a class=""><span><input class="button" type="submit" name="feedback" value="Отправить"></span><span class="pseudo"></span></a>
-    </form>
+<section>
+<div class="container-contact">
+    <div class="contact-info">
+        <div><h2>Contact Info</h2>
+        <ul class="info">
+            <li>
+                <span><i class="fas fa-envelope"></i></span>
+                <span>info@seekerfolvark.com</span>
+            </li>
+            <li>
+                <span><i class="fas fa-phone-volume"></i></span>
+                <span>+375292391133</span>
+            </li>
+        </ul>
+        </div>
+    </div>
+    <div class="contact-form">
+        <h2>Send a Message</h2>
+        <div class="formBox">
+            <div class="inputBox w50">
+                <input type="text" name="" required>
+                <span>First Name</span>
+            </div>
+            <div class="inputBox w50">
+                <input type="text" name="" required>
+                <span>Last Name</span>
+            </div>
+            <div class="inputBox w50">
+                <input type="text" name="" required>
+                <span>Email Address</span>
+            </div>
+            <div class="inputBox w50">
+                <input type="text" name="" required>
+                <span>Mobile Number</span>
+            </div>
+            <div class="inputBox w100">
+                <textarea name="" required></textarea>
+                <span>Write your message here</span>
+            </div>
+            <div class="inputBox w100">
+                <input type="submit" value="send">
+            </div>
+        </div>
+    </div>
 </div>
+
+<!--<div class="question-user">-->
+<!--    <h5>Хотите задать вопрос?</h5>-->
+<!--    <p>Заполните, пожалуйста, форму обратной связи и наш менеджер с вами свяжется</p>-->
+
+<!--    <form class="feedback_form" method="post">-->
+<!--        <input data-format=".+" data-notice="Введите имя" value="" placeholder="ФИО" name="name" maxlength="255" type="text">-->
+<!--        <input data-format="email" data-notice="Введите email" placeholder="Email" value="" name="email" maxlength="255" type="text">-->
+<!--        <input data-format=".+" data-notice="Введите телефон" placeholder="Телефон" value="" name="phone" maxlength="255" type="text">-->
+<!--        <textarea data-format=".+" placeholder="Комментарий" data-notice="Введите сообщение" value="" name="message"></textarea>-->
+
+
+<!--        <a class=""><span><input class="button" type="submit" name="feedback" value="Отправить"></span><span class="pseudo"></span></a>-->
+<!--    </form>-->
+<!--</div>-->
+</section>
 
 <footer th:insert="blocks/footer :: footer"></footer>
 
