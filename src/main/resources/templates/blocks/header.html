@@ -1,4 +1,26 @@
 <div th:fragment="header">
+    <input type="checkbox" id="show">
+    <div class="login-fon"></div>
+    <div class="login-container">
+        <label for="show" class="close-btn fas fa-times"></label>
+        <div class="text-login">Login Form</div>
+        <form action="">
+            <div class="log-data">
+                <label>Email or phone</label>
+                <input type="text" required>
+            </div>
+            <div class="log-data">
+                <label>Password</label>
+                <input type="password" required>
+            </div>
+            <div class="forgot-pass"><a href="#">Forgot password?</a></div>
+            <div class="log-btn">
+                <div class="inner"></div>
+                <button type="submit">Login</button>
+            </div>
+            <div class="signup-link">Not a member?<a href="#">Sign up now</a></div>
+        </form>
+    </div>
     <div class="wrapper">
             <div class="top_nav">
                 <div class="left">
@@ -15,7 +37,7 @@
                 </div>
                 <div class="right">
                     <ul>
-                        <li><a href="#">Войти</a></li>
+                        <li id="btn-log-in"><label for="show" class="show-btn">Войти</label></li>
                         <li><a href="#">Корзина</a></li>
                     </ul>
                 </div>
@@ -29,5 +51,4 @@
                 </ul>
             </div>
         </div>
-    </div>
 </div>

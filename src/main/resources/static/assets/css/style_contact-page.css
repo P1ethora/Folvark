@@ -9,48 +9,13 @@
     font-style: normal;
 }
 
-/*.question-user {*/
-/*    position: relative;*/
-/*    text-align: center;*/
-/*    align-items: center;*/
-/*   display: inline-block;*/
-/*    padding: 50px;*/
-/*    height: 100%;*/
-/*    width: 100%;*/
-/*}*/
-
-/*.question-user .feedback_form {*/
-/*    position: center;*/
-/*    padding-top: 20px;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    height: 100%;*/
-/*    width: max-content;*/
-
-/*    justify-content: space-around;*/
-/*}*/
-
-/*.feedback_form > * {*/
-/*    position: center;*/
-/*    padding: 10px;*/
-/*    margin: 10px;*/
-/*}*/
-
-/*.feedback_form input[type=text] textarea {*/
-/*    position: center;*/
-/*    padding-top: 20px;*/
-/*    border: 1px solid #444;*/
-/*}*/
-
-
-
 section {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #890000;
+    background: white;
 }
 
 section:before {
@@ -60,7 +25,7 @@ section:before {
     left: 0;
     width: 50%;
     height: 100%;
-    background: #1a181b;
+    background: white;
 }
 
 section .container-contact {
@@ -76,7 +41,8 @@ section .container-contact .contact-info{
     top: 40px;
     width: 350px;
     height: calc(100% - 80px);
-    background: #1a181b;
+    background: #fff;
+    color: black;
     z-index: 1;
     padding: 40px;
     display: flex;
@@ -86,8 +52,8 @@ justify-content: space-between;
 }
 
 section .container-contact .contact-info h2{
-    color: white;
-    font-size: 24px;
+    font-family: 'A_La_Russ',sans-serif;
+    font-size: 30px;
     font-weight: 500;
 }
 
@@ -110,27 +76,25 @@ section .container-contact .contact-info .info li span:nth-child(1) {
     min-width: 30px;
 }
 
-section .container-contact .contact-info .info li span:nth-child(1) i {
+section .container-contact .contact-info .info li span:nth-child(1) a {
     max-width: 100%;
-    filter: invert(1);
     opacity: 0.5;
 }
 
 section .container-contact .contact-info .info li span:nth-child(2) {
-    color: white;
     margin-left: 10px;
     font-weight: 300;
     opacity: 0.5;
 }
 
-section .container-contact .contact-info .info li:hover span:nth-child(1) i,
+section .container-contact .contact-info .info li:hover span:nth-child(1) a ,
 section .container-contact .contact-info .info li:hover span:nth-child(2) {
     opacity: 1;
 }
 
 section .container-contact .contact-form {
     position: absolute;
-    background: #FFFFFF;
+    background: white;
     margin-left: 150px;
     padding: 70px 50px 70px 250px;
     width: calc(100% - 150px);
@@ -139,8 +103,9 @@ section .container-contact .contact-form {
 }
 
 section .container-contact .contact-form h2{
+    font-family: 'A_La_Russ',sans-serif;
     color: black;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 500;
 }
 
