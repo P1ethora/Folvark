@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{assets/css/style_login.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{fontawesome/css/all.min.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{assets/css/style_footer.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{assets/css/style_header.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{assets/css/style_product-page.css}"/>
+
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+
+<div class="fon-the-product">
+    <div class="block-inside-fon">
+    <div class="img-the-product">
+        <img src="images/KWJCSmQR_aY.jpg">
+    </div>
+    <div class="right-table-the-product">
+        <div class="name-product">Гомельский уезд</div>
+
+        <div class="rating-area">
+            <input type="radio" id="star-5" name="rating" value="5">
+            <label for="star-5" title="Оценка «5»"></label>
+            <input type="radio" id="star-4" name="rating" value="4">
+            <label for="star-4" title="Оценка «4»"></label>
+            <input type="radio" id="star-3" name="rating" value="3">
+            <label for="star-3" title="Оценка «3»"></label>
+            <input type="radio" id="star-2" name="rating" value="2">
+            <label for="star-2" title="Оценка «2»"></label>
+            <input type="radio" id="star-1" name="rating" value="1">
+            <label for="star-1" title="Оценка «1»"></label>
+
+
+    </div>
+        <div class="price-the-product">15р</div>
+        <div class="product-scale">Маштаб 1:10000</div>
+        <div class="product-scale">Год: 1775</div>
+        <div class="product_country">Страна: Беларусь</div>
+        <div class="product-city">Административный центр: Гомель</div>
+        <div class="product-coordinates">Привязка к координатам: Отсутствует</div>
+        <div class="description-the-product">
+            Одна из самых редких карт Польши и Литвы восемнадцатого века.
+            Фон Пфау был отправлен Фридрихом Великим для проведения полномасштабного исследования Польши и Литвы в рамках подготовки к разделу Польши в 1772 году.
+            Обзор на двадцати пяти листах был лучшей доступной картой Польши в печати.
+            Тем не менее, Фридрих настоял на повторном обследовании части западной Польши;
+            эта работа выполнялась в строгой секретности четырьмя офицерами прусской армии под командованием фон Пфау.
+        </div>
+        <div class="btn-add-to-cart"><button type="submit">Добавить в корзину</button></div>
+    </div>
+    </div>
+    </div>
+    <div class="fon-bottom-the-product">
+        <div class="block1-fon-bottom-the-product">
+        <div class="feedback-count">Отзывы 1</div>
+        <div class="btn-add-to-cart"><button type="submit">Добавить комментарий</button></div>
+    </div>
+        <div class="write-review-block"></div>
+        <div class="block_with_comments">
+            <div class="product-comment">
+                <img src="images/unnamed.jpg">
+                <div class="comment-block">
+                    <div class="top-comment">
+                <div class="comment-name">Олег Вещий</div>
+<div class="comment-data">23.01.2021, 0:49</div>
+                    </div>
+                <div class="comment-text">Можете ли вы привязать карту к координатам?</div>
+                    <div class="comment-answer"><button>Ответить</button></div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+
+</body>
+</html>
