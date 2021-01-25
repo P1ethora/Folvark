@@ -21,8 +21,9 @@
 }
 
 .fon-the-product .block-inside-fon img{
-    border: 1px solid #890000;
-    height: 500px;
+    max-width: 400px;
+    height: auto;
+    justify-content: center;
 }
 
 .fon-the-product .block-inside-fon .right-table-the-product {

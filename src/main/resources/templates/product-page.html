@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="${product.getName()} +' купить за '+ ${product.getPrice()} +' руб. в интернент-магазине «Фольварк Искателя»'"></title>
     <link rel="stylesheet" type="text/css" media="all"
-          th:href="@{assets/css/style_login.css}"/>
+          th:href="@{/assets/css/style_login.css}"/>
     <link rel="stylesheet" type="text/css" media="all"
-          th:href="@{fontawesome/css/all.min.css}"/>
+          th:href="@{/fontawesome/css/all.min.css}"/>
     <link rel="stylesheet" type="text/css" media="all"
-          th:href="@{assets/css/style_footer.css}"/>
+          th:href="@{/assets/css/style_footer.css}"/>
     <link rel="stylesheet" type="text/css" media="all"
-          th:href="@{assets/css/style_header.css}"/>
+          th:href="@{/assets/css/style_header.css}"/>
     <link rel="stylesheet" type="text/css" media="all"
-          th:href="@{assets/css/style_product-page.css}"/>
+          th:href="@{/assets/css/style_product-page.css}"/>
 
 </head>
 <body>
@@ -22,10 +21,10 @@
 <div class="fon-the-product">
     <div class="block-inside-fon">
     <div class="img-the-product">
-        <img src="images/KWJCSmQR_aY.jpg">
+        <img th:src="${product.getUrlPicture()}">
     </div>
     <div class="right-table-the-product">
-        <div class="name-product">Гомельский уезд</div>
+        <div th:text="${product.getName()}" class="name-product"></div>
 
         <div class="rating-area">
             <input type="radio" id="star-5" name="rating" value="5">
@@ -41,19 +40,16 @@
 
 
     </div>
-        <div class="price-the-product">15р</div>
-        <div class="product-scale">Маштаб 1:10000</div>
-        <div class="product-scale">Год: 1775</div>
-        <div class="product_country">Страна: Беларусь</div>
-        <div class="product-city">Административный центр: Гомель</div>
-        <div class="product-coordinates">Привязка к координатам: Отсутствует</div>
-        <div class="description-the-product">
-            Одна из самых редких карт Польши и Литвы восемнадцатого века.
-            Фон Пфау был отправлен Фридрихом Великим для проведения полномасштабного исследования Польши и Литвы в рамках подготовки к разделу Польши в 1772 году.
-            Обзор на двадцати пяти листах был лучшей доступной картой Польши в печати.
-            Тем не менее, Фридрих настоял на повторном обследовании части западной Польши;
-            эта работа выполнялась в строгой секретности четырьмя офицерами прусской армии под командованием фон Пфау.
-        </div>
+        <div th:text="${product.getPrice()} + ' руб'" class="price-the-product"></div>
+        <div th:text="'Маштаб: '+ ${product.getScale()}" class="product-scale"></div>
+        <div th:text="'Год: ' + ${product.getData()}" class="product-scale"></div>
+        <div th:text="'Страна: ' +${product.getCountry()}" class="product_country"></div>
+        <div th:text="'Административный центр: '+${product.getCity()}" class="product-city"></div>
+        <div th:text="'Привязка к координатам: Присутствует'" th:if="${product.coordinates}" class="product-coordinates"></div>
+        <div th:text="'Привязка к координатам: Отсутствует'" th:unless="${product.coordinates}" class="product-coordinates"></div>
+
+        <div th:text="${product.getDescription()}" class="description-the-product"></div>
+
         <div class="btn-add-to-cart"><button type="submit">Добавить в корзину</button></div>
     </div>
     </div>
@@ -66,7 +62,7 @@
         <div class="write-review-block"></div>
         <div class="block_with_comments">
             <div class="product-comment">
-                <img src="images/unnamed.jpg">
+                <img src="/images/unnamed.jpg">
                 <div class="comment-block">
                     <div class="top-comment">
                 <div class="comment-name">Олег Вещий</div>

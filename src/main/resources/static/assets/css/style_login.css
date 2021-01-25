@@ -11,7 +11,7 @@
     font-size: 20px;
     display: block;
     padding: 8px 10px;
-    color: #890000;
+    color: white;
 
 }
 
@@ -20,7 +20,7 @@
     content: "";
     height: 1px;
     width: 0;
-    background-color: #890000;
+    background-color: white;
     transition: width 0.3s ease-in-out;
 }
 
@@ -51,7 +51,7 @@ display: none;
 
 .login-container {
     position: fixed;
-    background: #fff;
+    background: #890000;
     display: none;
    width: 410px;
     padding: 30px;
@@ -66,7 +66,7 @@ display: block;
 }
 
 .login-container .close-btn {
-    color: black;
+    color: white;
     position: absolute;
     right: 20px;
     top: 15px;
@@ -75,10 +75,12 @@ display: block;
 }
 
 .login-container .close-btn:hover {
-    color: #890000;
+    box-shadow: 0 0 8px rgba(0,0,0,0);
 }
 
 .login-container .text-login {
+    font-family: A_La_Russ,sans-serif;
+    color: white;
     font-size: 35px;
     font-weight: 600;
     text-align: center;
@@ -95,15 +97,20 @@ display: block;
 }
 
 form .log-data label{
+    color: white;
     font-size: 18px;
 }
 
 form .log-data input{
+
+    background: #890000;
+    color: white;
+    border: none;
     height: 100%;
     width: 100%;
     padding-left: 10px;
     font-size: 17px;
-    border: 1px solid silver;
+    border-bottom: 1px solid white;
 }
 
 form .log-data input:focus {
@@ -124,7 +131,7 @@ form .log-btn .inner{
     width: 300%;
     position: absolute;
     left: -100%;
-    background: #890000;
+    background: white;
     z-index: -1;
     transition: all 0.4s;
 }
@@ -134,7 +141,7 @@ form .forgot-pass {
 }
 
 form .forgot-pass a{
-    color: black;
+    color: #3498db;
 }
 
 form .forgot-pass a:hover{
@@ -142,6 +149,7 @@ form .forgot-pass a:hover{
 }
 
 form .signup-link {
+    margin-left: 5px;
     text-align: center;
 }
 
@@ -165,7 +173,7 @@ form .log-btn button{
     width: 100%;
     background: none;
     border: none;
-    color: #fff;
+    color: #890000;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;

@@ -24,7 +24,7 @@ font-weight: normal;
   width: 100%;
     min-width: 1000px;
   height: 60px;
- background: #FFFFFF;
+ background: #890000;
   padding: 0 10px;
   display: flex;
   justify-content: space-between;
@@ -41,14 +41,14 @@ font-weight: normal;
 .wrapper .top_nav .left .logo p{
   font-size: 24px;
   font-weight: bold;
-  color: #890000;
+  color: white;
   margin-left: 10px;
   margin-right: 20px;
   font-family: 'TriodPostnaja' ,sans-serif;
 }
 
 .wrapper .top_nav .left .logo  p span{
-  color: #890000;
+  color: white;
   font-family: 'TriodPostnaja' ,sans-serif;
 }
 
@@ -73,6 +73,7 @@ font-weight: normal;
   border: none;
   outline: none;
   -webkit-appearance: none;
+  color: white;
 }
 
 .btn_area {
@@ -82,7 +83,7 @@ font-weight: normal;
   height: 36px;
   border-radius: 20px;
   font-size: 14px;
-  color: #890000;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,17 +91,17 @@ font-weight: normal;
 }
 
 .btn_area:hover{
-  text-shadow: 0 0 5px #890000;
+  text-shadow: 0 0 5px white;
   border-left: 1px solid #FFFFFF;
 
 }
 
 .wrapper .top_nav .left .search_bar:hover {
-  box-shadow: 0 0 7px #890000;
+  box-shadow: 0 0 7px white;
 }
 
 .wrapper .top_nav .left .search_bar:focus {
-  border: 1px solid #890000;
+  border: 1px solid white;
   	color: #333;
 }
 
@@ -117,7 +118,7 @@ font-weight: normal;
   font-size: 20px;
   display: block;
   padding: 8px 10px;
-  color: #890000;
+  color: white;
 }
 
 .wrapper .top_nav .right ul li a:after {
@@ -125,7 +126,7 @@ font-weight: normal;
   content: ""; /*контента в данном блоке не будет поэтому в кавычках ничего не ставим*/
   height: 1px; /*задаём высоту линии*/
   width: 0; /*задаём начальную ширину элемента (линии)*/
-  background-color: #890000; /*цвет фона элемента*/
+  background-color: white; /*цвет фона элемента*/
   transition: width 0.3s ease-in-out; /*данное свойство отвечает за плавное изменение ширины. Здесь можно задать время анимации в секундах (в данном случае задано 0.4 секунды)*/
   }
 
@@ -167,9 +168,3 @@ font-weight: normal;
 .bottom_nav ul li a:hover {
   text-shadow: 0 0 7px #FFFFFF;
 }
-
-.wrapper .top_nav .right ul #btn-log-in a:focus {
-  color: aqua;
-}
-
-
