@@ -27,4 +27,24 @@ public class ProductMap {
     private int views; //количество просмотров
     private String category; //категория товара
 
+    @Override
+    public String toString() {
+        return "ProductMap{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", urlPicture='" + urlPicture + '\'' +
+                ", urlDownload='" + urlDownload + '\'' +
+                ", price='" + price + '\'' +
+                ", scale='" + scale + '\'' +
+                ", data='" + data + '\'' +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", coordinates=" + coordinates +
+                ", description='" + description + '\'' +
+                ", ratings=" + ratings +
+                ", numberRatings=" + numberRatings +
+                ", views=" + views +
+                ", category='" + category + '\'' +
+                '}';
+    }
 }
