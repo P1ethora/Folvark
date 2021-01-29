@@ -48,7 +48,7 @@ public List<ProductMap> getAllProductByCategory(String category){  //товар 
     }
 
     public List<ProductMap> getPageProductSort(int numberPage,String property){  //весь товар постранично + сортировка
-        Sort sort = Sort.by(Sort.Direction.ASC,property);
+        Sort sort = Sort.by(Sort.Direction.DESC, property);
         Pageable pageSort = PageRequest.of(numberPage, SIZE_PAGE,sort);
         return daoProductMap.findAll(pageSort);
     }

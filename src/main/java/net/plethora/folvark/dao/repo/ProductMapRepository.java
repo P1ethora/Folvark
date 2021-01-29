@@ -1,4 +1,4 @@
-package net.plethora.folvark.dao;
+package net.plethora.folvark.dao.repo;
 
 import net.plethora.folvark.models.ProductMap;
 import org.springframework.data.domain.Page;

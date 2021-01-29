@@ -1,5 +1,6 @@
 package net.plethora.folvark.dao;
 
+import net.plethora.folvark.dao.repo.ProductMapRepository;
 import net.plethora.folvark.models.ProductMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
