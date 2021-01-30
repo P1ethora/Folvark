@@ -61,4 +61,8 @@ public List<ProductMap> findByCategorySortPrice(String category){
     public void edit(ProductMap productMap) {
         save(productMap);
     }
+
+    public long getCount() {
+        return productMapRepository.count();
+    }
 }

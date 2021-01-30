@@ -18,7 +18,7 @@ public class PagerService {
 
 private DaoProductMap daoProductMap;
 private String idEndElement;
-private final int SIZE_PAGE = 28;
+    private final int SIZE_PAGE = 5;
 
     public PagerService(DaoProductMap daoProductMap) {
         this.daoProductMap = daoProductMap;

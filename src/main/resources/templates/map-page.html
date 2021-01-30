@@ -40,7 +40,7 @@
             <div class="heading">
                 <h2 th:text="${header}"></h2>
                 <div class="underhead">
-                    <div class="count_maps" th:text="'Всего карт: ' + ${products.size()}"></div>
+                    <div class="count_maps" th:text="'Всего карт: ' + ${countProduct}"></div>
                     <div class="sort">Сортировка
                         <div class="dropdown">умолчанию
                             <div class="dropdown-content">
@@ -52,11 +52,11 @@
                     </div>
                 </div>
             </div>
-            <div  class="box-products">
+            <div class="box-products">
                 <div th:each="el : ${products}" class="product-flex">
                     <div class="product-img">
                         <a th:href="'/product/' + ${el.getId()}">
-                            <img th:src="${el.getUrlPicture()}" >
+                            <img th:src="${el.getUrlPicture()}">
                         </a>
                         <ul class="icon">
                             <li><a href="#"><i class="fas fa-cart-plus "></i></a></li>
@@ -77,13 +77,16 @@
         </div>
         <div class="pager">
             <ul>
-                <li><a href="#">Back</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">Next</a></li>
+                <li th:if="${sort}" th:each="page : ${countPage}"><a
+                        th:href="'/maps?sort=' + ${sort} + '&page=' + ${page}" th:text="${page}"></a></li>
+                <li th:unless="${sort}" th:each="page : ${countPage}"><a th:href="'/maps?page=' + ${page}"
+                                                                         th:text="${page}"></a></li>
+                <!--            <li><a href="#">1</a></li>-->
+                <!--                <li><a href="#">2</a></li>-->
+                <!--                <li><a href="#">3</a></li>-->
+                <!--                <li><a href="#">4</a></li>-->
+                <!--                <li><a href="#">5</a></li>-->
+                <!--                <li><a href="#">Next</a></li>-->
             </ul>
         </div>
     </div>
