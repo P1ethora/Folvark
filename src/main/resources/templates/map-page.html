@@ -75,18 +75,21 @@
             </div>
 
         </div>
-        <div class="pager">
+        <div class="pager" th:if="${category}">
+            <ul>
+                <li th:if="${sort}" th:each="page : ${countPage}">
+                    <a th:href="'/maps/' + ${category} + '?sort=' + ${sort} + '&page=' + ${page}" th:text="${page}"></a>
+                </li>
+                <li th:unless="${sort}" th:each="page : ${countPage}">
+                    <a th:href="'/maps/' + ${category} + '?page=' + ${page}" th:text="${page}"></a></li>
+            </ul>
+        </div>
+        <div class="pager" th:unless="${category}">
             <ul>
                 <li th:if="${sort}" th:each="page : ${countPage}"><a
                         th:href="'/maps?sort=' + ${sort} + '&page=' + ${page}" th:text="${page}"></a></li>
                 <li th:unless="${sort}" th:each="page : ${countPage}"><a th:href="'/maps?page=' + ${page}"
                                                                          th:text="${page}"></a></li>
-                <!--            <li><a href="#">1</a></li>-->
-                <!--                <li><a href="#">2</a></li>-->
-                <!--                <li><a href="#">3</a></li>-->
-                <!--                <li><a href="#">4</a></li>-->
-                <!--                <li><a href="#">5</a></li>-->
-                <!--                <li><a href="#">Next</a></li>-->
             </ul>
         </div>
     </div>

@@ -70,47 +70,48 @@ public class MapController {
         return "map-page";
     }
 
-//    @GetMapping("/maps?page={parameter}")
-//    public String startMapParam(@PathVariable("parameter")String parameter, Model model) {
-//        List<ProductMapCategory> categories = daoProductMapCategory.findAll();
-//        List<ProductMap> products;
-//
-//        long countProduct = daoProductMap.getCount();
-//        int countPage = (int)(countProduct / 5) + 1;
-//        int[] arrPage = new int[countPage];
-//        for(int i= 0;i<arrPage.length;i++){
-//            arrPage[i]=i+1;
-//        }
-//
-//        if(parameter.equals("all")){
-//            products = pagerService.getAllProduct();
-//        } else {
-//products = pagerService.getAllProductByPage(Integer.parseInt(parameter)-1);
-//        }
-//
-//        model.addAttribute("categories", categories);
-//        model.addAttribute("products", products);
-//        model.addAttribute("header", "Карты");
-//        model.addAttribute("countProduct",countProduct);
-//        return "map-page";
-//    }
-//
-//    @GetMapping("/maps/{category}?sort={sort}?page={parameter}")
-//    public String categoryMap(@PathVariable("category") String category, Model model) {
-//        List<ProductMapCategory> categories = daoProductMapCategory.findAll();
-//
-//        String nameCategory = categories.stream()
-//                .filter(i -> i.getUrlNameCategory().equals(category))
-//                .findFirst().orElse(null)
-//                .getNameCategory();
-//
-//        List<ProductMap> products = daoProductMap.findAllByCategory(nameCategory);
-//
-//        model.addAttribute("categories", categories);
-//        model.addAttribute("products", products);
-//        model.addAttribute("header", nameCategory);
-//        return "map-page";
-//    }
+    @GetMapping("/maps/{category}")
+    public String categoryMap(@PathVariable("category") String category, @RequestParam(required = false) String sort, @RequestParam(required = false) String page, Model model) {
+        List<ProductMapCategory> categories = daoProductMapCategory.findAll();
 
+        String nameCategory = categories.stream()
+                .filter(i -> i.getUrlNameCategory().equals(category))
+                .findFirst().orElse(null)
+                .getNameCategory();
 
+        long countProduct = daoProductMap.getCount(nameCategory);
+        int countPage = (int) (countProduct / 5) + 1;
+        int[] arrPage = new int[countPage];
+        for (int i = 0; i < arrPage.length; i++) {
+            arrPage[i] = i + 1;
+        }
+
+        List<ProductMap> products;
+        if (sort == null) {
+            if (page == null) {
+                products = pagerService.getProductByPageByCategory(nameCategory, 0);
+            } else if (page.equals("all")) {
+                products = pagerService.getAllProductByCategory(nameCategory);
+            } else {
+                products = pagerService.getProductByPageByCategory(nameCategory, Integer.parseInt(page) - 1);
+            }
+        } else {
+            if (page == null) {
+                products = pagerService.getProductByPageByCategorySort(nameCategory, 0, sort);
+            } else if (page.equals("all")) {
+                products = pagerService.getAllProductByCategorySort(nameCategory, sort);
+            } else {
+                products = pagerService.getProductByPageByCategorySort(nameCategory, Integer.parseInt(page) - 1, sort);
+            }
+        }
+
+        model.addAttribute("countPage", arrPage);
+        model.addAttribute("categories", categories);
+        model.addAttribute("products", products);
+        model.addAttribute("header", nameCategory);
+        model.addAttribute("category", category);
+        model.addAttribute("countProduct", countProduct);
+        model.addAttribute("sort", sort);
+        return "map-page";
+    }
 }

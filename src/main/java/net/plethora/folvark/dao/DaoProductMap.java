@@ -32,16 +32,12 @@ public class DaoProductMap {
         return productMapRepository.findByCategory(category);
     }
 
-    public List<ProductMap> findByCategory(String category, Pageable pageable){
+    public List<ProductMap> findByCategoryByPage(String category, Pageable pageable) {
         return productMapRepository.findByCategory(category, pageable).getContent();
     }
 
 
-public List<ProductMap> findByCategorySortPrice(String category){
-        return productMapRepository.findByCategory(category);
-}
-
-    public List<ProductMap> findByCategorySortPrice(String category, Sort sort){
+    public List<ProductMap> findByCategorySort(String category, Sort sort) {
 
         return productMapRepository.findByCategory(category,sort);
     }
@@ -64,5 +60,9 @@ public List<ProductMap> findByCategorySortPrice(String category){
 
     public long getCount() {
         return productMapRepository.count();
+    }
+
+    public long getCount(String category) {
+        return productMapRepository.countByCategory(category);
     }
 }

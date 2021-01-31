@@ -16,6 +16,8 @@ public interface ProductMapRepository  extends MongoRepository<ProductMap, Strin
     Page<ProductMap> findByCategory(String category, Pageable pageable);// постраничный по категориям
     List<ProductMap> findByCategory(String category);// по категориям все сразу
     List<ProductMap> findByCategory(String category, Sort sort);
+
+    long countByCategory(String category);
 }
 
 

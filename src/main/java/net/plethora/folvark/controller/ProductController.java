@@ -14,15 +14,9 @@ public class ProductController {
 
     @Autowired
     private DaoProductMap daoProductMap;
-    @Autowired
-    private PagerService pagerService;
 
     @GetMapping("/product/{id}")
     public String viewProduct(@PathVariable(value = "id") String id, Model model) {
-        
-        for(ProductMap productMap:pagerService.getPageProductSort(0,"price")){
-            System.out.println(productMap);
-        }
         ProductMap product = daoProductMap.findById(id);
         model.addAttribute("product", product);
         return "product-page";
