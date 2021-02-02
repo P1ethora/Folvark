@@ -2,7 +2,6 @@ package net.plethora.folvark.controller;
 
 import net.plethora.folvark.dao.DaoProductMap;
 import net.plethora.folvark.models.ProductMap;
-import net.plethora.folvark.service.PagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

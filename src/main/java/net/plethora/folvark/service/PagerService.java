@@ -3,6 +3,7 @@ package net.plethora.folvark.service;
 import lombok.Getter;
 import lombok.Setter;
 import net.plethora.folvark.dao.DaoProductMap;
+import net.plethora.folvark.dao.DaoProductMapCategory;
 import net.plethora.folvark.models.ProductMap;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,55 +18,66 @@ import java.util.List;
 public class PagerService {
 
     private DaoProductMap daoProductMap;
-private String idEndElement;
-    private final int SIZE_PAGE = 5;
+    private DaoProductMapCategory daoProductMapCategory;
+    private String idEndElement;
+    static final int SIZE_PAGE = 28;
 
-    public PagerService(DaoProductMap daoProductMap) {
+    public PagerService(DaoProductMap daoProductMap, DaoProductMapCategory daoProductMapCategory) {
+        this.daoProductMapCategory = daoProductMapCategory;
         this.daoProductMap = daoProductMap;
     }
 
     //-----------------------------JUST PRODUCT---------------------------------------------------------
-public List<ProductMap> getAllProduct(){ //весь товар
-    return daoProductMap.findAll();
-}
+    List<ProductMap> getAllProduct() { //весь товар
+        return daoProductMap.findAll();
+    }
 
-    public List<ProductMap> getAllProductByPage(int numberPage){  //все постранично
+    List<ProductMap> getAllProductByPage(int numberPage) {  //все постранично
         Pageable pageSortCategories = PageRequest.of(numberPage, SIZE_PAGE);
         return daoProductMap.findAll(pageSortCategories);
     }
 
     //-------------------------------JUST PRODUCT + SORT---------------------------------------------------
-    public List<ProductMap> getAllProductSort(String property){//все + сортировка
+    List<ProductMap> getAllProductSort(String property) {//все + сортировка
         Sort sort = Sort.by(Sort.Direction.DESC, property);
         return daoProductMap.findAllSort(sort);
     }
 
-    public List<ProductMap> getPageProductSort(int numberPage, String property){  //весь товар постранично + сортировка
+    List<ProductMap> getPageProductSort(int numberPage, String property) {  //весь товар постранично + сортировка
         Sort sort = Sort.by(Sort.Direction.DESC, property);
-        Pageable pageSort = PageRequest.of(numberPage, SIZE_PAGE,sort);
+        Pageable pageSort = PageRequest.of(numberPage, SIZE_PAGE, sort);
         return daoProductMap.findAll(pageSort);
     }
 
     //-------------------------------CATEGORY------------------------------------------------------------
-    public List<ProductMap> getAllProductByCategory(String category) {  //весь товар по категориям
+    List<ProductMap> getAllProductByCategory(String category) {  //весь товар по категориям
         return daoProductMap.findAllByCategory(category);
     }
 
-    public List<ProductMap> getProductByPageByCategory(String category, int numberPage) { //товар постранично по категориям
+    List<ProductMap> getProductByPageByCategory(String category, int numberPage) { //товар постранично по категориям
         Pageable page = PageRequest.of(numberPage, SIZE_PAGE);
         return daoProductMap.findByCategoryByPage(category, page);
     }
 
     //-------------------------------CATEGORY + SORT----------------------------------------------------------------------
-    public List<ProductMap> getAllProductByCategorySort(String category, String property) { //весь товар по категориям + сортировка
+    List<ProductMap> getAllProductByCategorySort(String category, String property) { //весь товар по категориям + сортировка
         Sort sort = Sort.by(Sort.Direction.DESC, property);
         return daoProductMap.findByCategorySort(category, sort);
     }
 
-    public List<ProductMap> getProductByPageByCategorySort(String category, int numberPage, String property) { //постранично по категориям + сортировка
+    List<ProductMap> getProductByPageByCategorySort(String category, int numberPage, String property) { //постранично по категориям + сортировка
         Sort sort = Sort.by(Sort.Direction.DESC, property);
         Pageable pageSort = PageRequest.of(numberPage, SIZE_PAGE, sort);
         return daoProductMap.findByCategoryByPage(category, pageSort);
     }
 
+    //----------------------------------PAGE LOGIC--------------------------------------------------------------------------
+    public int[] getArrayPage(long countProduct) {
+        int countPage = (int) (countProduct / SIZE_PAGE) + 1;
+        int[] arrPage = new int[countPage];
+        for (int i = 0; i < arrPage.length; i++) {
+            arrPage[i] = i + 1;
+        }
+        return arrPage;
+    }
 }
