@@ -3,12 +3,17 @@ package net.plethora.folvark.controller;
 import net.plethora.folvark.models.ProductMap;
 import net.plethora.folvark.service.PagerService;
 import net.plethora.folvark.service.ProductService;
+import org.springframework.session.data.mongo.MongoSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.server.session.WebSessionStore;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -23,11 +28,9 @@ public class MapController {
     }
 
     @GetMapping("/maps")
-
-    public String startMap(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, Model model) {
+    public String startMap(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
 
         List<ProductMap> products = productService.fillingProductList(sort, page, pagerService);
-
         model.addAttribute("countPage", pagerService.getArrayPage(productService.getCountProduct()));
         model.addAttribute("categories", productService.getCategories());
         model.addAttribute("products", products);
