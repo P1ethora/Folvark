@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -20,7 +21,7 @@ public class MainPageController {
     }
 
     @GetMapping("/")
-    public String getMain(Model model) {
+    public String getMain(HttpSession httpSession, Model model) {
 
         model.addAttribute("products", productService.getLastProducts());
 

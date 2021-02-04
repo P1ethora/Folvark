@@ -3,16 +3,10 @@ package net.plethora.folvark.controller;
 import net.plethora.folvark.models.ProductMap;
 import net.plethora.folvark.service.PagerService;
 import net.plethora.folvark.service.ProductService;
-import org.springframework.session.data.mongo.MongoSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.server.session.WebSessionStore;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -42,7 +36,7 @@ public class MapController {
     }
 
     @GetMapping("/maps/{category}")
-    public String categoryMap(@PathVariable("category") String category, @RequestParam(required = false) String sort, @RequestParam(required = false) String page, Model model) {
+    public String categoryMap(@PathVariable("category") String category, @RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
 
         List<ProductMap> products = productService.fillingProductListByCategory(sort, page, pagerService, productService, category);
 
@@ -56,4 +50,12 @@ public class MapController {
 
         return "map-page";
     }
+
+    @PostMapping("/maps/addToCart")
+    public @ResponseBody
+    void addNewWorker(@RequestBody String jsonString, HttpSession httpSession) {
+        System.out.println(jsonString.replace("\"", "") + " " + httpSession.getId());
+        //do business logic
+    }
+
 }
