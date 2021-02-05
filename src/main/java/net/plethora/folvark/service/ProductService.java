@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
 
-import static net.plethora.folvark.service.PagerService.SIZE_PAGE;
-
 @Service
 public class ProductService {
 
@@ -93,7 +91,7 @@ public class ProductService {
 
     public List<ProductMap> getLastProducts() {
         Sort sort = Sort.by("id").descending();
-        Pageable pageable = PageRequest.of(0, 15, sort);
+        Pageable pageable = PageRequest.of(0, NUMBER_LAST_PRODUCTS, sort);
         return daoProductMap.findAll(pageable);
     }
 }

@@ -1,8 +1,11 @@
 package net.plethora.folvark.controller;
 
+import net.plethora.folvark.models.Cart;
 import net.plethora.folvark.models.ProductMap;
+import net.plethora.folvark.service.CartService;
 import net.plethora.folvark.service.PagerService;
 import net.plethora.folvark.service.ProductService;
+import net.plethora.folvark.service.SessionOperationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,14 +18,21 @@ public class MapController {
 
     private final PagerService pagerService;
     private final ProductService productService;
+    private final CartService cartService;
+    private final SessionOperationService sessionOperationService;
 
-    public MapController(PagerService pagerService, ProductService productService) {
+    public MapController(PagerService pagerService, ProductService productService, CartService cartService,
+                         SessionOperationService sessionOperationService) {
+        this.sessionOperationService = sessionOperationService;
         this.pagerService = pagerService;
         this.productService = productService;
+        this.cartService = cartService;
     }
 
     @GetMapping("/maps")
     public String startMap(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
+
+        sessionOperationService.checkCart(httpSession);
 
         List<ProductMap> products = productService.fillingProductList(sort, page, pagerService);
         model.addAttribute("countPage", pagerService.getArrayPage(productService.getCountProduct()));
@@ -37,7 +47,7 @@ public class MapController {
 
     @GetMapping("/maps/{category}")
     public String categoryMap(@PathVariable("category") String category, @RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
-
+        sessionOperationService.checkCart(httpSession);
         List<ProductMap> products = productService.fillingProductListByCategory(sort, page, pagerService, productService, category);
 
         model.addAttribute("countPage", pagerService.getArrayPage(productService.getCountProduct(category)));
@@ -54,8 +64,11 @@ public class MapController {
     @PostMapping("/maps/addToCart")
     public @ResponseBody
     void addNewWorker(@RequestBody String jsonString, HttpSession httpSession) {
-        System.out.println(jsonString.replace("\"", "") + " " + httpSession.getId());
-        //do business logic
+        sessionOperationService.checkCart(httpSession);
+        String idCart = (String) httpSession.getAttribute("idCart");
+        String idProduct = jsonString.replace("\"", "");
+        cartService.addProduct(idProduct, idCart);
+
     }
 
 }

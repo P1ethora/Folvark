@@ -19,7 +19,7 @@
 <header th:insert="blocks/header :: header"></header>
 
 <div class="cart-fon">
-    <div class="header-cart"><h1>В корзине 1 товар</h1></div>
+    <div class="header-cart" th:text="'Товаров в корзине: ' + ${products.size()}"><h1></h1></div>
     <div class="table-cart">
         <div class="table-cart-head">
             <div>Товар</div>
@@ -27,21 +27,21 @@
         </div>
         <div class="table-cart-body">
             <div class="cart-row">
-                <div class="element-cart">
-                    <a href="#">
-                        <img src="images/KWJCSmQR_aY.jpg">
-                        <span>Гомельский уезд</span>
+                <div th:each="el : ${products}" class="element-cart">
+                    <a th:href="'/product/' + ${el.getId()}">
+                        <img th:src="${el.getUrlPicture()}">
+                        <span th:text="${el.getName()}">Гомельский уезд</span>
                     </a>
-                    <div class="price-element">15р</div>
+                    <div class="price-element" th:text="${el.getPrice()}"></div>
                 </div>
             </div>
         </div>
 
     </div>
     <div class="cart-total">
-        <div class="total-price">Итого: 30 руб</div>
+        <div class="total-price" th:text="'Итого: ' +${allPrice} + ' руб'"></div>
         <div class="btn-buy">
-            <a href="/maps">Оплатить</a>
+            <a href="#">Оплатить</a>
         </div>
     </div>
 </div>

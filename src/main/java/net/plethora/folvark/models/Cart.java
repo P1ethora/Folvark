@@ -12,6 +12,6 @@ public class Cart {
 
     @Id
     private String id;
-    private ProductMap[] productMaps;
+    private String[] idMaps;
 
 }
