@@ -12,6 +12,13 @@ font-style: normal;
 font-weight: normal;
 }
 
+@font-face {
+  font-family: "Oswald";
+  src: url("/fonts/Oswald.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -20,25 +27,26 @@ font-weight: normal;
   text-decoration: none;
 }
 
-.wrapper .top_nav {
+.top_nav {
   width: 100%;
-    min-width: 1000px;
+  margin: auto;
   height: 60px;
- background: #890000;
-  padding: 0 10px;
+  background: #1a181b;
+  padding: 10px 10px 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.wrapper .top_nav .left {
-  width: 100%;
+.top_nav .left {
   display: flex;
   align-items: center;
-  margin-right: 150px;
+  box-sizing: border-box;
 }
 
-.wrapper .top_nav .left .logo p{
+.top_nav .left .logo a {
+  display: flex;
+  flex-direction: column;
   font-size: 24px;
   font-weight: bold;
   color: white;
@@ -47,73 +55,77 @@ font-weight: normal;
   font-family: 'TriodPostnaja' ,sans-serif;
 }
 
-.wrapper .top_nav .left .logo  p span{
+.top_nav .left .logo {
+  margin-left: 20px;
+}
+
+.top_nav .left .logo a span {
   color: white;
   font-family: 'TriodPostnaja' ,sans-serif;
 }
 
-.wrapper .top_nav .left .search_bar {
-  overflow: hidden;
-  margin-left: 150px;
-  position: relative;
-  width: 100%;
-  box-shadow: inset 0 0 5px rgba(0,0,0,0.1), inset 0 1px 2px rgba(0,0,0,0.3);
-  border-radius: 20px;
-  border: 1px solid #890000;
-  justify-content: space-between;
-  display: flex;
-  align-items: center;
-}
-
-.wrapper .top_nav .left .search_bar input[type="text"]{
-  width: calc(100% - 84px);
-  height: 100%;
-  text-indent: 10px;
-  background: none;
-  border: none;
-  outline: none;
-  -webkit-appearance: none;
-  color: white;
-}
-
-.btn_area {
-  border-left: 1px solid #890000;
-  font-family: 'TriodPostnaja' ,sans-serif;
-  width: 80px;
-  height: 36px;
-  border-radius: 20px;
-  font-size: 14px;
-  color: white;
+.search-form {
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.top_nav .left form {
+  margin-left: 100px;
+}
+
+.top_nav .left form input[type="text"] {
+  flex: 1;
+  padding: 10px 40px;
+  font-size: 16px;
+  color: #1a181b;
+  font-weight: 700;
+  outline: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  min-width: 260px;
+  border: 1px solid white;
+}
+
+.btn_area {
+  border: none;
+  font-family: Oswald, sans-serif;
+  letter-spacing: 1px;
+  padding: 10px 30px;
+  font-size: 16px;
+  background: #890000;
+  color: #fff;
+  font-weight: 500;
+  outline: none;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
   cursor: pointer;
+  transition: opacity .3s linear;
 }
 
 .btn_area:hover{
-  text-shadow: 0 0 5px white;
-  border-left: 1px solid #FFFFFF;
-
+  text-decoration-line: underline;
 }
 
-.wrapper .top_nav .left .search_bar:hover {
-  box-shadow: 0 0 7px white;
+.top_nav .left form input[type="text"]:hover {
+  box-shadow: -8px 0 25px white;
 }
 
-.wrapper .top_nav .left .search_bar:focus {
-  border: 1px solid white;
-  	color: #333;
+.top_nav .left form .btn_area:hover {
+  box-shadow: 8px 0 25px #890000;
 }
 
-.wrapper .top_nav .right ul{
+.top_nav .right ul {
   display: flex;
 }
 
-.wrapper .top_nav .right ul li{
+.top_nav .right ul li {
   margin: 0 15px;
 }
 
-.wrapper .top_nav .right ul li a{
+.top_nav .right ul li a {
   font-family: 'TriodPostnaja' ,sans-serif;
   font-size: 20px;
   display: block;
@@ -121,7 +133,7 @@ font-weight: normal;
   color: white;
 }
 
-.wrapper .top_nav .right ul li a:after {
+.top_nav .right ul li a:after {
   display: block; /*превращаем его в блочный элемент*/
   content: ""; /*контента в данном блоке не будет поэтому в кавычках ничего не ставим*/
   height: 1px; /*задаём высоту линии*/
@@ -130,17 +142,18 @@ font-weight: normal;
   transition: width 0.3s ease-in-out; /*данное свойство отвечает за плавное изменение ширины. Здесь можно задать время анимации в секундах (в данном случае задано 0.4 секунды)*/
   }
 
-.wrapper .top_nav .right ul li a:hover:after {
+.top_nav .right ul li a:hover:after {
   width: 100%;
 }
 
 .bottom_nav {
     min-width: 1000px;
   width: 100%;
-  background:  #890000;
+  background: #1a181b;
   box-shadow:  0 5px 5px -5px #890000;
   height: 60px;
   padding: 0 50px;
+  border-bottom: 1px solid #890000;
 }
 
 .bottom_nav ul{
@@ -153,18 +166,15 @@ font-weight: normal;
   align-items: center;
 }
 
-.bottom_nav ul li {
-
-}
-
 .bottom_nav ul li a{
-  color: #FFFFFF;
+  text-shadow: #890000;
+  color: white;
   letter-spacing: 3px;
   text-transform: uppercase;
   font-size: 16px;
-  font-family: 'Ponter' ,sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 
 .bottom_nav ul li a:hover {
-  text-shadow: 0 0 7px #FFFFFF;
+  border-bottom: 1px solid white;
 }

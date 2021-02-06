@@ -1,9 +1,7 @@
 package net.plethora.folvark.service;
 
 import net.plethora.folvark.dao.DaoCart;
-import net.plethora.folvark.dao.DaoProductMap;
 import net.plethora.folvark.models.Cart;
-import net.plethora.folvark.models.ProductMap;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;

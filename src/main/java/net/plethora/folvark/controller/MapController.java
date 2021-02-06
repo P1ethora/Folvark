@@ -1,11 +1,11 @@
 package net.plethora.folvark.controller;
 
-import net.plethora.folvark.models.Cart;
 import net.plethora.folvark.models.ProductMap;
 import net.plethora.folvark.service.CartService;
 import net.plethora.folvark.service.PagerService;
 import net.plethora.folvark.service.ProductService;
 import net.plethora.folvark.service.SessionOperationService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +31,6 @@ public class MapController {
 
     @GetMapping("/maps")
     public String startMap(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
-
         sessionOperationService.checkCart(httpSession);
 
         List<ProductMap> products = productService.fillingProductList(sort, page, pagerService);

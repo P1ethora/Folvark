@@ -32,7 +32,7 @@ public class CartController {
         sessionOperationService.checkCart(httpSession);
         Cart cart = daoCart.findCart((String) httpSession.getAttribute("idCart"));
         List<ProductMap> list = new ArrayList<>();
-        if (cart != null && cart.getIdMaps().length > 0) {
+        if (cart != null && cart.getIdMaps() != null && (cart.getIdMaps().length > 0)) {
             for (String id : cart.getIdMaps()) {
                 ProductMap productMap = daoProductMap.findById(id);
                 if (productMap != null) {
@@ -40,6 +40,7 @@ public class CartController {
                     list.add(productMap);
                 }
             }
+
         }
         model.addAttribute("products", list);
         model.addAttribute("allPrice", AllPrice);

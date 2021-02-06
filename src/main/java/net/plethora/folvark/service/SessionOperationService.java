@@ -16,12 +16,10 @@ public class SessionOperationService {
 
     public void checkCart(HttpSession httpSession) {
 
-        if (httpSession.isNew()) {
+        if (httpSession.getAttribute("idCart") == null) {
             Cart cart = new Cart();
             cartService.SaveCart(cart);
             httpSession.setAttribute("idCart", cart.getId());
         }
-
     }
-
 }
