@@ -34,7 +34,12 @@ public class CartService {
     }
 
     public int getCountProduct(String idCart) {
-        return daoCart.findCart(idCart).getIdMaps().length;
+        Cart cart = daoCart.findCart(idCart);
+        int count = 0;
+        if (cart.getIdMaps() != null)
+            count = cart.getIdMaps().length;
+
+        return count;
     }
 
 }
