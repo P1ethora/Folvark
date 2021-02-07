@@ -146,6 +146,23 @@ font-weight: normal;
   width: 100%;
 }
 
+.top_nav .right ul li:last-child {
+  display: flex;
+}
+
+.top_nav .right ul li:last-child .counterPr {
+  height: 25px;
+  width: 25px;
+  color: white;
+  background: #1a181b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #890000;
+
+}
+
 .bottom_nav {
     min-width: 1000px;
   width: 100%;

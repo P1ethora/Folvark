@@ -33,4 +33,8 @@ public class CartService {
         daoCart.editCart(cart);
     }
 
+    public int getCountProduct(String idCart) {
+        return daoCart.findCart(idCart).getIdMaps().length;
+    }
+
 }

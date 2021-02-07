@@ -35,7 +35,9 @@
                 <div class="right">
                     <ul>
                         <li id="btn-log-in"><label for="show" class="show-btn">Войти</label></li>
-                        <li><a href="/cart">Корзина</a></li>
+                        <li><a class="cart" href="/cart">Корзина</a>
+                            <div class="counterPr" th:text="${countProducts}"></div>
+                        </li>
                     </ul>
                     </div>
                 </div>

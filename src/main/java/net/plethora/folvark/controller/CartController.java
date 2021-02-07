@@ -31,8 +31,10 @@ public class CartController {
         int AllPrice = 0;
         sessionOperationService.checkCart(httpSession);
         Cart cart = daoCart.findCart((String) httpSession.getAttribute("idCart"));
+        int countProduct;
         List<ProductMap> list = new ArrayList<>();
         if (cart != null && cart.getIdMaps() != null && (cart.getIdMaps().length > 0)) {
+            countProduct = cart.getIdMaps().length;
             for (String id : cart.getIdMaps()) {
                 ProductMap productMap = daoProductMap.findById(id);
                 if (productMap != null) {
@@ -41,9 +43,12 @@ public class CartController {
                 }
             }
 
+        } else {
+            countProduct = 0;
         }
         model.addAttribute("products", list);
         model.addAttribute("allPrice", AllPrice);
+        model.addAttribute("countProducts", countProduct);
         return "cart-page";
     }
 }

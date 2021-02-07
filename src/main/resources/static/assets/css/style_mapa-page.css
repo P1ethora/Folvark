@@ -55,15 +55,16 @@ border-top-right-radius: 10px;
   color: #1a181b;
 }
 
-.box ul li:hover a {
-  color: #FFFFFF;
+.box ul li a:hover {
+    color: #890000;
 }
 
 .box ul li:hover {
-  transform: scale(1.1);
-  z-index: 100;
-  background: #890000;
-  box-shadow: 0 5px 25px rgba(0,0,0,.2);
+    /*transform: scale(1.1);*/
+    /*z-index: 100;*/
+    border-bottom: 1px solid #890000;
+    /*background: #890000;*/
+    /*box-shadow: 0 5px 25px rgba(0,0,0,.2);*/
   color: #fff;
 }
 

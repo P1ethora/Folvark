@@ -7,6 +7,6 @@ function addToCart(element) {
         },
         body: JSON.stringify(element.getAttribute('data-id'))
     });
-    let result = response.json();
-    alert(result.message);
+    // let result = response.json();
+    // alert(result.message);
 }
