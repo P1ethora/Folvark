@@ -19,29 +19,26 @@
 <header th:insert="blocks/header :: header"></header>
 
 <div class="cart-fon">
-    <div class="header-cart" th:text="'Товаров в корзине: ' + ${products.size()}"><h1></h1></div>
     <div class="table-cart">
-        <div class="table-cart-head">
-            <div>Товар</div>
-            <div>Цена</div>
-        </div>
-        <div class="table-cart-body">
             <div class="cart-row">
                 <div th:each="el : ${products}" class="element-cart">
                     <a th:href="'/product/' + ${el.getId()}">
                         <img th:src="${el.getUrlPicture()}">
-                        <span th:text="${el.getName()}">Гомельский уезд</span>
+                        <span th:text="${el.getName()}"></span>
                     </a>
-                    <div class="price-element" th:text="${el.getPrice()}"></div>
+                    <div class="price-element" th:text="${el.getPrice()} + ' руб'"></div>
                 </div>
             </div>
-        </div>
-
-    </div>
-    <div class="cart-total">
-        <div class="total-price" th:text="'Итого: ' +${allPrice} + ' руб'"></div>
-        <div class="btn-buy">
-            <a href="#">Оплатить</a>
+        <div class="right-panel">
+            <div class="header">Итого товаров:<span th:text="${products.size()}"></span>
+                <div class="all-price-cart" th:text="${allPrice} +' руб'">10 руб</div>
+            </div>
+            <div class="name-cart">Гость</div>
+            <div class="payment-method">Карта</div>
+            <div class="voucher"><label></label></div>
+            <div class="btn-buy">
+                <a href="#">Оплатить</a>
+            </div>
         </div>
     </div>
 </div>

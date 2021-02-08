@@ -44,6 +44,10 @@ font-weight: normal;
   box-sizing: border-box;
 }
 
+.top_nav .left img {
+    margin-top: 5px;
+}
+
 .top_nav .left .logo a {
   display: flex;
   flex-direction: column;
@@ -161,6 +165,10 @@ font-weight: normal;
   justify-content: center;
   border: 1px solid #890000;
 
+}
+
+.logo-pict {
+    padding-top: 10px;
 }
 
 .bottom_nav {
