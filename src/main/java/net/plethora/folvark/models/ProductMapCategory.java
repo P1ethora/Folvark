@@ -12,5 +12,6 @@ public class ProductMapCategory {
     private String nameCategory;
     private String urlNameCategory;
     private String[] subCategories;
+    private String urlCover;
 
 }

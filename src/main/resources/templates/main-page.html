@@ -70,25 +70,9 @@
 
     </div>
     <ul class="space-catalog">
-       <li><a href="#">
-           <div class="bg-animation" style="background-image: url('/images/pgm__fon.jpg')"></div>
-           <!--           <img src="/images/pgm_fon.jpg">-->
-           <h3>ПГМ</h3></a></li>
-       <li><a href="#">
-           <img src="/images/10verst_fon.jpg">
-           <h3> 10 верст</h3></a></li>
-       <li><a href="#">
-           <img src="/images/3verst_fon.jpg">
-           <h3>3 версты</h3></a></li>
-       <li><a href="#">
-           <img src="/images/plan_gorod_fon.jpg">
-           <h3>Планы городов</h3></a></li>
-       <li><a href="#">
-           <img src="/images/luftvaffe_fon.jpg">
-           <h3>Аэрофотоснимки Люфтваффе</h3></a></li>
-       <li><a href="#">
-           <img src="/images/boevie_deistvia_fon.jpg">
-           <h3>Карты боевых действий. Великая отечественная</h3></a></li>
+        <li th:each="cate : ${categories}"><a th:href="'/maps/' + ${cate.getUrlNameCategory()}">
+            <div class="bg-animation" th:style="'background-image:url(' + ${cate.getUrlCover()} + ');'"></div>
+            <h3 th:text="${cate.getNameCategory()}"></h3></a></li>
 </ul>
 
     <div class="btn-archportal">
