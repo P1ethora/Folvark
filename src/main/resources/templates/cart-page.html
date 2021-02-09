@@ -2,17 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Корзина</title>
     <link rel="stylesheet" type="text/css" media="all"
-          th:href="@{assets/css/style_cart-page.css}"/>
+          th:href="@{/assets/css/style_cart-page.css}"/>
     <link rel="stylesheet" type="text/css" media="all"
-          th:href="@{assets/css/style_header.css}"/>
+          th:href="@{/assets/css/style_header.css}"/>
     <link rel="stylesheet" type="text/css" media="all"
-          th:href="@{assets/css/style_footer.css}"/>
+          th:href="@{/assets/css/style_footer.css}"/>
     <link rel="stylesheet" type="text/css" media="all"
-          th:href="@{assets/css/style_login.css}"/>
+          th:href="@{/assets/css/style_login.css}"/>
     <link rel="stylesheet" type="text/css" media="all"
-          th:href="@{fontawesome/css/all.min.css}"/>
+          th:href="@{/fontawesome/css/all.min.css}"/>
 </head>
 <body>
 
@@ -27,15 +27,19 @@
                         <span th:text="${el.getName()}"></span>
                     </a>
                     <div class="price-element" th:text="${el.getPrice()} + ' руб'"></div>
+                    <div class="remove-element"><a th:href="'/cart/' + ${el.getId()} + '/remove'"><i
+                            class="close-btn fas fa-times"></i></a></div>
                 </div>
             </div>
         <div class="right-panel">
-            <div class="header">Итого товаров:<span th:text="${products.size()}"></span>
+            <div class="header"><span th:text="'Итого товаров: ' + ${products.size()}"></span>
                 <div class="all-price-cart" th:text="${allPrice} +' руб'">10 руб</div>
             </div>
             <div class="name-cart">Гость</div>
-            <div class="payment-method">Карта</div>
-            <div class="voucher"><label></label></div>
+            <div class="payment-method"><input type="text" required placeholder="Метод оплаты"></div>
+            <div class="voucher"><input type="text" required placeholder="Купон"></div>
+            <div class="itog-cart"><span th:text="'Количество товаров: ' + ${products.size()} +', к оплате:'"></span>
+                <span th:text="${allPrice} + ' руб'"></span></div>
             <div class="btn-buy">
                 <a href="#">Оплатить</a>
             </div>
