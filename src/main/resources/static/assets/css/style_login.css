@@ -51,7 +51,7 @@ display: none;
 
 .login-container {
     position: fixed;
-    background: #890000;
+    background: white;
     display: none;
    width: 410px;
     padding: 30px;
@@ -66,7 +66,7 @@ display: block;
 }
 
 .login-container .close-btn {
-    color: white;
+    color: #890000;
     position: absolute;
     right: 20px;
     top: 15px;
@@ -80,7 +80,7 @@ display: block;
 
 .login-container .text-login {
     font-family: A_La_Russ,sans-serif;
-    color: white;
+    color: black;
     font-size: 35px;
     font-weight: 600;
     text-align: center;
@@ -97,20 +97,21 @@ display: block;
 }
 
 form .log-data label{
-    color: white;
+    color: black;
     font-size: 18px;
+    outline: none;
 }
 
 form .log-data input{
-
-    background: #890000;
-    color: white;
+    outline: none;
+    background: white;
+    color: black;
     border: none;
     height: 100%;
     width: 100%;
     padding-left: 10px;
     font-size: 17px;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid black;
 }
 
 form .log-data input:focus {
@@ -154,6 +155,7 @@ form .signup-link {
 }
 
 form .signup-link a{
+    margin-left: 3px;
     color: #3498db;
     text-decoration: none;
 }
@@ -171,11 +173,18 @@ left: 0;
 form .log-btn button{
     height: 100%;
     width: 100%;
-    background: none;
+    background: #890000;
     border: none;
-    color: #890000;
+    color: white;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
+    transition: transform 0.1s;
+}
+
+form .log-btn button:hover {
+    transform: scale(1.04);
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
 }

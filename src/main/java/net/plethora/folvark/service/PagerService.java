@@ -2,8 +2,9 @@ package net.plethora.folvark.service;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.plethora.folvark.dao.DaoNewsPortal;
 import net.plethora.folvark.dao.DaoProductMap;
-import net.plethora.folvark.dao.DaoProductMapCategory;
+import net.plethora.folvark.models.PortalNews;
 import net.plethora.folvark.models.ProductMap;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,14 +18,13 @@ import java.util.List;
 @Service
 public class PagerService {
 
-    private DaoProductMap daoProductMap;
-    private DaoProductMapCategory daoProductMapCategory;
-    private String idEndElement;
-    static final int SIZE_PAGE = 28;
+    private final DaoProductMap daoProductMap;
+    private final DaoNewsPortal daoNewsPortal;
+    static final int SIZE_PAGE = 27;
 
-    public PagerService(DaoProductMap daoProductMap, DaoProductMapCategory daoProductMapCategory) {
-        this.daoProductMapCategory = daoProductMapCategory;
+    public PagerService(DaoProductMap daoProductMap, DaoNewsPortal daoNewsPortal) {
         this.daoProductMap = daoProductMap;
+        this.daoNewsPortal = daoNewsPortal;
     }
 
     //-----------------------------JUST PRODUCT---------------------------------------------------------
@@ -80,4 +80,51 @@ public class PagerService {
         }
         return arrPage;
     }
+
+
+    //-------------------ARCHPORTAL-NEWS----------------------------------------------------------------
+//-----------------------------JUST PRODUCT---------------------------------------------------------
+    List<PortalNews> getAllPortalNews() { //весь товар
+        return daoNewsPortal.findAll();
+    }
+
+    List<PortalNews> getAllPortalNewsByPage(int numberPage) {  //все постранично
+        Pageable pageSortCategories = PageRequest.of(numberPage, SIZE_PAGE);
+        return daoNewsPortal.findAll(pageSortCategories);
+    }
+
+    //-------------------------------JUST PRODUCT + SORT---------------------------------------------------
+    List<PortalNews> getAllPortalNewsSort(String property) {//все + сортировка
+        Sort sort = Sort.by(Sort.Direction.DESC, property);
+        return daoNewsPortal.findAllSort(sort);
+    }
+
+    List<PortalNews> getPagePortalNewsSort(int numberPage, String property) {  //весь товар постранично + сортировка
+        Sort sort = Sort.by(Sort.Direction.DESC, property);
+        Pageable pageSort = PageRequest.of(numberPage, SIZE_PAGE, sort);
+        return daoNewsPortal.findAll(pageSort);
+    }
+
+    //-------------------------------CATEGORY------------------------------------------------------------
+    List<PortalNews> getAllPortalNewsByCategory(String category) {  //весь товар по категориям
+        return daoNewsPortal.findAllByCategory(category);
+    }
+
+    List<PortalNews> getPortalNewsByPageByCategory(String category, int numberPage) { //товар постранично по категориям
+        Pageable page = PageRequest.of(numberPage, SIZE_PAGE);
+        return daoNewsPortal.findByCategoryByPage(category, page);
+    }
+
+    //-------------------------------CATEGORY + SORT----------------------------------------------------------------------
+    List<PortalNews> getAllPortalNewsByCategorySort(String category, String property) { //весь товар по категориям + сортировка
+        Sort sort = Sort.by(Sort.Direction.DESC, property);
+        return daoNewsPortal.findByCategorySort(category, sort);
+    }
+
+    List<PortalNews> getPortalNewsByPageByCategorySort(String category, int numberPage, String property) { //постранично по категориям + сортировка
+        Sort sort = Sort.by(Sort.Direction.DESC, property);
+        Pageable pageSort = PageRequest.of(numberPage, SIZE_PAGE, sort);
+        return daoNewsPortal.findByCategoryByPage(category, pageSort);
+    }
+
 }

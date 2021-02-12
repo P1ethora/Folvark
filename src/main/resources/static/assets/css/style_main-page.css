@@ -279,17 +279,15 @@ a{
     justify-content: center;
     align-items: center;
     width: 300px;
-    height: 80px;
+    height: 70px;
     border: 2px solid #890000;
-    border-radius: 10px;
     transition: transform 0.1s;
     font-size: 15px;
     font-family: 'Ponter', sans-serif;
 }
 
 .btn-archportal a:hover {
-    background: red;
-    transform: scale(1.1);
+    transform: scale(1.05);
     z-index: 100;
 box-shadow: 0 0 10px rgba(0,0,0,.5);
 }

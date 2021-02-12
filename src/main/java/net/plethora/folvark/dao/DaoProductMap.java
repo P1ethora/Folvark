@@ -2,7 +2,6 @@ package net.plethora.folvark.dao;
 
 import net.plethora.folvark.dao.repo.ProductMapRepository;
 import net.plethora.folvark.models.ProductMap;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
@@ -12,8 +11,11 @@ import java.util.List;
 @Component
 public class DaoProductMap {
 
-    @Autowired
-    private ProductMapRepository productMapRepository;
+    private final ProductMapRepository productMapRepository;
+
+    public DaoProductMap(ProductMapRepository productMapRepository) {
+        this.productMapRepository = productMapRepository;
+    }
 
     public List<ProductMap> findAll() {
         return productMapRepository.findAll();

@@ -38,6 +38,33 @@
     color: #1a181b;
 }
 
+.category_portal {
+    width: 1000px;
+    margin: 50px auto;
+    color: black;
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.element-category-portal {
+    margin: 20px;
+    width: 160px;
+    box-sizing: border-box;
+}
+
+.element-category-portal a {
+    color: black;
+    font-family: Oswald, sans-serif;
+}
+
+.element-category-portal a:hover {
+    color: #890000;
+}
+
+
+
 .undhead {
     font-family: 'Ponter', sans-serif;
     letter-spacing: normal;
