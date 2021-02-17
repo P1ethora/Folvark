@@ -15,6 +15,7 @@
           th:href="@{/assets/css/style_pager.css}"/>
     <link rel="stylesheet" type="text/css" media="all"
           th:href="@{/assets/css/style_login.css}"/>
+    <script type="text/javascript" th:src="@{/js/addEmail.js}"></script>
 </head>
 <body>
 
@@ -48,7 +49,7 @@
             <div class="el-detail">
                 <div class="el-date">11.01.2021</div>
                 <div class="el-title">
-                    <h3><a th:href="'/portalNews/' + ${elAr.getId()}" th:text="${elAr.getTitle()}"></a></h3>
+                    <h3><a th:href="'/news/' + ${elAr.getId()}" th:text="${elAr.getTitle()}"></a></h3>
                 </div>
             </div>
 

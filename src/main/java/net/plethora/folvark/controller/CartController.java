@@ -1,13 +1,11 @@
 package net.plethora.folvark.controller;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
 import net.plethora.folvark.dao.DaoCart;
 import net.plethora.folvark.dao.DaoProductMap;
 import net.plethora.folvark.models.Cart;
 import net.plethora.folvark.models.ProductMap;
 import net.plethora.folvark.service.CartService;
 import net.plethora.folvark.service.SessionOperationService;
-import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller

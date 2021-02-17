@@ -1,6 +1,8 @@
 package net.plethora.folvark.controller;
 
+import net.plethora.folvark.dao.DaoEmailUser;
 import net.plethora.folvark.dao.DaoProductMap;
+import net.plethora.folvark.models.EmailUser;
 import net.plethora.folvark.models.ProductMap;
 import net.plethora.folvark.models.ProductMapCategory;
 import net.plethora.folvark.service.CartService;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -20,11 +23,14 @@ public class MainPageController {
     private final ProductService productService;
     private final CartService cartService;
     private final SessionOperationService sessionOperationService;
+    private final DaoEmailUser daoEmailUser;
 
-    public MainPageController(ProductService productService, CartService cartService, SessionOperationService sessionOperationService) {
+    public MainPageController(ProductService productService, CartService cartService, SessionOperationService sessionOperationService,
+                              DaoEmailUser daoEmailUser) {
         this.productService = productService;
         this.cartService = cartService;
         this.sessionOperationService = sessionOperationService;
+        this.daoEmailUser = daoEmailUser;
     }
 
     @GetMapping("/")
@@ -38,6 +44,12 @@ public class MainPageController {
         model.addAttribute("categories", productMapCategories);
 
         return "main-page";
+    }
+
+    @PostMapping("/addEmail")
+    public void addEmail(String email) {
+        System.out.println(email);
+        daoEmailUser.saveEmail(new EmailUser(email));
     }
 
 }

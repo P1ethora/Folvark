@@ -7,14 +7,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
-@Document("productMapCategory")
-public class ProductMapCategory {
+@Document("emailUser")
+public class EmailUser {
 
     @Id
     private String id;
-    private String nameCategory;
-    private String urlNameCategory;
-    private String[] subCategories;
-    private String urlCover;
+    private String email;
+
+    public EmailUser(String email) {
+        this.email = email;
+    }
+
+    public EmailUser() {
+    }
 
 }
