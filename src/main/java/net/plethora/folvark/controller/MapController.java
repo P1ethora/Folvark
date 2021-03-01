@@ -43,6 +43,12 @@ public class MapController {
         model.addAttribute("sort", sort);
         model.addAttribute("countProducts", countProduct);
 
+        if (page != null) {
+            model.addAttribute("pageN", "'?page='" + page);
+        } else {
+            model.addAttribute("pageN", "");
+        }
+
         return "map-page";
     }
 
@@ -52,7 +58,10 @@ public class MapController {
         List<ProductMap> products = productService.fillingProductListByCategory(sort, page, pagerService, productService, category);
         int countProduct = cartService.getCountProduct((String) httpSession.getAttribute("idCart"));
 
-        model.addAttribute("countPage", pagerService.getArrayPage(productService.getCountProduct(category)));
+        int[] countPage = pagerService.getArrayPage(productService.getCountProduct(category));
+        if (countPage.length > 1) {
+            model.addAttribute("countPage", countPage);
+        }
         model.addAttribute("categories", productService.getCategories());
         model.addAttribute("products", products);
         model.addAttribute("header", productService.getNameCategory(category));
@@ -60,6 +69,12 @@ public class MapController {
         model.addAttribute("countProduct", productService.getCountProduct(category));
         model.addAttribute("sort", sort);
         model.addAttribute("countProducts", countProduct);
+        if (page != null) {
+            model.addAttribute("pageN", "'?page='" + page);
+        } else {
+            model.addAttribute("pageN", "");
+        }
+
         return "map-page";
     }
 

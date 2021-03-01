@@ -48,9 +48,15 @@
                     <div class="sort">Сортировка
                         <div class="dropdown">умолчанию
                             <div class="dropdown-content">
-                                <a href="#">умолчанию</a>
-                                <a href="#">цене</a>
-                                <a href="#">пулярности</a>
+                                <a th:if="${category}" th:href="'/maps/' + ${category} + ${pageN}">умолчанию</a>
+                                <a th:unless="${category}" th:href="'/maps/' + ${pageN}">умолчанию</a>
+
+                                <a th:if="${category}"
+                                   th:href="'/maps/' + ${category} + '?sort=price' + ${pageN} ">цене</a>
+                                <a th:unless="${category}" th:href="'/maps/' + '?sort=price' + ${pageN} ">цене</a>
+
+                                <a th:if="${category}" th:href="'/maps/' + ${category} + '?sort=' + ${pageN} ">популярности</a>
+                                <a th:unless="${category}" th:href="'/maps/' + '?sort=' + ${pageN}">популярности</a>
                             </div>
                         </div>
                     </div>
@@ -81,22 +87,28 @@
             </div>
 
         </div>
-        <div class="pager" th:if="${category}">
-            <ul>
-                <li th:if="${sort}" th:each="page : ${countPage}">
-                    <a th:href="'/maps/' + ${category} + '?sort=' + ${sort} + '&page=' + ${page}" th:text="${page}"></a>
-                </li>
-                <li th:unless="${sort}" th:each="page : ${countPage}">
-                    <a th:href="'/maps/' + ${category} + '?page=' + ${page}" th:text="${page}"></a></li>
-            </ul>
-        </div>
-        <div class="pager" th:unless="${category}">
-            <ul>
-                <li th:if="${sort}" th:each="page : ${countPage}"><a
-                        th:href="'/maps?sort=' + ${sort} + '&page=' + ${page}" th:text="${page}"></a></li>
-                <li th:unless="${sort}" th:each="page : ${countPage}"><a th:href="'/maps?page=' + ${page}"
-                                                                         th:text="${page}"></a></li>
-            </ul>
+
+        <div class="pagerTop" th:if="${countPage}"></div>
+
+        <div class="pagerTop" th:unless="${countPage}">
+
+            <div class="pager" th:if="${category}">
+                <ul>
+                    <li th:if="${sort}" th:each="page : ${countPage}">
+                        <a th:href="'/maps/' + ${category} + '?sort=' + ${sort} + '&page=' + ${page}" th:text="${page}"></a>
+                    </li>
+                    <li th:unless="${sort}" th:each="page : ${countPage}">
+                        <a th:href="'/maps/' + ${category} + '?page=' + ${page}" th:text="${page}"></a></li>
+                </ul>
+            </div>
+            <div class="pager" th:unless="${category}">
+                <ul>
+                    <li th:if="${sort}" th:each="page : ${countPage}"><a
+                            th:href="'/maps?sort=' + ${sort} + '&page=' + ${page}" th:text="${page}"></a></li>
+                    <li th:unless="${sort}" th:each="page : ${countPage}"><a th:href="'/maps?page=' + ${page}"
+                                                                             th:text="${page}"></a></li>
+                </ul>
+            </div>
         </div>
     </div>
 
