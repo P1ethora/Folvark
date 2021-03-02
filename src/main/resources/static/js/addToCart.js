@@ -6,7 +6,7 @@ function flyProduct(element) {
     that.clone().css({
         'width': w,
         'position': 'absolute',
-        'z-index': '9999',
+        'z-index': '999999',
 
         top: that.offset().top,
         left: that.offset().left

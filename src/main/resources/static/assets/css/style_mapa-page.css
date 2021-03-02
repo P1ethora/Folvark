@@ -298,3 +298,47 @@ display: flex;
 .dropdown-content a:hover{
   color:#890000;
 }
+
+.space .dlg-modal {
+    width: max-content;
+    height: 50px;
+    text-align: center;
+    position: fixed;
+    right: 0;
+    top: 0;
+    display: none;
+    z-index: 99999;
+    margin: 10px 10px;
+    background: #890000;
+    border: 1px solid #fff;
+    color: #FFFFFF;
+    /*transition: opacity .3s linear;*/
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.85);
+}
+
+.space .dlg-modal:after {
+    display: block; /*превращаем его в блочный элемент*/
+    content: ""; /*контента в данном блоке не будет поэтому в кавычках ничего не ставим*/
+    height: 2px; /*задаём высоту линии*/
+    width: 100%; /*задаём начальную ширину элемента (линии)*/
+    background-color: red; /*цвет фона элемента*/
+    animation: underline 5s ease-in-out;
+}
+
+@keyframes underline {
+    90% {
+        width: 0;
+    }
+    95% {
+        width: 100%;
+    }
+}
+
+.space .dlg-modal ul {
+    padding: 10px 10px;
+    display: flex;
+}
+
+.space .dlg-modal ul li {
+    margin: 5px;
+}
