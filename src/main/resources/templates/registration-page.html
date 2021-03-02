@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/assets/css/style_register-page.css}"/>
+    <title>Title</title>
+</head>
+<body>
+<div class="registration-space">
+
+    <div class="header-reg"><h1>Регистрация</h1></div>
+
+    <form class="form-reg">
+        <input type="text" placeholder="Имя" required>
+        <input type="text" placeholder="Фамилия" required>
+        <input type="text" placeholder="Отчество" required>
+        <input type="text" placeholder="Логин" required>
+        <input type="text" placeholder="Телефон" required>
+        <input type="text" placeholder="Почта" required>
+        <input type="password" placeholder="Пароль" required>
+        <input type="password" placeholder="Пдтверждение пароля" required>
+        <input type="submit" required>
+    </form>
+</div>
+</body>
+</html>
