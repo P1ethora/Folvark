@@ -1,3 +1,21 @@
+@font-face {
+    font-family: 'A_La_Russ';
+    src: url('fonts/ALaRuss.eot');
+    src: local('A La Russ'), local('ALaRuss'),
+    url('fonts/ALaRuss.eot?#iefix') format('embedded-opentype'),
+    url('fonts/ALaRuss.woff') format('woff'),
+    url('fonts/ALaRuss.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Ponter";
+    src: url("fonts/Ponter.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -26,6 +44,13 @@ body {
     text-align: center;
 }
 
+.registration-space .header-reg h2 {
+    font-weight: 400;
+    font-size: 40px;
+    letter-spacing: .3em;
+    font-family: A_La_Russ, sans-serif;
+}
+
 .registration-space .form-reg {
     display: flex;
     flex-direction: column;
@@ -33,10 +58,91 @@ body {
     text-align: center;
 }
 
-.registration-space .form-reg input {
-    margin: 10px;
-    height: 30px;
-    width: 300px;
+
+.registration-space .form-reg .field_reg {
+    position: relative;
+    margin: 0 0 35px 0;
 }
 
+.registration-space .form-reg .field_reg input {
+    width: 100% !important;
+    padding: 5px 0;
+    font-size: 18px;
+    resize: none;
+    font-weight: 300;
+    color: black;
+    border: none;
+    border-bottom: 1px solid #890000;
+    outline: none;
+}
 
+.registration-space .form-reg .field_reg span {
+    font-family: Oswald, sans-serif;
+    position: absolute;
+    left: 0;
+    font-size: 18px;
+    resize: none;
+    font-weight: 300;
+    color: #333;
+    transition: 0.3s;
+    pointer-events: none;
+
+}
+
+.registration-space .form-reg .field_reg input:focus ~ span,
+.registration-space .form-reg .field_reg input:valid ~ span {
+    transform: translateY(-20px);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #890000;
+}
+
+.registration-space .form-reg .button_reg input[type="submit"] {
+    position: relative;
+    cursor: pointer;
+    font-family: Ponter, sans-serif;
+    width: 200px;
+    height: auto;
+    background: #890000;
+    color: white;
+    max-width: 200px;
+    padding: 12px;
+    outline: none;
+    border: none;
+}
+
+.registration-space .form-reg .button_reg input[type="submit"]:hover {
+    transform: scale(1.05);
+    z-index: 100;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    outline: none;
+}
+
+::-moz-focus-outer, ::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+.go-back-reg {
+    display: flex;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    color: #890000;
+}
+
+.go-back-reg i {
+    color: #890000;
+}
+
+.go-back-reg a {
+    margin-left: 20px;
+    color: #890000;
+    font-family: Oswald, sans-serif;
+    text-decoration: none;
+}
+
+.go-back-reg:hover {
+    opacity: .7;
+}
