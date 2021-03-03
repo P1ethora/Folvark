@@ -64,7 +64,7 @@ body {
     margin: 0 0 35px 0;
 }
 
-.registration-space .form-reg .field_reg input {
+.field_reg input {
     width: 100% !important;
     padding: 5px 0;
     font-size: 18px;
@@ -76,7 +76,7 @@ body {
     outline: none;
 }
 
-.registration-space .form-reg .field_reg span {
+.field_reg span {
     font-family: Oswald, sans-serif;
     position: absolute;
     left: 0;
@@ -89,8 +89,8 @@ body {
 
 }
 
-.registration-space .form-reg .field_reg input:focus ~ span,
-.registration-space .form-reg .field_reg input:valid ~ span {
+.field_reg input:focus ~ span,
+.field_reg input:valid ~ span {
     transform: translateY(-20px);
     font-size: 12px;
     font-weight: 400;
@@ -98,7 +98,7 @@ body {
     color: #890000;
 }
 
-.registration-space .form-reg .button_reg input[type="submit"] {
+.button_reg input[type="submit"] {
     position: relative;
     cursor: pointer;
     font-family: Ponter, sans-serif;
@@ -112,7 +112,7 @@ body {
     border: none;
 }
 
-.registration-space .form-reg .button_reg input[type="submit"]:hover {
+.button_reg input[type="submit"]:hover {
     transform: scale(1.05);
     z-index: 100;
     box-shadow: 0 0 10px rgba(0, 0, 0, .5);
