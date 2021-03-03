@@ -12,4 +12,10 @@ public class LoginController {
         return "registration-page";
     }
 
+    @GetMapping("/recover")
+    public String openRecover() {
+
+        return "recover-page";
+    }
+
 }

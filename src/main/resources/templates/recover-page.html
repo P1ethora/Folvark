@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/assets/css/style_register-page.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/assets/css/style_recover-page.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/fontawesome/css/all.min.css}"/>
+    <title>Восстановить пароль</title>
+</head>
+<body>
+
+<div class="space-recover">
+
+    <div class="go-back-reg">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        <a href="/">Вернуться в магазин</a></div>
+
+    <div class="block-rec1">
+        <div class="header-rec">
+            <h2>Восстановление пароля</h2>
+        </div>
+        <form class="form-rec" action="">
+            <div class="field-rec">
+                <input type="text" required>
+                <span>Электронная почта</span>
+            </div>
+            <div class="btn-rec">
+                <input type="submit" value="Восстановить">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
