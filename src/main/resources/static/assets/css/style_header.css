@@ -230,6 +230,8 @@ font-weight: normal;
     display: flex;
     flex-direction: column;
     z-index: 99999;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .top_nav .left .search-form .block-list-search .suggestions > div {
@@ -240,6 +242,16 @@ font-weight: normal;
     cursor: pointer;
 }
 
+.top_nav .left .search-form .block-list-search .suggestions > div:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
 .top_nav .left .search-form .block-list-search .suggestions > div:hover {
     background-color: #1e4dd4;
+}
+
+.top_nav .left .search-form .block-list-search .suggestions .nothing-search:hover {
+    background-color: white !important;
+    cursor: default !important;
 }
