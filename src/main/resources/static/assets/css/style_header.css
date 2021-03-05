@@ -69,6 +69,7 @@ font-weight: normal;
 }
 
 .search-form {
+    position: relative;
   padding-top: 10px;
   padding-bottom: 10px;
   display: flex;
@@ -76,11 +77,20 @@ font-weight: normal;
   align-items: center;
 }
 
-.top_nav .left form {
+.top_nav .left .search-form {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
   margin-left: 100px;
+    position: relative;
 }
 
-.top_nav .left form input[type="text"] {
+.top_nav .left .search-form .block-ser-butt {
+    position: relative;
+    box-sizing: border-box;
+}
+
+.top_nav .left .search-form .block-ser-butt input[type="text"] {
   flex: 1;
   padding: 10px 40px;
   font-size: 16px;
@@ -113,11 +123,11 @@ font-weight: normal;
   text-decoration-line: underline;
 }
 
-.top_nav .left form input[type="text"]:hover {
+.top_nav .left .search-form .block-ser-butt input[type="text"]:hover {
   box-shadow: -8px 0 25px white;
 }
 
-.top_nav .left form .btn_area:hover {
+.top_nav .left .search-form .btn_area:hover {
   box-shadow: 8px 0 25px #890000;
 }
 
@@ -202,4 +212,34 @@ font-weight: normal;
 
 .bottom_nav ul li a:hover {
   border-bottom: 1px solid white;
+}
+
+.top_nav .left .search-form .block-list-search {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+.top_nav .left .search-form .block-list-search .suggestions {
+    position: absolute;
+    top: 0;
+    background: #FFFFFF;
+    color: black;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 99999;
+}
+
+.top_nav .left .search-form .block-list-search .suggestions > div {
+    padding: 15px;
+    font-size: 20px;
+    color: black;
+    border-top: 1px solid #666;
+    cursor: pointer;
+}
+
+.top_nav .left .search-form .block-list-search .suggestions > div:hover {
+    background-color: #1e4dd4;
 }

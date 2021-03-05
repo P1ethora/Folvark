@@ -1,4 +1,4 @@
-<div th:fragment="header">
+<header th:fragment="header">
     <input type="checkbox" id="show">
     <div class="login-fon"></div>
     <div class="login-container">
@@ -27,10 +27,17 @@
                     <div class="logo">
                         <a><span>Фольварк </span>Искателя</a>
                     </div>
-                    <form action="" class="search-form">
-                        <input type="text" name="" class="txtb" placeholder="Поиск...">
-                        <input type="submit" class="btn_area" name="" value="Искать">
-                    </form>
+                    <div class="search-form">
+                        <div class="block-ser-butt">
+                            <input type="text" name="field_sear" onkeyup="ser(this)" class="search-input"
+                                   placeholder="Поиск..."/>
+                            <input type="submit" class="btn_area" name="" value="Искать"/>
+                        </div>
+                        <div class="block-list-search">
+                            <div class="suggestions" id="sugg">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="right">
                     <ul>
@@ -49,4 +56,5 @@
                     <li><a href=/contact>Контакты</a></li>
                 </ul>
             </div>
-        </div>
+
+</header>
