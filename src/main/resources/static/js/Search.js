@@ -24,6 +24,7 @@ function ser(element) {
                 res.forEach(function (suggested) {
                     let obj = JSON.parse(suggested);
                     const div = document.createElement('div');
+                    const link = document.createElement('a');
                     const photo = document.createElement('div');
                     const name = document.createElement('div');
                     const price = document.createElement('div');
@@ -31,13 +32,14 @@ function ser(element) {
                     photo.className = "img-el";
                     name.className = "name-el";
                     price.className = "price-el";
-                    div.appendChild(photo);
-                    div.appendChild(name);
-                    div.appendChild(price);
-                    // div.innerHTML = obj.id;
+                    div.appendChild(link);
+                    link.appendChild(photo);
+                    link.appendChild(name);
+                    link.appendChild(price);
+                    link.href = '/product/' + obj.id;
                     name.innerHTML = obj.name;
-                    photo.style.backgroundImage = 'url(\'' + obj.urlPicture + '\')';
-                    price.innerHTML = obj.price;
+                    photo.style.backgroundImage = 'url(' + obj.urlPicture + ')';
+                    price.innerHTML = obj.price + ' руб';
                     document.getElementById('sugg').appendChild(div);
                 });
             }
