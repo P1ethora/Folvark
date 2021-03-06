@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,6 +17,9 @@ public interface ProductMapRepository  extends MongoRepository<ProductMap, Strin
     Page<ProductMap> findByCategory(String category, Pageable pageable);// постраничный по категориям
     List<ProductMap> findByCategory(String category);// по категориям все сразу
     List<ProductMap> findByCategory(String category, Sort sort);
+
+    @Query(value = "{'name': {$regex : ?0, $options: 'i'}}")
+    List<ProductMap> findByNameIgnoreCase(String name);
     long countByCategory(String category);
 }
 

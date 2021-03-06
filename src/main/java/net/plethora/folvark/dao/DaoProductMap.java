@@ -67,4 +67,8 @@ public class DaoProductMap {
     public long getCount(String category) {
         return productMapRepository.countByCategory(category);
     }
+
+    public List<ProductMap> findByName(String name) {
+        return productMapRepository.findByNameIgnoreCase(name);
+    }
 }
