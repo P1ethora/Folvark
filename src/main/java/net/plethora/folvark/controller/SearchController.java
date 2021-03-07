@@ -6,9 +6,8 @@ import net.plethora.folvark.models.Element;
 import net.plethora.folvark.models.ProductMap;
 import net.plethora.folvark.service.ConverterJsonService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,4 +30,11 @@ public class SearchController {
         String sr = input.replace("\"", "");
         return converterJsonService.toJSONList(daoProductMap.findByName(sr));
     }
+
+    @GetMapping("/search/{input}")
+    public String searchAll(@PathVariable("input") String input, Model model) {
+
+        return "map-page";
+    }
+
 }

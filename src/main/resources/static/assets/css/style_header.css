@@ -98,40 +98,26 @@ font-weight: normal;
 
 .top_nav .left .search-form .block-ser-butt input[type="text"] {
     width: 100%;
-  flex: 1;
-  padding: 10px 40px;
-  font-size: 16px;
+    padding: 10px 60px 10px 40px;
+    font-size: 16px;
   color: #1a181b;
   font-weight: 700;
   outline: none;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  min-width: 260px;
+    border-radius: 10px;
+    min-width: 300px;
   border: 1px solid white;
 }
-
-/*.btn_area {*/
-/*  border: none;*/
-/*  font-family: Oswald, sans-serif;*/
-/*  letter-spacing: 1px;*/
-/*  padding: 10px 30px;*/
-/*  font-size: 16px;*/
-/*  background: #890000;*/
-/*  color: #fff;*/
-/*  font-weight: 500;*/
-/*  outline: none;*/
-/*  border-top-right-radius: 30px;*/
-/*  border-bottom-right-radius: 30px;*/
-/*  cursor: pointer;*/
-/*  transition: opacity .3s linear;*/
-/*}*/
 
 .btn_area:hover{
   text-decoration-line: underline;
 }
 
 .top_nav .left .search-form .block-ser-butt input[type="text"]:hover {
-  box-shadow: -8px 0 25px white;
+    box-shadow: 0 0 20px white;
+}
+
+.top_nav .left .search-form .block-ser-butt input[type="text"]:focus {
+    border: 1px solid #d9d9d9;
 }
 
 .top_nav .left .search-form .btn_area:hover {
@@ -230,6 +216,7 @@ font-weight: normal;
 .top_nav .left .search-form .block-list-search .suggestions {
     position: absolute;
     top: 0;
+    max-height: 520px;
     background: #FFFFFF;
     color: black;
     width: 100%;
@@ -239,16 +226,27 @@ font-weight: normal;
     z-index: 99999;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    border-right: 1px solid #d9d9d9;
+    border-left: 1px solid #d9d9d9;
 }
 
-.top_nav .left .search-form .block-list-search .suggestions > div {
+.top_nav .left .search-form .block-list-search .suggestions .sub-suggestion {
+    max-height: 440px;
+    overflow-y: scroll;
+    color: black;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.top_nav .left .search-form .block-list-search .suggestions .sub-suggestion > div {
     padding: 15px 30px 15px 15px;
     font-size: 20px;
     cursor: pointer;
     text-align: center;
 }
 
-.top_nav .left .search-form .block-list-search .suggestions > div a {
+.top_nav .left .search-form .block-list-search .suggestions .sub-suggestion > div a {
     width: 100%;
     height: 100%;
     display: flex;
@@ -256,35 +254,53 @@ font-weight: normal;
     color: #1a181b;
 }
 
-.top_nav .left .search-form .block-list-search .suggestions > div a div {
+.top_nav .left .search-form .block-list-search .suggestions .sub-suggestion > div a div {
     margin-top: auto;
     margin-bottom: auto;
     text-align: center;
 }
 
-.top_nav .left .search-form .block-list-search .suggestions > div a .img-el {
+.top_nav .left .search-form .block-list-search .suggestions .sub-suggestion > div a .img-el {
     width: 100px;
     height: 80px;
 }
 
-.top_nav .left .search-form .block-list-search .suggestions > div:last-child {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.top_nav .left .search-form .block-list-search .suggestions > div:hover {
+.top_nav .left .search-form .block-list-search .suggestions .sub-suggestion > div:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.top_nav .left .search-form .block-list-search .suggestions > div:hover .name-el {
+.top_nav .left .search-form .block-list-search .suggestions .sub-suggestion > div:hover .name-el {
     color: #890000;
 }
 
-.top_nav .left .search-form .block-list-search .suggestions > div:hover .img-el {
+.top_nav .left .search-form .block-list-search .suggestions .sub-suggestion > div:hover .img-el {
     border: 1px solid #890000;
 }
 
 .top_nav .left .search-form .block-list-search .suggestions .nothing-search:hover {
     background-color: white !important;
     cursor: default !important;
+}
+
+.all-result-search {
+    cursor: default !important;
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    text-align: center !important;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.all-result-search a {
+    margin: auto;
+    height: max-content !important;
+    width: max-content !important;
+    color: #890000 !important;
+}
+
+.all-result-search a:hover {
+    border-bottom: 1px solid #890000;
 }
