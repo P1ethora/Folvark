@@ -2,10 +2,15 @@ package net.plethora.folvark.service;
 
 import net.plethora.folvark.dao.DaoCart;
 import net.plethora.folvark.models.Cart;
+import net.plethora.folvark.models.CheckedCartProduct;
+import net.plethora.folvark.models.ProductMap;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class CartService {
@@ -34,8 +39,7 @@ public class CartService {
         daoCart.editCart(cart);
     }
 
-    public int getCountProduct(String idCart) {
-        Cart cart = daoCart.findCart(idCart);
+    public int getCountProduct(Cart cart) {
         int count = 0;
         if (cart.getIdMaps() != null)
             count = cart.getIdMaps().length;
@@ -47,5 +51,30 @@ public class CartService {
         Cart cart = daoCart.findCart(idCart);
         cart.setIdMaps(ArrayUtils.removeElement(cart.getIdMaps(), idItem));
         daoCart.editCart(cart);
+    }
+
+    public Cart getCart(HttpSession httpSession) {
+        return daoCart.findCart((String) httpSession.getAttribute("idCart"));
+    }
+
+    public List<CheckedCartProduct> checkedCartProduct(List<ProductMap> list, Cart cart) {
+        List<CheckedCartProduct> checkedCartProducts = new ArrayList<>();
+        boolean ok = false;
+        for (ProductMap productMap : list) {
+
+            for (String idProductInCart : cart.getIdMaps()) {
+                if (productMap.getId().equals(idProductInCart)) {
+                    ok = true;
+                    checkedCartProducts.add(new CheckedCartProduct(productMap, true));
+                    break;
+                }
+            }
+            if (!ok) {
+                checkedCartProducts.add(new CheckedCartProduct(productMap, false));
+            }
+            ok = false;
+        }
+
+        return checkedCartProducts;
     }
 }

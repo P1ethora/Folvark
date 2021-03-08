@@ -22,7 +22,7 @@ public class ContactController {
     @GetMapping("/contact")
     public String pageArchportal(HttpSession httpSession, Model model) {
         sessionOperationService.checkCart(httpSession);
-        int countProduct = cartService.getCountProduct((String) httpSession.getAttribute("idCart"));
+        int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
         model.addAttribute("countProducts", countProduct);
         return "contact-page";
     }

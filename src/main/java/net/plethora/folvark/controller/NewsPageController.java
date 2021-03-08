@@ -24,7 +24,7 @@ public class NewsPageController {
     @GetMapping("/news/{id}")
     public String getNewsPage(@PathVariable("id") String id, HttpSession httpSession, Model model) {
 
-        int countProduct = cartService.getCountProduct((String) httpSession.getAttribute("idCart"));
+        int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
         PortalNews news = daoNewsPortal.findById(id);
 
         model.addAttribute("news", news);

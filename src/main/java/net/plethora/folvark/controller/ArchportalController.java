@@ -33,7 +33,7 @@ public class ArchportalController {
     @GetMapping("/archportal")
     public String pageArchportal(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
         sessionOperationService.checkCart(httpSession);
-        int countProduct = cartService.getCountProduct((String) httpSession.getAttribute("idCart"));
+        int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
         model.addAttribute("countProducts", countProduct);
 
         List<PortalNews> portalNewsList = portalService.fillingPortalNewsList(sort, page, pagerService);
@@ -51,7 +51,7 @@ public class ArchportalController {
     public String archCategory(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, @PathVariable("category") String category, HttpSession httpSession, Model model) {
         sessionOperationService.checkCart(httpSession);
         List<PortalNews> portalNewsList = portalService.fillingPortalNewsListByCategory(sort, page, pagerService, portalService, category);
-        int countProducts = cartService.getCountProduct((String) httpSession.getAttribute("idCart"));
+        int countProducts = cartService.getCountProduct(cartService.getCart(httpSession));
 
         model.addAttribute("countPage", pagerService.getArrayPage(portalService.getCountPortalNews()));
         model.addAttribute("categories", portalService.getCategories());

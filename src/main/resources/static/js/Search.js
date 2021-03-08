@@ -1,6 +1,11 @@
 function ser(element) {
 
     const input = element.value;
+    const cross = document.getElementById('cross-ico');
+    cross.style.display = 'flex';
+
+    const sear = document.getElementById('search-ico');
+    sear.style.display = 'none';
     document.getElementById('subsugg').innerHTML = '';
     document.getElementById('field_sear').style.borderBottomLeftRadius = "0";
     document.getElementById('field_sear').style.borderBottomRightRadius = "0";
@@ -74,6 +79,11 @@ function ser(element) {
     }
 
     if (input === '') {
+        const cross = document.getElementById('cross-ico');
+        cross.style.display = 'none';
+
+        const sear = document.getElementById('search-ico');
+        sear.style.display = 'flex';
         document.getElementById('field_sear').style.borderBottomLeftRadius = "10px";
         document.getElementById('field_sear').style.borderBottomRightRadius = "10px";
         const allRes = document.getElementById('all-res-sear');
@@ -86,5 +96,28 @@ function ser(element) {
         subsugg.style.borderBottom = '0';
         mainDoc.style.borderBottom = '0';
     }
+
+}
+
+function clickCross() {
+    const field_ser = document.getElementById('field_sear');
+    field_ser.value = '';
+
+    const cross = document.getElementById('cross-ico');
+    cross.style.display = 'none';
+    document.getElementById('subsugg').innerHTML = '';
+    const sear = document.getElementById('search-ico');
+    sear.style.display = 'flex';
+    field_ser.style.borderBottomLeftRadius = "10px";
+    field_ser.style.borderBottomRightRadius = "10px";
+    const allRes = document.getElementById('all-res-sear');
+    allRes.style.height = '0';
+    if (document.getElementById('link-search-el') !== null) {
+        document.getElementById('link-search-el').remove();
+    }
+    let mainDoc = document.getElementById('sugg');
+    let subsugg = document.getElementById('subsugg');
+    subsugg.style.borderBottom = '0';
+    mainDoc.style.borderBottom = '0';
 
 }

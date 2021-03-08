@@ -38,7 +38,7 @@ public class MainPageController {
     @GetMapping("/")
     public String getMain(HttpSession httpSession, Model model) {
         sessionOperationService.checkCart(httpSession);
-        int countProduct = cartService.getCountProduct((String) httpSession.getAttribute("idCart"));
+        int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
         List<ProductMapCategory> productMapCategories = productService.getCategories();
 
         model.addAttribute("products", productService.getLastProducts());

@@ -1,5 +1,6 @@
 package net.plethora.folvark.controller;
 
+import net.plethora.folvark.models.CheckedCartProduct;
 import net.plethora.folvark.models.ProductMap;
 import net.plethora.folvark.service.CartService;
 import net.plethora.folvark.service.PagerService;
@@ -32,12 +33,13 @@ public class MapController {
     @GetMapping("/maps")
     public String startMap(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
         sessionOperationService.checkCart(httpSession);
-        int countProduct = cartService.getCountProduct((String) httpSession.getAttribute("idCart"));
+        int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
 
         List<ProductMap> products = productService.fillingProductList(sort, page, pagerService);
+        List<CheckedCartProduct> checkedCartProducts = cartService.checkedCartProduct(products, cartService.getCart(httpSession));
         model.addAttribute("countPage", pagerService.getArrayPage(productService.getCountProduct()));
         model.addAttribute("categories", productService.getCategories());
-        model.addAttribute("products", products);
+        model.addAttribute("products", checkedCartProducts);
         model.addAttribute("header", "Карты");
         model.addAttribute("countProduct", productService.getCountProduct());
         model.addAttribute("sort", sort);
@@ -56,7 +58,7 @@ public class MapController {
     public String categoryMap(@PathVariable("category") String category, @RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
         sessionOperationService.checkCart(httpSession);
         List<ProductMap> products = productService.fillingProductListByCategory(sort, page, pagerService, productService, category);
-        int countProduct = cartService.getCountProduct((String) httpSession.getAttribute("idCart"));
+        int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
 
         int[] countPage = pagerService.getArrayPage(productService.getCountProduct(category));
         if (countPage.length > 1) {

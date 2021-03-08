@@ -27,7 +27,7 @@ public class ProductController {
     @GetMapping("/product/{id}")
     public String viewProduct(@PathVariable(value = "id") String id, HttpSession httpSession, Model model) {
         sessionOperationService.checkCart(httpSession);
-        int countProduct = cartService.getCountProduct((String) httpSession.getAttribute("idCart"));
+        int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
         ProductMap product = daoProductMap.findById(id);
         model.addAttribute("product", product);
         model.addAttribute("countProducts", countProduct);

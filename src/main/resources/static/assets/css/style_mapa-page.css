@@ -99,7 +99,7 @@ box-sizing: border-box;
 box-shadow: 0 0 10px rgba(0,0,0,.3);
 }
 
-.product-flex .product-img {
+.product-img {
   color: white;
   overflow: hidden;
   position: relative;
@@ -107,18 +107,18 @@ box-shadow: 0 0 10px rgba(0,0,0,.3);
   height: auto;
 }
 
-.product-flex .product-img .icon li a{
+.product-img .icon li a {
   color: #890000;
 }
 
-.product-flex .product-img a {
+.product-img a {
   color: white;
   width: 100%;
   display: block;
   height: auto;
 }
 
-.product-flex .product-img a img{
+.product-img a img {
   image-rendering: pixelated;
   object-fit:cover;
   width: 200px;
@@ -130,15 +130,14 @@ box-shadow: 0 0 10px rgba(0,0,0,.3);
 }
 
 
-
-.product-flex .product-img a img:hover{
+.product-img a img:hover {
 -webkit-transform: scale(1.1);
 -moz-transform: scale(1.1);
 -o-transform: scale(1.1);
 
 }
 
-.add-to-cart {
+.product-flex .add-to-cart {
   text-decoration: none;
   background: #890000;
   font-size: 15px;
@@ -153,7 +152,7 @@ box-shadow: 0 0 10px rgba(0,0,0,.3);
   font-family: Oswald, sans-serif;
 }
 
-.add-to-cart:hover {
+.product-flex .add-to-cart:hover {
   cursor: pointer;
   text-decoration: underline;
 }
@@ -162,7 +161,7 @@ box-shadow: 0 0 10px rgba(0,0,0,.3);
  bottom: 0;
 }
 
-.product-flex .product-detail {
+.product-detail {
   color: #1a181b;
   padding: 10px;
   text-align: center;
@@ -171,7 +170,7 @@ box-shadow: 0 0 10px rgba(0,0,0,.3);
   height: auto;
 }
 
-.product-flex .product-detail .product-title h3 a {
+.product-detail .product-title h3 a {
   font-size: 15px;
   font-family: 'Ponter',sans-serif;
   letter-spacing: 1px;
@@ -179,11 +178,11 @@ box-shadow: 0 0 10px rgba(0,0,0,.3);
   color: #1a181b;
 }
 
-.product-flex .product-detail .product-title h3 a:hover {
+.product-detail .product-title h3 a:hover {
   color: #890000;
 }
 
-.product-flex .product-detail .product-price{
+.product-detail .product-price {
   font-family: 'Ponter',sans-serif;
   margin-top: 7px;
 }
@@ -225,7 +224,7 @@ transition-delay: .10s;
   transition-delay: .20s;
 }
 
-.product-flex .icon li a{
+.icon li a {
 color: #890000;
 }
 
@@ -341,4 +340,60 @@ display: flex;
 
 .space .dlg-modal ul li {
     margin: 5px;
+}
+
+/*IF PRODUCT ADDED TO CART*/
+
+.product-flex-added {
+    background: #1a181b;
+    border: 1px solid #00a550;
+    margin: 10px;
+    width: 200px;
+    height: auto;
+    min-width: 200px;
+    overflow: hidden;
+}
+
+.product-flex-added .add-to-cart {
+    text-decoration: none;
+    background: #00a550;
+    font-size: 15px;
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -100px;
+    transition: all .3s;
+    font-family: Oswald, sans-serif;
+}
+
+/*.product-flex-added .add-to-cart:hover {*/
+/*    cursor: pointer;*/
+/*    text-decoration: underline;*/
+/*}*/
+
+.product-flex-added .add-to-cart {
+
+}
+
+.product-flex-added:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+}
+
+.product-flex-added:hover .icon li {
+    transform: translateX(0px);
+}
+
+.product-flex-added:hover .icon li:nth-child(2) {
+    transition-delay: .10s;
+}
+
+.product-flex-added:hover .icon li:nth-child(3) {
+    transition-delay: .20s;
+}
+
+.product-flex-added:hover .add-to-cart {
+    bottom: 0;
 }
