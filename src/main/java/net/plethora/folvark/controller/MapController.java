@@ -1,12 +1,17 @@
 package net.plethora.folvark.controller;
 
+import net.plethora.folvark.dao.DaoUser;
 import net.plethora.folvark.models.CheckedCartProduct;
 import net.plethora.folvark.models.ProductMap;
+import net.plethora.folvark.models.User;
+import net.plethora.folvark.models.state.Role;
+import net.plethora.folvark.models.state.Status;
 import net.plethora.folvark.service.CartService;
 import net.plethora.folvark.service.PagerService;
 import net.plethora.folvark.service.ProductService;
 import net.plethora.folvark.service.SessionOperationService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +26,8 @@ public class MapController {
     private final ProductService productService;
     private final CartService cartService;
     private final SessionOperationService sessionOperationService;
+    @Autowired
+    private DaoUser daoUser;
 
     public MapController(PagerService pagerService, ProductService productService, CartService cartService,
                          SessionOperationService sessionOperationService) {
@@ -34,7 +41,6 @@ public class MapController {
     public String startMap(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
         sessionOperationService.checkCart(httpSession);
         int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
-
         List<ProductMap> products = productService.fillingProductList(sort, page, pagerService);
         List<CheckedCartProduct> checkedCartProducts = cartService.checkedCartProduct(products, cartService.getCart(httpSession));
         model.addAttribute("countPage", pagerService.getArrayPage(productService.getCountProduct()));
