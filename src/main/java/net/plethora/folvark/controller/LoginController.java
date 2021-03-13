@@ -6,21 +6,19 @@ import net.plethora.folvark.models.User;
 import net.plethora.folvark.models.state.Role;
 import net.plethora.folvark.models.state.Status;
 import net.plethora.folvark.service.CartService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
 
-    private DaoUser daoUser;
-    private PasswordEncoder passwordEncoder;
-    private CartService cartService;
+    private final DaoUser daoUser;
+    private final PasswordEncoder passwordEncoder;
+    private final CartService cartService;
 
     public LoginController(DaoUser daoUser, PasswordEncoder passwordEncoder, CartService cartService) {
         this.daoUser = daoUser;
@@ -54,7 +52,7 @@ public class LoginController {
                 user.setRole(Role.USER);
                 user.setStatus(Status.ACTIVE);
                 Cart cart = new Cart();
-                cartService.CreateCart(cart);
+                cartService.SaveCart(cart);
                 user.setIdCart(cart.getId());
                 daoUser.saveUser(user);
                 return "redirect:/login";
@@ -65,7 +63,6 @@ public class LoginController {
 
     @GetMapping("/recover")
     public String openRecover() {
-
         return "recover-page";
     }
 

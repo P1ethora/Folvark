@@ -15,9 +15,9 @@ import java.util.List;
 @Controller
 public class SearchController {
 
-    private DaoProductMap daoProductMap;
+    private final DaoProductMap daoProductMap;
     //    private DaoNewsPortal daoNewsPortal;
-    private ConverterJsonService converterJsonService;
+    private final ConverterJsonService converterJsonService;
 
     public SearchController(DaoProductMap daoProductMap, ConverterJsonService converterJsonService) {
         this.daoProductMap = daoProductMap;

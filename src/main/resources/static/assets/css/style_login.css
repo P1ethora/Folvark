@@ -28,6 +28,31 @@
     width: 100%;
 }
 
+
+.show-user {
+    font-family: 'TriodPostnaja', sans-serif;
+    font-size: 20px;
+    padding: 8px 10px;
+    color: white;
+    display: flex;
+    justify-items: center;
+}
+
+
+.show-user:after {
+    display: block;
+    content: "";
+    height: 1px;
+    width: 0;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.show-user:hover:after {
+    width: 100%;
+}
+
+
 input[type="checkbox"] {
 display: none;
 }

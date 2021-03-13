@@ -2,7 +2,7 @@ package net.plethora.folvark.controller;
 
 import net.plethora.folvark.dao.DaoNewsPortal;
 import net.plethora.folvark.models.PortalNews;
-import net.plethora.folvark.service.CartService;
+import net.plethora.folvark.service.AuthService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,17 +14,17 @@ import javax.servlet.http.HttpSession;
 public class NewsPageController {
 
     private final DaoNewsPortal daoNewsPortal;
-    private final CartService cartService;
+    private final AuthService authService;
 
-    public NewsPageController(DaoNewsPortal daoNewsPortal, CartService cartService) {
+    public NewsPageController(DaoNewsPortal daoNewsPortal, AuthService authService) {
         this.daoNewsPortal = daoNewsPortal;
-        this.cartService = cartService;
+        this.authService = authService;
     }
 
     @GetMapping("/news/{id}")
     public String getNewsPage(@PathVariable("id") String id, HttpSession httpSession, Model model) {
 
-        int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
+        int countProduct = authService.countProduct(httpSession);
         PortalNews news = daoNewsPortal.findById(id);
 
         model.addAttribute("news", news);
@@ -35,6 +35,4 @@ public class NewsPageController {
 
         return "news-page";
     }
-
-
 }

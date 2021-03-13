@@ -12,7 +12,5 @@ public class FolvarkApplication {
     public static void main(String[] args) {
         SpringApplication.run(FolvarkApplication.class,args);
 
-
-
     }
 }

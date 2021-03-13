@@ -1,18 +1,11 @@
 package net.plethora.folvark.controller;
 
-import net.plethora.folvark.dao.DaoUser;
-import net.plethora.folvark.models.Cart;
 import net.plethora.folvark.models.CheckedCartProduct;
 import net.plethora.folvark.models.ProductMap;
-import net.plethora.folvark.models.User;
-import net.plethora.folvark.service.CartService;
+import net.plethora.folvark.service.AuthService;
 import net.plethora.folvark.service.PagerService;
 import net.plethora.folvark.service.ProductService;
-import net.plethora.folvark.service.SessionOperationService;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,54 +18,26 @@ public class MapController {
 
     private final PagerService pagerService;
     private final ProductService productService;
-    private final CartService cartService;
-    private final SessionOperationService sessionOperationService;
-    @Autowired
-    private DaoUser daoUser;
+    private final AuthService authService;
 
-    public MapController(PagerService pagerService, ProductService productService, CartService cartService,
-                         SessionOperationService sessionOperationService) {
-        this.sessionOperationService = sessionOperationService;
+    public MapController(PagerService pagerService, ProductService productService, AuthService authService) {
         this.pagerService = pagerService;
+        this.authService = authService;
         this.productService = productService;
-        this.cartService = cartService;
     }
 
     @GetMapping("/maps")
 //    @PreAuthorize("hasAuthority('developers:read')")
     public String startMap(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
-//        sessionOperationService.checkCart(httpSession);
-//        int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
-        int countProduct;
+
+        authService.checkCart(httpSession);
+        int countProduct = authService.countProduct(httpSession);
+
         List<ProductMap> products = productService.fillingProductList(sort, page, pagerService);
-        List<CheckedCartProduct> checkedCartProducts = null;
+        List<CheckedCartProduct> checkedCartProducts = authService.checkProductForCart(products, httpSession);
+        ;
 
-        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
-        User user = daoUser.findByEmail(loggedInUser.getName());
-        System.out.println(user);
-        if (user != null) {
-            if (user.getIdCart() == null) {
-                Cart cart = new Cart();
-                cartService.CreateCart(cart);
-                user.setIdCart(cart.getId());
-                daoUser.saveUser(user);
-            }
-            countProduct = cartService.getCountProduct(cartService.getCart(user.getIdCart()));
-            System.out.println("count product = " + countProduct);
-            checkedCartProducts = cartService.checkedCartProduct(products, cartService.getCart(user.getIdCart()));
-
-        } else {
-            sessionOperationService.checkCart(httpSession);
-            countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
-            checkedCartProducts = cartService.checkedCartProduct(products, cartService.getCart(httpSession));
-//               sessionOperationService.checkCart(catchUser.getUser().getIdCart(),catchUser.getUser());
-//                checkedCartProducts = cartService.checkedCartProduct(products, cartService.getCart(catchUser.getUser().getIdCart()));
-//                countProduct = cartService.getCountProduct(cartService.getCart(catchUser.getUser().getIdCart()));
-        }
-//                checkedCartProducts = cartService.checkedCartProduct(products, cartService.getCart(catchUser.getUser().getIdCart()));
-//                countProduct = cartService.getCountProduct(cartService.getCart(catchUser.getUser().getIdCart()));
-
-
+        model.addAttribute("nameUser", authService.getAuthUser().getFirstName() + " " + authService.getAuthUser().getLastName());
         model.addAttribute("countPage", pagerService.getArrayPage(productService.getCountProduct()));
         model.addAttribute("categories", productService.getCategories());
         model.addAttribute("products", checkedCartProducts);
@@ -93,14 +58,18 @@ public class MapController {
     @GetMapping("/maps/{category}")
 //    @PreAuthorize("hasAuthority('developers:read')")
     public String categoryMap(@PathVariable("category") String category, @RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
-        sessionOperationService.checkCart(httpSession);
+
+        authService.checkCart(httpSession);
+        int countProduct = authService.countProduct(httpSession);
+
         List<ProductMap> products = productService.fillingProductListByCategory(sort, page, pagerService, productService, category);
-        int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
 
         int[] countPage = pagerService.getArrayPage(productService.getCountProduct(category));
         if (countPage.length > 1) {
             model.addAttribute("countPage", countPage);
         }
+
+        model.addAttribute("nameUser", authService.getAuthUser().getFirstName() + " " + authService.getAuthUser().getLastName());
         model.addAttribute("categories", productService.getCategories());
         model.addAttribute("products", products);
         model.addAttribute("header", productService.getNameCategory(category));
@@ -120,11 +89,8 @@ public class MapController {
     @PostMapping("/maps/addToCart")
     public @ResponseBody
     void addNewWorker(@RequestBody String jsonString, HttpSession httpSession) {
-        sessionOperationService.checkCart(httpSession);
-        String idCart = (String) httpSession.getAttribute("idCart");
+        authService.checkCart(httpSession);
         String idProduct = jsonString.replace("\"", "");
-        cartService.addProduct(idProduct, idCart);
-
+        authService.addProductToCart(idProduct, httpSession);
     }
-
 }

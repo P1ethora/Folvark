@@ -2,8 +2,7 @@ package net.plethora.folvark.controller;
 
 import net.plethora.folvark.dao.DaoProductMap;
 import net.plethora.folvark.models.ProductMap;
-import net.plethora.folvark.service.CartService;
-import net.plethora.folvark.service.SessionOperationService;
+import net.plethora.folvark.service.AuthService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,19 +14,17 @@ import javax.servlet.http.HttpSession;
 public class ProductController {
 
     private final DaoProductMap daoProductMap;
-    private final CartService cartService;
-    private final SessionOperationService sessionOperationService;
+    private final AuthService authService;
 
-    public ProductController(DaoProductMap daoProductMap, CartService cartService, SessionOperationService sessionOperationService) {
+    public ProductController(DaoProductMap daoProductMap, AuthService authService) {
         this.daoProductMap = daoProductMap;
-        this.cartService = cartService;
-        this.sessionOperationService = sessionOperationService;
+        this.authService = authService;
     }
 
     @GetMapping("/product/{id}")
     public String viewProduct(@PathVariable(value = "id") String id, HttpSession httpSession, Model model) {
-        sessionOperationService.checkCart(httpSession);
-        int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
+        authService.checkCart(httpSession);
+        int countProduct = authService.countProduct(httpSession);
         ProductMap product = daoProductMap.findById(id);
         model.addAttribute("product", product);
         model.addAttribute("countProducts", countProduct);

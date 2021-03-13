@@ -1,6 +1,5 @@
 package net.plethora.folvark.security;
 
-import javafx.scene.chart.CategoryAxis;
 import net.plethora.folvark.dao.DaoUser;
 import net.plethora.folvark.models.User;
 import org.springframework.security.core.userdetails.UserDetails;

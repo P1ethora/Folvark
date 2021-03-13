@@ -81,7 +81,6 @@ public class PagerService {
         return arrPage;
     }
 
-
     //-------------------ARCHPORTAL-NEWS----------------------------------------------------------------
 //-----------------------------JUST PRODUCT---------------------------------------------------------
     List<PortalNews> getAllPortalNews() { //весь товар

@@ -1,15 +1,10 @@
 package net.plethora.folvark.controller;
 
 import net.plethora.folvark.dao.DaoEmailUser;
-import net.plethora.folvark.dao.DaoProductMap;
 import net.plethora.folvark.models.EmailUser;
-import net.plethora.folvark.models.ProductMap;
 import net.plethora.folvark.models.ProductMapCategory;
-import net.plethora.folvark.service.CartService;
+import net.plethora.folvark.service.AuthService;
 import net.plethora.folvark.service.ProductService;
-import net.plethora.folvark.service.SessionOperationService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,23 +19,21 @@ import java.util.List;
 public class MainPageController {
 
     private final ProductService productService;
-    private final CartService cartService;
-    private final SessionOperationService sessionOperationService;
+    private final AuthService authService;
     private final DaoEmailUser daoEmailUser;
 
-    public MainPageController(ProductService productService, CartService cartService, SessionOperationService sessionOperationService,
+    public MainPageController(ProductService productService, AuthService authService,
                               DaoEmailUser daoEmailUser) {
+        this.authService = authService;
         this.productService = productService;
-        this.cartService = cartService;
-        this.sessionOperationService = sessionOperationService;
         this.daoEmailUser = daoEmailUser;
     }
 
     @GetMapping("/")
 //    @PreAuthorize( "hasAuthority('developers:read')")
     public String getMain(HttpSession httpSession, Model model) {
-        sessionOperationService.checkCart(httpSession);
-        int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
+        authService.checkCart(httpSession);
+        int countProduct = authService.countProduct(httpSession);
         List<ProductMapCategory> productMapCategories = productService.getCategories();
 
         model.addAttribute("products", productService.getLastProducts());
@@ -57,5 +50,4 @@ public class MainPageController {
         String email = eml.replace("\"", "");
         daoEmailUser.saveEmail(new EmailUser(email));
     }
-
 }

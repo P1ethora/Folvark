@@ -1,11 +1,9 @@
 package net.plethora.folvark.controller;
 
 import net.plethora.folvark.models.PortalNews;
-import net.plethora.folvark.service.CartService;
+import net.plethora.folvark.service.AuthService;
 import net.plethora.folvark.service.PagerService;
 import net.plethora.folvark.service.PortalService;
-import net.plethora.folvark.service.SessionOperationService;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,15 +16,13 @@ import java.util.List;
 @Controller
 public class ArchportalController {
 
-    private final CartService cartService;
-    private final SessionOperationService sessionOperationService;
+    private final AuthService authService;
     private final PortalService portalService;
     private final PagerService pagerService;
 
-    public ArchportalController(CartService cartService, PortalService portalService, SessionOperationService sessionOperationService,
+    public ArchportalController(PortalService portalService, AuthService authService,
                                 PagerService pagerService) {
-        this.cartService = cartService;
-        this.sessionOperationService = sessionOperationService;
+        this.authService = authService;
         this.portalService = portalService;
         this.pagerService = pagerService;
     }
@@ -34,8 +30,8 @@ public class ArchportalController {
     @GetMapping("/archportal")
 //    @PreAuthorize( "hasAuthority('developers:read')")
     public String pageArchportal(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
-        sessionOperationService.checkCart(httpSession);
-        int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
+        authService.checkCart(httpSession);
+        int countProduct = authService.countProduct(httpSession);
         model.addAttribute("countProducts", countProduct);
 
         List<PortalNews> portalNewsList = portalService.fillingPortalNewsList(sort, page, pagerService);
@@ -52,9 +48,10 @@ public class ArchportalController {
     @GetMapping("/archportal/{category}")
 //    @PreAuthorize( "hasAuthority('developers:read')")
     public String archCategory(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, @PathVariable("category") String category, HttpSession httpSession, Model model) {
-        sessionOperationService.checkCart(httpSession);
+        authService.checkCart(httpSession);
+        int countProduct = authService.countProduct(httpSession);
+
         List<PortalNews> portalNewsList = portalService.fillingPortalNewsListByCategory(sort, page, pagerService, portalService, category);
-        int countProducts = cartService.getCountProduct(cartService.getCart(httpSession));
 
         model.addAttribute("countPage", pagerService.getArrayPage(portalService.getCountPortalNews()));
         model.addAttribute("categories", portalService.getCategories());
@@ -62,7 +59,7 @@ public class ArchportalController {
         model.addAttribute("header", "Карты");
         model.addAttribute("countPortalNews", portalService.getCountPortalNews(category));
         model.addAttribute("sort", sort);
-        model.addAttribute("countProducts", countProducts);
+        model.addAttribute("countProducts", countProduct);
         return "archportal-page";
     }
 

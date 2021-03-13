@@ -1,9 +1,9 @@
 package net.plethora.folvark.service;
 
 import net.plethora.folvark.dao.DaoCart;
-import net.plethora.folvark.models.Cart;
-import net.plethora.folvark.models.CheckedCartProduct;
-import net.plethora.folvark.models.ProductMap;
+import net.plethora.folvark.dao.DaoProductMap;
+import net.plethora.folvark.dao.repo.UserRepository;
+import net.plethora.folvark.models.*;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.stereotype.Service;
 
@@ -16,18 +16,20 @@ import java.util.List;
 public class CartService {
 
     private DaoCart daoCart;
+    private UserRepository userRepository;
+    private DaoProductMap daoProductMap;
 
-    public CartService(DaoCart daoCart) {
+    public CartService(DaoCart daoCart, UserRepository userRepository, DaoProductMap daoProductMap) {
         this.daoCart = daoCart;
+        this.userRepository = userRepository;
+        this.daoProductMap = daoProductMap;
     }
 
-    public void CreateCart(Cart cart) {
+    public void SaveCart(Cart cart) {
         daoCart.saveCart(cart);
     }
 
-    public void addProduct(String idProduct, String idCart) {
-
-        Cart cart = daoCart.findCart(idCart);
+    void addProductToCart(String idProduct, Cart cart) {
 
         if (cart.getIdMaps() == null || cart.getIdMaps().length == 0) {
             cart.setIdMaps(new String[1]);
@@ -39,34 +41,37 @@ public class CartService {
         daoCart.editCart(cart);
     }
 
-    public int getCountProduct(Cart cart) {
-        int count = 0;
-        if (cart.getIdMaps() != null)
-            count = cart.getIdMaps().length;
-
-        return count;
-    }
-
-    public void removeProduct(String idCart, String idItem) {
+    void removeProduct(String idCart, String idItem) {
         Cart cart = daoCart.findCart(idCart);
         cart.setIdMaps(ArrayUtils.removeElement(cart.getIdMaps(), idItem));
         daoCart.editCart(cart);
     }
 
-    public Cart getCart(HttpSession httpSession) {
+    Cart getCart(HttpSession httpSession) {
         return daoCart.findCart((String) httpSession.getAttribute("idCart"));
     }
 
-    public Cart getCart(String idCart) {
+    Cart getCart(String idCart) {
         return daoCart.findCart(idCart);
     }
 
-    public List<CheckedCartProduct> checkedCartProduct(List<ProductMap> list, Cart cart) {
+    /**
+     * Green highlight product if it's in the shopping cart
+     *
+     * @param list products db
+     * @param cart user or session
+     * @return proven products
+     */
+    List<CheckedCartProduct> checkProductForCart(List<ProductMap> list, Cart cart) {
         List<CheckedCartProduct> checkedCartProducts = new ArrayList<>();
         boolean ok = false;
-        for (ProductMap productMap : list) {
 
-            if (cart.getIdMaps() != null && cart.getIdMaps().length > 0) {
+        if (cart.getIdMaps() == null || cart.getIdMaps().length <= 0) {
+            for (ProductMap productMap : list) {
+                checkedCartProducts.add(new CheckedCartProduct(productMap, false));
+            }
+        } else {
+            for (ProductMap productMap : list) {
                 for (String idProductInCart : cart.getIdMaps()) {
                     if (productMap.getId().equals(idProductInCart)) {
                         ok = true;
@@ -74,13 +79,67 @@ public class CartService {
                         break;
                     }
                 }
+                if (!ok) {
+                    checkedCartProducts.add(new CheckedCartProduct(productMap, false));
+                }
+                ok = false;
             }
-            if (!ok) {
-                checkedCartProducts.add(new CheckedCartProduct(productMap, false));
-            }
-            ok = false;
         }
 
         return checkedCartProducts;
     }
+
+
+    /**
+     * Creating a shopping cart if missing
+     * Two parameters are accepted which are checked
+     *
+     * @param httpSession if not logged in
+     * @param user        if the request is made by an authorized user
+     */
+    void checkAvailabilityCart(HttpSession httpSession, User user) {
+        if (user == null) {
+            if (httpSession.getAttribute("idCart") == null || daoCart.findCart((String) httpSession.getAttribute("idCart")) == null) {
+                checkAvailabilityCart(httpSession);
+            }
+        } else {
+            if (daoCart.findCart(user.getIdCart()) == null) {
+                checkAvailabilityCart(user);
+            }
+        }
+    }
+
+    private void checkAvailabilityCart(HttpSession httpSession) {
+        if (httpSession.getAttribute("idCart") == null || daoCart.findCart((String) httpSession.getAttribute("idCart")) == null) {
+            Cart cart = new Cart();
+            cart.setIdMaps(new String[0]);
+            SaveCart(cart);
+            httpSession.setAttribute("idCart", cart.getId());
+        }
+    }
+
+    private void checkAvailabilityCart(User user) {
+        Cart cart = new Cart();
+        cart.setIdMaps(new String[0]);
+        SaveCart(cart);
+        user.setIdCart(cart.getId());
+        userRepository.save(user);
+    }
+
+    CartPackage getCartPackage(Cart cart) {
+        List<ProductMap> productMaps = new ArrayList<>();
+        double allPrice = 0;
+
+        if (cart.getIdMaps().length > 0) {
+            for (String id : cart.getIdMaps()) {
+                ProductMap productMap = daoProductMap.findById(id);
+                if (productMap != null) {
+                    allPrice += Integer.parseInt(productMap.getPrice());
+                    productMaps.add(productMap);
+                }
+            }
+        }
+        return new CartPackage(productMaps, allPrice);
+    }
+
 }
