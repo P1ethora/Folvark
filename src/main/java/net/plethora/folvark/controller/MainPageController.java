@@ -9,6 +9,7 @@ import net.plethora.folvark.service.CartService;
 import net.plethora.folvark.service.ProductService;
 import net.plethora.folvark.service.SessionOperationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +37,7 @@ public class MainPageController {
     }
 
     @GetMapping("/")
+//    @PreAuthorize( "hasAuthority('developers:read')")
     public String getMain(HttpSession httpSession, Model model) {
         sessionOperationService.checkCart(httpSession);
         int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
@@ -49,6 +51,7 @@ public class MainPageController {
     }
 
     @PostMapping("/addEmail")
+//    @PreAuthorize( "hasAuthority('developers:write')")
     public @ResponseBody
     void addEmail(@RequestBody String eml) {
         String email = eml.replace("\"", "");

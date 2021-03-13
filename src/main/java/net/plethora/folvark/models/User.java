@@ -1,18 +1,14 @@
 package net.plethora.folvark.models;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import net.plethora.folvark.models.state.Role;
 import net.plethora.folvark.models.state.Status;
 
 import javax.persistence.*;
 
-
-@Getter
-@Setter
+@Data
 @Entity
-//@Table(name = "users")
 public class User {
 
     @Id
@@ -38,6 +34,8 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     @Column(name = "role")
     private Role role;
+    @Column(name = "id_cart")
+    private String idCart;
 
     public User(String email, String password, String firstName, String lastName, String middleName, String nickName, Status status, Role role) {
         this.email = email;

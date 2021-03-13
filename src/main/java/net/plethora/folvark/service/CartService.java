@@ -21,7 +21,7 @@ public class CartService {
         this.daoCart = daoCart;
     }
 
-    public void SaveCart(Cart cart) {
+    public void CreateCart(Cart cart) {
         daoCart.saveCart(cart);
     }
 
@@ -57,16 +57,22 @@ public class CartService {
         return daoCart.findCart((String) httpSession.getAttribute("idCart"));
     }
 
+    public Cart getCart(String idCart) {
+        return daoCart.findCart(idCart);
+    }
+
     public List<CheckedCartProduct> checkedCartProduct(List<ProductMap> list, Cart cart) {
         List<CheckedCartProduct> checkedCartProducts = new ArrayList<>();
         boolean ok = false;
         for (ProductMap productMap : list) {
 
-            for (String idProductInCart : cart.getIdMaps()) {
-                if (productMap.getId().equals(idProductInCart)) {
-                    ok = true;
-                    checkedCartProducts.add(new CheckedCartProduct(productMap, true));
-                    break;
+            if (cart.getIdMaps() != null && cart.getIdMaps().length > 0) {
+                for (String idProductInCart : cart.getIdMaps()) {
+                    if (productMap.getId().equals(idProductInCart)) {
+                        ok = true;
+                        checkedCartProducts.add(new CheckedCartProduct(productMap, true));
+                        break;
+                    }
                 }
             }
             if (!ok) {

@@ -5,6 +5,7 @@ import net.plethora.folvark.service.CartService;
 import net.plethora.folvark.service.PagerService;
 import net.plethora.folvark.service.PortalService;
 import net.plethora.folvark.service.SessionOperationService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +32,7 @@ public class ArchportalController {
     }
 
     @GetMapping("/archportal")
+//    @PreAuthorize( "hasAuthority('developers:read')")
     public String pageArchportal(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
         sessionOperationService.checkCart(httpSession);
         int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));
@@ -48,6 +50,7 @@ public class ArchportalController {
     }
 
     @GetMapping("/archportal/{category}")
+//    @PreAuthorize( "hasAuthority('developers:read')")
     public String archCategory(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, @PathVariable("category") String category, HttpSession httpSession, Model model) {
         sessionOperationService.checkCart(httpSession);
         List<PortalNews> portalNewsList = portalService.fillingPortalNewsListByCategory(sort, page, pagerService, portalService, category);

@@ -2,6 +2,7 @@ package net.plethora.folvark.controller;
 
 import net.plethora.folvark.service.CartService;
 import net.plethora.folvark.service.SessionOperationService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ public class ContactController {
     }
 
     @GetMapping("/contact")
+//    @PreAuthorize( "hasAuthority('developers:read')")
     public String pageArchportal(HttpSession httpSession, Model model) {
         sessionOperationService.checkCart(httpSession);
         int countProduct = cartService.getCountProduct(cartService.getCart(httpSession));

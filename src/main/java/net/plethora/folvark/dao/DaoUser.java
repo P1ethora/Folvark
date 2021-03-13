@@ -29,4 +29,8 @@ public class DaoUser {
         return userRepository.findById(id).orElse(null);
     }
 
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
+
 }

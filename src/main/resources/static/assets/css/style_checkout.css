@@ -1,0 +1,161 @@
+@font-face {
+    font-family: "TriodPostnaja";
+    src: url("/fonts/TriodPostnaja.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+.login-fon {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(229, 229, 229, 0.85);
+    z-index: 8888;
+}
+
+.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9998;
+}
+
+.login-container {
+    position: fixed;
+    background: white;
+    display: block;
+    width: 410px;
+    padding: 30px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+}
+
+/*#show:checked ~ .login-container {*/
+/*    display: block;*/
+/*}*/
+
+/*#show:checked ~ .login-fon {*/
+/*    display: block;*/
+/*}*/
+
+.login-container .text-login {
+    font-family: A_La_Russ, sans-serif;
+    color: black;
+    letter-spacing: 1px;
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.login-container .form-log {
+    margin-top: -20px;
+}
+
+.login-container .form-log .field_log {
+    height: 45px;
+    width: 100%;
+    margin: 40px 0;
+}
+
+.login-container .form-log .field_log span {
+    font-family: Oswald, sans-serif;
+    position: absolute;
+    left: 30px;
+    font-size: 18px;
+    resize: none;
+    font-weight: 300;
+    color: #333;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.login-container .form-log .field_log input {
+    width: 100% !important;
+    padding: 5px 0;
+    font-size: 18px;
+    resize: none;
+    font-weight: 300;
+    color: black;
+    border: none;
+    border-bottom: 1px solid #890000;
+    outline: none;
+}
+
+.login-container .form-log .field_log input:focus ~ span,
+.login-container .form-log .field_log input:valid ~ span {
+    transform: translateY(-20px);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #890000;
+}
+
+.form-log .log-btn {
+    margin: 30px 0;
+    height: 45px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-log .log-btn .inner {
+    height: 100%;
+    width: 300%;
+    position: absolute;
+    left: -100%;
+    background: white;
+    z-index: -1;
+    transition: all 0.4s;
+}
+
+.form-log .forgot-pass {
+    margin-top: -8px;
+}
+
+form .forgot-pass a {
+    color: #3498db;
+}
+
+form .forgot-pass a:hover {
+    border-bottom: 1px solid #3498db;
+}
+
+form .signup-link {
+    margin-left: 5px;
+    text-align: center;
+}
+
+form .signup-link a {
+    margin-left: 3px;
+    color: #3498db;
+    text-decoration: none;
+}
+
+form .signup-link a:hover {
+    border-bottom: 1px solid #3498db;
+}
+
+form .log-btn:hover .inner {
+    left: 0;
+}
+
+form .log-btn input {
+    height: 100%;
+    width: 100%;
+    background: #890000;
+    border: none;
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: transform 0.1s;
+    outline: none;
+}
+
+.form-log .log-btn input:hover {
+    transform: scale(1.2);
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+}
