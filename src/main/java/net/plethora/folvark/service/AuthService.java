@@ -8,6 +8,7 @@ import net.plethora.folvark.models.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -81,4 +82,13 @@ public class AuthService {
         }
         return cartPackage;
     }
+
+    public void viewUserAccount(Model model) {
+        if (getAuthUser() != null) {
+            User user = getAuthUser();
+            String name = user.getFirstName() + " " + user.getLastName();
+            model.addAttribute("nameUser", name);
+        }
+    }
+
 }

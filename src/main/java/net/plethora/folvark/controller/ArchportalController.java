@@ -31,6 +31,7 @@ public class ArchportalController {
 //    @PreAuthorize( "hasAuthority('developers:read')")
     public String pageArchportal(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
         authService.checkCart(httpSession);
+        authService.viewUserAccount(model);
         int countProduct = authService.countProduct(httpSession);
         model.addAttribute("countProducts", countProduct);
 
@@ -49,6 +50,7 @@ public class ArchportalController {
 //    @PreAuthorize( "hasAuthority('developers:read')")
     public String archCategory(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, @PathVariable("category") String category, HttpSession httpSession, Model model) {
         authService.checkCart(httpSession);
+        authService.viewUserAccount(model);
         int countProduct = authService.countProduct(httpSession);
 
         List<PortalNews> portalNewsList = portalService.fillingPortalNewsListByCategory(sort, page, pagerService, portalService, category);

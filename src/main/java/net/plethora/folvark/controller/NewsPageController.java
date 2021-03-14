@@ -25,6 +25,7 @@ public class NewsPageController {
     public String getNewsPage(@PathVariable("id") String id, HttpSession httpSession, Model model) {
 
         int countProduct = authService.countProduct(httpSession);
+        authService.viewUserAccount(model);
         PortalNews news = daoNewsPortal.findById(id);
 
         model.addAttribute("news", news);

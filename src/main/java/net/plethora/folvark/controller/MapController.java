@@ -32,12 +32,12 @@ public class MapController {
 
         authService.checkCart(httpSession);
         int countProduct = authService.countProduct(httpSession);
+        authService.viewUserAccount(model);
 
         List<ProductMap> products = productService.fillingProductList(sort, page, pagerService);
         List<CheckedCartProduct> checkedCartProducts = authService.checkProductForCart(products, httpSession);
-        ;
 
-        model.addAttribute("nameUser", authService.getAuthUser().getFirstName() + " " + authService.getAuthUser().getLastName());
+
         model.addAttribute("countPage", pagerService.getArrayPage(productService.getCountProduct()));
         model.addAttribute("categories", productService.getCategories());
         model.addAttribute("products", checkedCartProducts);
@@ -60,6 +60,7 @@ public class MapController {
     public String categoryMap(@PathVariable("category") String category, @RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
 
         authService.checkCart(httpSession);
+        authService.viewUserAccount(model);
         int countProduct = authService.countProduct(httpSession);
 
         List<ProductMap> products = productService.fillingProductListByCategory(sort, page, pagerService, productService, category);

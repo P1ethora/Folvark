@@ -33,6 +33,7 @@ public class MainPageController {
 //    @PreAuthorize( "hasAuthority('developers:read')")
     public String getMain(HttpSession httpSession, Model model) {
         authService.checkCart(httpSession);
+        authService.viewUserAccount(model);
         int countProduct = authService.countProduct(httpSession);
         List<ProductMapCategory> productMapCategories = productService.getCategories();
 

@@ -1,5 +1,5 @@
 <header th:fragment="header">
-    <th:block th:unless="${#authentication}">
+    <th:block sec:authorize="isAnonymous()">
         <input type="checkbox" id="show">
         <div class="login-fon"></div>
         <div class="login-container">
@@ -46,10 +46,11 @@
                 </div>
                 <div class="right">
                     <ul>
-                        <li th:if="${#authentication}"><a class="show-user" href="/persona" th:text="${nameUser}"></a>
+                        <li sec:authorize="isAuthenticated()"><a class="show-user" href="/persona"
+                                                                 th:text="${nameUser}"></a>
                         </li>
-                        <li th:unless="${#authentication}" id="btn-log-in"><label for="show"
-                                                                                  class="show-btn">Войти</label></li>
+                        <li sec:authorize="isAnonymous()" id="btn-log-in"><label for="show"
+                                                                                 class="show-btn">Войти</label></li>
                         <li><a class="cart" href="/cart">Корзина</a>
                             <div class="counterPr" th:text="${countProducts}"></div>
                         </li>
