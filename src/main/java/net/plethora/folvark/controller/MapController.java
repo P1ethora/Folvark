@@ -64,6 +64,7 @@ public class MapController {
         int countProduct = authService.countProduct(httpSession);
 
         List<ProductMap> products = productService.fillingProductListByCategory(sort, page, pagerService, productService, category);
+        List<CheckedCartProduct> checkedCartProducts = authService.checkProductForCart(products, httpSession);
 
         int[] countPage = pagerService.getArrayPage(productService.getCountProduct(category));
         if (countPage.length > 1) {
@@ -72,7 +73,7 @@ public class MapController {
 
         model.addAttribute("nameUser", authService.getAuthUser().getFirstName() + " " + authService.getAuthUser().getLastName());
         model.addAttribute("categories", productService.getCategories());
-        model.addAttribute("products", products);
+        model.addAttribute("products", checkedCartProducts);
         model.addAttribute("header", productService.getNameCategory(category));
         model.addAttribute("category", category);
         model.addAttribute("countProduct", productService.getCountProduct(category));

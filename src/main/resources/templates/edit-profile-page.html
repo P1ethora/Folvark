@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="b-forms m-loginbig" style="background-color: white">
+    <div class="inputs">
+        <div class="lbl" style="padding-top: 0px">
+            Электронная<br>почта:
+        </div>
+        <div class="b-inputs rec-v rec-change">
+            <div class="email_block events-container" style="position: relative" id="email_link">
+                <a href="#" class="dashed email" onclick="">ihairrr@gmail.com</a>
+            </div>
+            <input type="text" name="email" id="email" class="i-p" value="ihairrr@gmail.com" autocomplete="off"
+                   disabled="disabled" style="display:none">
+
+        </div>
+    </div>
+    <div class="inputs">
+        <div class="lbl">
+            Фамилия:
+        </div>
+        <div class="b-inputs">
+            <input type="text" name="last_name" class="i-p" value="Ариец" autocomplete="off">
+        </div>
+    </div>
+    <div class="inputs">
+        <div class="lbl">
+            Имя:
+        </div>
+        <div class="b-inputs">
+            <input type="text" name="first_name" class="i-p" value="Игорь" autocomplete="off">
+        </div>
+    </div>
+    <div class="inputs">
+        <div class="lbl">
+            Отчество:
+        </div>
+        <div class="b-inputs">
+            <input type="text" name="patronymic_name" class="i-p" value="Евгеньевич" autocomplete="off">
+        </div>
+    </div>
+    <div class="inputs">
+        <div class="lbl">
+            Пол:
+        </div>
+        <div class="b-inputs" style="top: 8px">
+            <label style="float:left">
+                <input type="radio" name="sex" class="i-p" value="male" autocomplete="off" style="width: 15px"
+                       checked="checked"> мужской
+            </label>
+            <label style="float:left; margin-left: 30px">
+                <input type="radio" name="sex" class="i-p" value="female" autocomplete="off" style="width: 15px">
+                женский
+            </label>
+        </div>
+    </div>
+
+    <div class="inputs">
+        <div class="lbl">
+            Дата рождения:
+        </div>
+        <div class="b-inputs">
+            <input type="text" class="i-p" name="date_of_birth[d]" style="width:24px" maxlength="2" value="2">
+            <select class="i-p" style="width:115px; height: 34px; margin-top: 0px" name="date_of_birth[m]">
+                <option value="0"></option>
+                <option value="1">января</option>
+                <option value="2">февраля</option>
+                <option value="3">марта</option>
+                <option value="4">апреля</option>
+                <option value="5">мая</option>
+                <option value="6">июня</option>
+                <option value="7">июля</option>
+                <option value="8">августа</option>
+                <option value="9">сентября</option>
+                <option value="10">октября</option>
+                <option value="11" selected="selected">ноября</option>
+                <option value="12">декабря</option>
+            </select>
+            <input type="text" class="i-p" name="date_of_birth[y]" style="width:50px" maxlength="4" value="1994">
+
+        </div>
+    </div>
+
+    <div class="inputs">
+        <div class="lbl" style="padding-top: 0px">
+            Мобильный<br>телефон:
+        </div>
+        <div class="b-inputs rec-v rec-change">
+            <div class="phone_block events-container" style="position: relative" id="phone_link"><a href="#"
+                                                                                                    class="dashed phone"
+                                                                                                    onclick="">+375 (29)
+                239-11-33</a></div>
+            <input type="tel" name="phone" size="25" class="i-p" value="+375 (29) 239-11-33" autocomplete="off"
+                   id="phone_n" disabled="disabled" style="display: none;" maxlength="38"
+                   placeholder="+___ (__) ___-__-__">
+
+            <div id="phone_descr"
+                 style="float: left; position: absolute; padding: 10px 5px 0px; display: none; left: 462px;"><span
+                    style="display: inline-block; width: 16px; height: 11px; background: url(https://oz.by/img/countries.png); background-position: -32px -275px"></span>
+                Беларусь (МТС)
+            </div>
+        </div>
+    </div>
+    <div class="button-confirm cfix">
+        <button type="submit" value="" class="btn-style btn-big  "
+                onclick="jQuery(this).prop('disabled','disabled').addClass('btn-big-dis'); this.form.submit(); return true;"><span> <span
+                class="b-bn">Сохранить</span>
+</span></button>
+        <span class="fl-right">вернуться к <a rel="nofollow" href="/persona">профилю</a></span>
+    </div>
+</div>
+
+</div>
+</body>
+</html>

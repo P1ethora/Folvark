@@ -40,4 +40,10 @@ public class CartController {
         return viewCart(httpSession, model);
     }
 
+    @GetMapping("/persona/edit-profile")
+    public String editProfile() {
+
+        return "edit-profile-page";
+    }
+
 }
