@@ -1,21 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/assets/css/style_profile-page.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/assets/css/style_register-page.css}"/>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
+<div class="header-profile">
+    <h2>Профиль</h2>
+    <div class="go-back-reg">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        <a href="/">Вернуться в магазин</a>
+    </div>
+</div>
+
 <div class="space-profile">
     <div class="left-panel-profile">
         <div class="top-profile">
-            <div class="img-person"></div>
-            <div class="person-menu"></div>
+            <div class="img-person">
+                <img src="images/unnamed.jpg">
+            </div>
+            <div class="person-menu">
+                <a class="login-person">unknown</a>
+                <a class="name-person">Васильев Василий Васильевич</a>
+                <a class="favorite-profile">избранное</a>
+                <a class="cart-profile">корзина</a>
+                <a class="my-maps-profile">мои карты</a>
+                <a class="my-maps-profile">сообщения</a>
+                <a class="edit-profile">мои купоны</a>
+            </div>
         </div>
-        <div class="bottom-profile"></div>
+        <div class="bottom-profile">
+            <div>Дата регистрации: 01.01.1901</div>
+            <div class="rating-profile">Репутация: новичек</div>
+        </div>
     </div>
     <div class="right-panel-profile">
-        <div class="comments-panel"></div>
+        <div class="comments-panel">
+            <div class="el-comments-profile">Есть ли жизнь на дне?</div>
+            <div class="el-comments-profile">Можно ли приобрести с координатной сеткой?</div>
+            <div class="el-comments-profile">Нужна такая же только на окрестности Гомеля, найти сможете?</div>
+            <div class="el-comments-profile">Как пройти в библиотеку?</div>
+            <div class="el-comments-profile">Продам монеты РИ недорого в личку</div>
+        </div>
     </div>
 </div>
 
