@@ -91,4 +91,9 @@ public class AuthService {
         }
     }
 
+    public void controlUser(HttpSession httpSession, Model model) {
+        checkCart(httpSession);
+        viewUserAccount(model);
+    }
+
 }
