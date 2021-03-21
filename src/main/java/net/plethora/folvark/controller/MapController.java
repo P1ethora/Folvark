@@ -31,10 +31,9 @@ public class MapController {
     public String startMap(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
 
         authService.controlUser(httpSession, model);
-        int countProduct = authService.countProduct(httpSession);
 
         List<ProductMap> products = productService.fillingProductList(sort, page, pagerService);
-        attribute(httpSession, model, products, null, sort, countProduct, page);
+        attribute(httpSession, model, products, null, sort, page);
 
         return "map-page";
     }
@@ -44,10 +43,9 @@ public class MapController {
     public String categoryMap(@PathVariable("category") String category, @RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
 
         authService.controlUser(httpSession, model);
-        int countProduct = authService.countProduct(httpSession);
 
         List<ProductMap> products = productService.fillingProductListByCategory(sort, page, pagerService, productService, category);
-        attribute(httpSession, model, products, category, sort, countProduct, page);
+        attribute(httpSession, model, products, category, sort, page);
 
         return "map-page";
     }
@@ -60,9 +58,14 @@ public class MapController {
         authService.addProductToCart(idProduct, httpSession);
     }
 
-    private void attribute(HttpSession httpSession, Model model, List<ProductMap> products, String category, String sort, int countProduct, String page) {
+    private void attribute(HttpSession httpSession, Model model, List<ProductMap> products, String category, String sort, String page) {
 
         List<CheckedCartProduct> checkedCartProducts = authService.checkProductForCart(products, httpSession);
+        int countProduct = authService.countProduct(httpSession);
+
+        model.addAttribute("countProducts", countProduct);
+        model.addAttribute("products", checkedCartProducts);
+        model.addAttribute("sort", sort);
 
         if (category != null) {
             int[] countPage = pagerService.getArrayPage(productService.getCountProduct(category));
@@ -78,11 +81,8 @@ public class MapController {
             model.addAttribute("countPage", pagerService.getArrayPage(productService.getCountProduct()));
             model.addAttribute("categories", productService.getCategories());
             model.addAttribute("header", "Карты");
-            model.addAttribute("countProducts", countProduct);
+            model.addAttribute("countProduct", productService.getCountProduct());
         }
-//TODO dont work check number products in cart from category request
-        model.addAttribute("products", checkedCartProducts);
-        model.addAttribute("sort", sort);
 
         if (page != null) {
             model.addAttribute("pageN", "'?page='" + page);

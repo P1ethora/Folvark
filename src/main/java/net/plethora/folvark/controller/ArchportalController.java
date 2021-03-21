@@ -32,17 +32,11 @@ public class ArchportalController {
     public String pageArchportal(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
         authService.checkCart(httpSession);
         authService.viewUserAccount(model);
-        int countProduct = authService.countProduct(httpSession);
-        model.addAttribute("countProducts", countProduct);
 
         List<PortalNews> portalNewsList = portalService.fillingPortalNewsList(sort, page, pagerService);
-        model.addAttribute("countPage", pagerService.getArrayPage(portalService.getCountPortalNews()));
-        model.addAttribute("categories", portalService.getCategories());
-        model.addAttribute("portalNewsList", portalNewsList);
-        model.addAttribute("header", "Карты");
-        model.addAttribute("countPortalNews", portalService.getCountPortalNews());
-        model.addAttribute("sort", sort);
-        model.addAttribute("countProducts", countProduct);
+
+        portalAttribute(model, portalNewsList, null, sort, page, httpSession);
+
         return "archportal-page";
     }
 
@@ -51,18 +45,39 @@ public class ArchportalController {
     public String archCategory(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, @PathVariable("category") String category, HttpSession httpSession, Model model) {
         authService.checkCart(httpSession);
         authService.viewUserAccount(model);
-        int countProduct = authService.countProduct(httpSession);
 
         List<PortalNews> portalNewsList = portalService.fillingPortalNewsListByCategory(sort, page, pagerService, portalService, category);
 
-        model.addAttribute("countPage", pagerService.getArrayPage(portalService.getCountPortalNews()));
-        model.addAttribute("categories", portalService.getCategories());
-        model.addAttribute("portalNewsList", portalNewsList);
-        model.addAttribute("header", "Карты");
-        model.addAttribute("countPortalNews", portalService.getCountPortalNews(category));
-        model.addAttribute("sort", sort);
-        model.addAttribute("countProducts", countProduct);
+        portalAttribute(model, portalNewsList, category, sort, page, httpSession);
+
         return "archportal-page";
     }
 
+    private void portalAttribute(Model model, List<PortalNews> portalNews, String category, String sort, String page, HttpSession httpSession) {
+
+        int countProduct = authService.countProduct(httpSession);
+        model.addAttribute("countPage", pagerService.getArrayPage(portalService.getCountPortalNews()));
+        model.addAttribute("categories", portalService.getCategories());
+        model.addAttribute("countProducts", countProduct);
+
+        if (category != null) {
+
+            model.addAttribute("portalNewsList", portalNews);
+            model.addAttribute("header", portalService.getNameCategory(category));
+            model.addAttribute("countPortalNews", portalService.getCountPortalNews(category));
+            model.addAttribute("sort", sort);
+
+        } else {
+            model.addAttribute("portalNewsList", portalNews);
+            model.addAttribute("header", "Археопортал");
+            model.addAttribute("countPortalNews", portalService.getCountPortalNews());
+            model.addAttribute("sort", sort);
+        }
+
+        if (page != null) {
+            model.addAttribute("pageN", "'?page='" + page);
+        } else {
+            model.addAttribute("pageN", "");
+        }
+    }
 }
