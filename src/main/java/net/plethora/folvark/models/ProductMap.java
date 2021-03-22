@@ -46,6 +46,8 @@ public class ProductMap {
     @JsonIgnore
     private String category; //категория товара
 
+    private String idComments;
+
     public ProductMap() {
     }
 
