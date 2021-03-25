@@ -158,6 +158,7 @@ cursor: pointer;
 }
 
 .fon-bottom-the-product .block_with_comments .product-comment {
+    margin: 20px;
     display: flex;
 }
 
@@ -176,17 +177,17 @@ cursor: pointer;
     display: flex;
     justify-content: space-between;
     font-size: 18px;
+    padding: 10px;
 }
 
 .fon-bottom-the-product .block_with_comments .product-comment .comment-block .top-comment .comment-name{
-    font-size: 22px;
-    font-weight: 400;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .fon-bottom-the-product .block_with_comments .product-comment .comment-block .comment-text{
-
-    margin-top: 10px;
-    font-size: 18px;
+    margin: 10px;
+    font-size: 14px;
 }
 
 .fon-bottom-the-product .block_with_comments .product-comment .comment-block .comment-answer {
@@ -194,6 +195,8 @@ cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    margin-right: 10px;
+    padding: 10px;
 
 }
 
