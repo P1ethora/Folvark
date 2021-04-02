@@ -30,8 +30,9 @@ public class ArchportalController {
     @GetMapping("/archportal")
 //    @PreAuthorize( "hasAuthority('developers:read')")
     public String pageArchportal(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, HttpSession httpSession, Model model) {
-        authService.checkCart(httpSession);
-        authService.viewUserAccount(model);
+//        authService.checkCart(httpSession);
+//        authService.viewUserAccount(model);
+        authService.controlUser(httpSession, model);
 
         List<PortalNews> portalNewsList = portalService.fillingPortalNewsList(sort, page, pagerService);
 
@@ -43,8 +44,8 @@ public class ArchportalController {
     @GetMapping("/archportal/{category}")
 //    @PreAuthorize( "hasAuthority('developers:read')")
     public String archCategory(@RequestParam(required = false) String sort, @RequestParam(required = false) String page, @PathVariable("category") String category, HttpSession httpSession, Model model) {
-        authService.checkCart(httpSession);
-        authService.viewUserAccount(model);
+
+        authService.controlUser(httpSession, model);
 
         List<PortalNews> portalNewsList = portalService.fillingPortalNewsListByCategory(sort, page, pagerService, portalService, category);
 

@@ -63,7 +63,20 @@
         <div class="feedback-count">Отзывы 1</div>
         <div class="btn-add-to-cart"><button type="submit">Добавить комментарий</button></div>
     </div>
-        <div class="write-review-block"></div>
+        <div class="write-review-block">
+
+            <div class="send-comment">
+                <div class="top-send-comment">
+                    <img class="img-profile" src="/images/unnamed.jpg">
+                    <input class="text-comment">
+                </div>
+                <div class="bottom-send-comment">
+                    <div class="btn-send-cancel">Отмена</div>
+                    <div class="btn-send-comment">Оставить отзыв</div>
+                </div>
+            </div>
+
+        </div>
         <div class="block_with_comments">
 
             <div th:each="comment : ${comments}" class="product-comment">

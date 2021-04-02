@@ -63,28 +63,24 @@
 
 .space-profile .top-space-profile .right-panel-profile {
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
     width: 100%;
     height: 100%;
     margin: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.space-profile .top-space-profile .right-panel-profile .comments-panel {
+.space-profile .top-space-profile .right-panel-profile .slick-vertical {
     height: 100%;
     width: 100%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    padding-bottom: 20px;
 }
 
-.space-profile .top-space-profile .right-panel-profile .comments-panel div {
+.space-profile .top-space-profile .right-panel-profile .slick-vertical .el-comments-profile {
     padding: 20px;
-    height: auto;
-    border: 1px solid #890000;
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    border-radius: 10px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    /*border: 1px solid #890000;*/
+    margin: 5px;
+    /*border-radius: 10px;*/
 }
 
 .header-profile {
@@ -104,6 +100,7 @@
 }
 
 .space-profile .bottom-space-profile .my-maps-panel {
+    padding: 10px;
     text-align: center;
 }
 
@@ -151,6 +148,6 @@
     color: #FFFFFF;
 }
 
-
-
-
+.space-profile .bottom-space-profile .maps-el-profile .element-my-maps .loading {
+    height: 30px;
+}

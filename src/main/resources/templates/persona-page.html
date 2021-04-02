@@ -13,6 +13,18 @@
           th:href="@{/assets/css/style_footer.css}"/>
     <link rel="stylesheet" type="text/css" media="all"
           th:href="@{/assets/css/style_header.css}"/>
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    <script th:src="@{/slick-1.8.1/slick/slick.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/slick-1.8.1/slick/slick.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/slick-1.8.1/slick/slick-theme.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/assets/css/slider_horizont.css}"/>
+
+    <script type="text/javascript" th:src="@{/js/CommentsSlider.js}"></script>
+
+
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -36,10 +48,10 @@
                     <a class="login-person">unknown</a>
                     <a class="name-person">Васильев Василий Васильевич</a>
                     <a class="favorite-profile">избранное</a>
-                    <a class="cart-profile">корзина</a>
-                    <a class="my-maps-profile">мои карты</a>
+                    <a href="/cart" class="cart-profile">корзина</a>
                     <a class="my-maps-profile">сообщения</a>
                     <a class="edit-profile">мои купоны</a>
+                    <a href="/logout" class="edit-profile">выход</a>
                 </div>
             </div>
             <div class="bottom-profile">
@@ -47,15 +59,29 @@
                 <div class="rating-profile">Репутация: новичек</div>
             </div>
         </div>
+
         <div class="right-panel-profile">
-            <div class="comments-panel">
+            <div class="slider slick-vertical">
                 <div class="el-comments-profile">Есть ли жизнь на дне?</div>
                 <div class="el-comments-profile">Можно ли приобрести с координатной сеткой?</div>
                 <div class="el-comments-profile">Нужна такая же только на окрестности Гомеля, найти сможете?</div>
                 <div class="el-comments-profile">Как пройти в библиотеку?</div>
                 <div class="el-comments-profile">Продам монеты РИ недорого в личку</div>
+                <div class="el-comments-profile">Копатели</div>
+                <div class="el-comments-profile">Копатели</div>
+                <div class="el-comments-profile">Копатели</div>
             </div>
         </div>
+
+        <!--        <div class="right-panel-profile">-->
+        <!--            <div class="comments-panel">-->
+        <!--                <div class="el-comments-profile">Есть ли жизнь на дне?</div>-->
+        <!--                <div class="el-comments-profile">Можно ли приобрести с координатной сеткой?</div>-->
+        <!--                <div class="el-comments-profile">Нужна такая же только на окрестности Гомеля, найти сможете?</div>-->
+        <!--                <div class="el-comments-profile">Как пройти в библиотеку?</div>-->
+        <!--                <div class="el-comments-profile">Продам монеты РИ недорого в личку</div>-->
+        <!--            </div>-->
+        <!--        </div>-->
     </div>
     <div class="bottom-space-profile">
         <div class="my-maps-panel">
@@ -132,4 +158,6 @@
 <footer th:insert="blocks/footer :: footer"></footer>
 
 </body>
+
+
 </html>

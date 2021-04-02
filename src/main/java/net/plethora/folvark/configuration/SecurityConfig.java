@@ -35,7 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin-panel").hasRole("ADMIN")
                 .antMatchers("/persona").authenticated()
                 .and()
-                .formLogin();
+                .formLogin()
+                .loginPage("/login");
 //               .loginPage("checkout");
     }
 

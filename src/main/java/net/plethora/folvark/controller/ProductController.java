@@ -28,8 +28,9 @@ public class ProductController {
 
     @GetMapping("/product/{id}")
     public String viewProduct(@PathVariable(value = "id") String id, HttpSession httpSession, Model model) {
-        authService.checkCart(httpSession);
-        authService.viewUserAccount(model);
+        authService.controlUser(httpSession, model);
+//        authService.checkCart(httpSession);
+//        authService.viewUserAccount(model);
         int countProduct = authService.countProduct(httpSession);
         ProductMap product = daoProductMap.findById(id);
         model.addAttribute("product", product);

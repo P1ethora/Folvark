@@ -1,0 +1,29 @@
+.slick-prev,
+.slick-next {
+    -webkit-transform: translate(-50%, 0) rotate(90deg);
+    -ms-transform: translate(-50%, 0) rotate(90deg);
+    transform: translate(-50%, 0) rotate(90deg);
+    left: 50%;
+}
+
+.slick-prev {
+    top: -30px;
+}
+
+.slick-next {
+    top: auto;
+    bottom: -30px;
+}
+
+.slick-vertical .slick-arrow {
+    width: 30px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.slick-vertical .slick-arrow:hover {
+    opacity: .6;
+}
+
+

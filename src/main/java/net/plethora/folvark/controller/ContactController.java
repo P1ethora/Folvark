@@ -19,8 +19,7 @@ public class ContactController {
     @GetMapping("/contact")
 //    @PreAuthorize( "hasAuthority('developers:read')")
     public String pageArchportal(HttpSession httpSession, Model model) {
-        authService.checkCart(httpSession);
-        authService.viewUserAccount(model);
+        authService.controlUser(httpSession, model);
         int countProduct = authService.countProduct(httpSession);
         model.addAttribute("countProducts", countProduct);
         return "contact-page";

@@ -83,6 +83,11 @@ public class AuthService {
         return cartPackage;
     }
 
+    /**
+     * Added user name for header
+     *
+     * @param model
+     */
     public void viewUserAccount(Model model) {
         if (getAuthUser() != null) {
             User user = getAuthUser();

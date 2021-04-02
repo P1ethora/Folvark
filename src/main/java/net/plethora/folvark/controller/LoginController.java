@@ -68,7 +68,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String openCheckout() {
-        return "checkout";
+        return "login";
     }
 
 }

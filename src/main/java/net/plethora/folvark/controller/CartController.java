@@ -33,9 +33,8 @@ public class CartController {
 
     @GetMapping("/cart/{id}/remove")
     public String removeItem(@PathVariable("id") String id, HttpSession httpSession, Model model) {
-        authService.checkCart(httpSession);
+        authService.controlUser(httpSession, model);
         authService.remoteProduct(httpSession, id);
-        authService.viewUserAccount(model);
 
         return viewCart(httpSession, model);
     }
