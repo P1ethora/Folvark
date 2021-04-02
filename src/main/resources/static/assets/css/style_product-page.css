@@ -1,3 +1,7 @@
+body {
+    display: block;
+}
+
 .fon-the-product {
     display: block;
     height: 100%;
@@ -131,7 +135,9 @@ cursor: pointer;
 }
 
 .fon-bottom-the-product {
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
     border-top: 1px solid silver;
     padding: 60px;
     margin-left: 100px;
@@ -152,7 +158,9 @@ cursor: pointer;
 
 .fon-bottom-the-product .block_with_comments {
     margin-top: 80px;
+    margin-bottom: 50px;
     width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
 }
@@ -203,11 +211,8 @@ cursor: pointer;
 
 .write-review-block {
     position: relative;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    display: none;
+    margin: 40px auto 20px;
     width: 720px;
 }
 
@@ -237,6 +242,11 @@ cursor: pointer;
     right: 120px;
 }
 
+.write-review-block .send-comment .bottom-send-comment .btn-send-cancel:hover {
+    cursor: pointer;
+    opacity: .5;
+}
+
 .write-review-block .send-comment .bottom-send-comment .btn-send-comment {
     background: #890000;
     margin: 5px;
@@ -247,14 +257,14 @@ cursor: pointer;
 }
 
 .write-review-block .send-comment .img-profile {
-    width: 100px;
-    height: 100%;
+    width: 50px;
+    height: 50px;
 }
 
 .write-review-block .send-comment .text-comment {
     margin-left: 20px;
-    width: 600px;
-    height: 100%;
+    width: 100%;
+    height: 70px;
 }
 
 /*.write-review-block .send-comment .btn-send-comment {*/

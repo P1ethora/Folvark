@@ -19,11 +19,14 @@ public class ProductController {
     private final DaoProductMap daoProductMap;
     private final AuthService authService;
     private final CommentService commentService;
+    private final CommentRepository commentRepository;
 
-    public ProductController(DaoProductMap daoProductMap, AuthService authService, CommentService commentService) {
+    public ProductController(DaoProductMap daoProductMap, AuthService authService, CommentService commentService,
+                             CommentRepository commentRepository) {
         this.daoProductMap = daoProductMap;
         this.authService = authService;
         this.commentService = commentService;
+        this.commentRepository = commentRepository;
     }
 
     @GetMapping("/product/{id}")
@@ -39,4 +42,16 @@ public class ProductController {
         return "product-page";
 
     }
+
+    @PostMapping("/product/{id}/addComment")
+    public @ResponseBody
+    void addComment(@PathVariable("id") String id, @RequestBody String comment) {
+        String com = comment.replace("\"", "");
+        Comment comment1 = new Comment();
+        comment1.setText(com);
+        comment1.setAttachedTo(id);
+        commentRepository.save(comment1);
+
+    }
+
 }

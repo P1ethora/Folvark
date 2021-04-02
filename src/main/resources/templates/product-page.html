@@ -14,8 +14,10 @@
           th:href="@{/assets/css/style_product-page.css}"/>
     <link rel="stylesheet" type="text/css" media="all"
           th:href="@{/assets/css/style_register-page.css}"/>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" th:src="@{/js/addEmail.js}"></script>
     <script type="text/javascript" th:src="@{/js/Search.js}"></script>
+    <script type="text/javascript" th:src="@{/js/ProductPageScript.js}"></script>
 
 </head>
 <body>
@@ -61,14 +63,16 @@
     <div class="fon-bottom-the-product">
         <div class="block1-fon-bottom-the-product">
         <div class="feedback-count">Отзывы 1</div>
-        <div class="btn-add-to-cart"><button type="submit">Добавить комментарий</button></div>
+            <div class="btn-add-to-cart">
+                <button class="add-comment" type="submit">Добавить комментарий</button>
+            </div>
     </div>
-        <div class="write-review-block">
+        <div class="write-review-block" id="wrb">
 
             <div class="send-comment">
                 <div class="top-send-comment">
                     <img class="img-profile" src="/images/unnamed.jpg">
-                    <input class="text-comment">
+                    <input class="text-comment" id="txt_com">
                 </div>
                 <div class="bottom-send-comment">
                     <div class="btn-send-cancel">Отмена</div>
