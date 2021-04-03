@@ -26,77 +26,83 @@
 
 <div class="fon-the-product">
     <div class="block-inside-fon">
-    <div class="img-the-product">
-        <img th:src="${product.getUrlPicture()}">
-    </div>
-    <div class="right-table-the-product">
-        <div th:text="${product.getName()}" class="name-product"></div>
+        <div class="img-the-product">
+            <img th:src="${product.getUrlPicture()}">
+        </div>
+        <div class="right-table-the-product">
+            <div th:text="${product.getName()}" class="name-product"></div>
 
-        <div class="rating-area">
-            <input type="radio" id="star-5" name="rating" value="5">
-            <label for="star-5" title="Оценка «5»"></label>
-            <input type="radio" id="star-4" name="rating" value="4">
-            <label for="star-4" title="Оценка «4»"></label>
-            <input type="radio" id="star-3" name="rating" value="3">
-            <label for="star-3" title="Оценка «3»"></label>
-            <input type="radio" id="star-2" name="rating" value="2">
-            <label for="star-2" title="Оценка «2»"></label>
-            <input type="radio" id="star-1" name="rating" value="1">
-            <label for="star-1" title="Оценка «1»"></label>
+            <div class="rating-area">
+                <input type="radio" id="star-5" name="rating" value="5">
+                <label for="star-5" title="Оценка «5»"></label>
+                <input type="radio" id="star-4" name="rating" value="4">
+                <label for="star-4" title="Оценка «4»"></label>
+                <input type="radio" id="star-3" name="rating" value="3">
+                <label for="star-3" title="Оценка «3»"></label>
+                <input type="radio" id="star-2" name="rating" value="2">
+                <label for="star-2" title="Оценка «2»"></label>
+                <input type="radio" id="star-1" name="rating" value="1">
+                <label for="star-1" title="Оценка «1»"></label>
 
 
-    </div>
-        <div th:text="${product.getPrice()} + ' руб'" class="price-the-product"></div>
-        <div th:text="'Маштаб: '+ ${product.getScale()}" class="product-scale"></div>
-        <div th:text="'Год: ' + ${product.getData()}" class="product-scale"></div>
-        <div th:text="'Страна: ' +${product.getCountry()}" class="product_country"></div>
-        <div th:text="'Административный центр: '+${product.getCity()}" class="product-city"></div>
-        <div th:text="'Привязка к координатам: Присутствует'" th:if="${product.coordinates}" class="product-coordinates"></div>
-        <div th:text="'Привязка к координатам: Отсутствует'" th:unless="${product.coordinates}" class="product-coordinates"></div>
+            </div>
+            <div th:text="${product.getPrice()} + ' руб'" class="price-the-product"></div>
+            <div th:text="'Маштаб: '+ ${product.getScale()}" class="product-scale"></div>
+            <div th:text="'Год: ' + ${product.getData()}" class="product-scale"></div>
+            <div th:text="'Страна: ' +${product.getCountry()}" class="product_country"></div>
+            <div th:text="'Административный центр: '+${product.getCity()}" class="product-city"></div>
+            <div th:text="'Привязка к координатам: Присутствует'" th:if="${product.coordinates}"
+                 class="product-coordinates"></div>
+            <div th:text="'Привязка к координатам: Отсутствует'" th:unless="${product.coordinates}"
+                 class="product-coordinates"></div>
 
-        <div th:text="${product.getDescription()}" class="description-the-product"></div>
+            <div th:text="${product.getDescription()}" class="description-the-product"></div>
 
-        <div class="btn-add-to-cart"><button type="submit">Добавить в корзину</button></div>
-    </div>
-    </div>
-    </div>
-    <div class="fon-bottom-the-product">
-        <div class="block1-fon-bottom-the-product">
-        <div class="feedback-count">Отзывы 1</div>
             <div class="btn-add-to-cart">
-                <button class="add-comment" type="submit">Добавить комментарий</button>
+                <button type="submit">Добавить в корзину</button>
             </div>
-    </div>
-        <div class="write-review-block" id="wrb">
-
-            <div class="send-comment">
-                <div class="top-send-comment">
-                    <img class="img-profile" src="/images/unnamed.jpg">
-                    <input class="text-comment" id="txt_com">
-                </div>
-                <div class="bottom-send-comment">
-                    <div class="btn-send-cancel">Отмена</div>
-                    <div class="btn-send-comment">Оставить отзыв</div>
-                </div>
-            </div>
-
-        </div>
-        <div class="block_with_comments">
-
-            <div th:each="comment : ${comments}" class="product-comment">
-                <img src="/images/unnamed.jpg">
-                <div class="comment-block">
-                    <div class="top-comment">
-                        <div class="comment-name">Отец петрович</div>
-<div class="comment-data">23.01.2021, 0:49</div>
-                    </div>
-                    <div class="comment-text" th:text="${comment.getText()}"></div>
-                    <div class="comment-answer"><button>Ответить</button></div>
-            </div>
-            </div>
-
         </div>
     </div>
+</div>
+<div class="fon-bottom-the-product">
+    <div class="block1-fon-bottom-the-product">
+        <div class="feedback-count">Отзывы 1</div>
+        <div class="btn-add-to-cart">
+            <button class="add-comment" type="submit">Добавить комментарий</button>
+        </div>
+    </div>
+    <div class="write-review-block" id="wrb">
+
+        <div class="send-comment">
+            <div class="top-send-comment">
+                <img class="img-profile" src="/images/unnamed.jpg">
+                <input class="text-comment" id="txt_com">
+            </div>
+            <div class="bottom-send-comment">
+                <div class="btn-send-cancel">Отмена</div>
+                <div class="btn-send-comment">Оставить отзыв</div>
+            </div>
+        </div>
+
+    </div>
+    <div class="block_with_comments">
+
+        <div th:each="comment : ${comments}" class="product-comment">
+            <img class="photo-user" src="/images/unnamed.jpg">
+            <div class="comment-block">
+                <div class="top-comment">
+                    <div class="comment-name" id="name_user">Отец петрович</div>
+                    <div class="comment-data">23.01.2021, 0:49</div>
+                </div>
+                <div class="comment-text" th:text="${comment.getText()}"></div>
+                <div class="comment-answer">
+                    <button class="reply-to-comment" onclick="answerToComment(this)">Ответить</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 <footer th:insert="blocks/footer :: footer"></footer>
 
