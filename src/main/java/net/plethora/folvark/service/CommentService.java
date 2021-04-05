@@ -2,6 +2,7 @@ package net.plethora.folvark.service;
 
 import net.plethora.folvark.dao.repo.CommentRepository;
 import net.plethora.folvark.models.Comment;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +16,15 @@ public class CommentService {
         this.commentRepository = commentRepository;
     }
 
-    public List<Comment> getCommentsFromElement(String idElement) {
+//    public List<Comment> getCommentsFromElement(String idElement) {
+//
+//        return commentRepository.findByAttachedTo(idElement);
+//    }
 
-        return commentRepository.findByAttachedTo(idElement);
+    public List<Comment> getCommentsFromElementDESC(String idElement) {
+
+        Sort sort = Sort.by(Sort.Direction.DESC, "id");
+        return commentRepository.findByAttachedTo(idElement, sort);
     }
+
 }

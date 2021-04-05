@@ -87,7 +87,7 @@
     </div>
     <div class="block_with_comments">
 
-        <div th:each="comment : ${comments}" class="product-comment">
+        <div th:each="comment : ${comments}" class="product-comment" th:id="${comment.getId()}">
             <img class="photo-user" src="/images/unnamed.jpg">
             <div class="comment-block">
                 <div class="top-comment">

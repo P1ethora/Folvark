@@ -38,7 +38,7 @@ public class ProductController {
         ProductMap product = daoProductMap.findById(id);
         model.addAttribute("product", product);
         model.addAttribute("countProducts", countProduct);
-        model.addAttribute("comments", commentService.getCommentsFromElement(id));
+        model.addAttribute("comments", commentService.getCommentsFromElementDESC(id));
         return "product-page";
 
     }

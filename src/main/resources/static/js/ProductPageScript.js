@@ -5,6 +5,11 @@ $(function () {
     });
 });
 
+function cancelReplyComment() {
+    const el = document.getElementById('wrb1');
+    el.remove();
+}
+
 $(function () {
     const el = document.getElementById('wrb');
     $(".btn-send-cancel").click(function () {
@@ -76,17 +81,49 @@ $(function () {
 function answerToComment(button) {
 
     let blockWithComments = document.getElementsByClassName('block_with_comments').item(0);
-    const that = $(button).closest('.product-comment');
-
+    let that = $(button).closest('.product-comment');
     console.log(that);
 
+    if (blockWithComments.getElementsByClassName('send-comment').item(0) != null) {
+        blockWithComments.getElementsByClassName('send-comment').item(0).remove();
+    }
 
-    // let commentNameUser = that.getElementsByClassName('comment-name').item(0);
+    let sendComments = document.createElement('div');
+    sendComments.className = 'send-comment';
+    sendComments.id = 'wrb1';
 
-    let el = document.createElement('div');
-    el.innerHTML = 'ТУТ';
+    let topSendComment = document.createElement('div');
+    topSendComment.className = 'top-send-comment';
 
-    blockWithComments.insertBefore(el, that);
+    let imgProfile = document.createElement('img');
+    imgProfile.className = 'imgProfile';
+
+    let textComment = document.createElement('input');
+    textComment.className = 'text-comment';
+
+    let bottomSendComment = document.createElement('div');
+    bottomSendComment.className = 'bottom-send-comment';
+
+    let btnSendCancel = document.createElement('div');
+    btnSendCancel.className = 'btn-send-cancel';
+    btnSendCancel.innerHTML = 'Отмена';
+    btnSendCancel.setAttribute('onclick', 'cancelReplyComment()');
+
+
+    let btnSendComment = document.createElement('div');
+    btnSendComment.className = 'btn-send-comment';
+    btnSendComment.innerHTML = 'Оставить отзыв';
+
+    topSendComment.appendChild(imgProfile);
+    topSendComment.appendChild(textComment);
+
+    bottomSendComment.appendChild(btnSendCancel);
+    bottomSendComment.appendChild(btnSendComment);
+
+    sendComments.appendChild(topSendComment);
+    sendComments.appendChild(bottomSendComment);
+
+    blockWithComments.insertBefore(sendComments, document.getElementById($(that).attr("id")).nextSibling);
 
     // let valueComment = commentNameUser.value;
 
