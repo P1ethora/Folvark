@@ -82,7 +82,6 @@ function answerToComment(button) {
 
     let blockWithComments = document.getElementsByClassName('block_with_comments').item(0);
     let that = $(button).closest('.product-comment');
-    console.log(that);
 
     if (blockWithComments.getElementsByClassName('send-comment').item(0) != null) {
         blockWithComments.getElementsByClassName('send-comment').item(0).remove();
@@ -91,6 +90,7 @@ function answerToComment(button) {
     let sendComments = document.createElement('div');
     sendComments.className = 'send-comment';
     sendComments.id = 'wrb1';
+    sendComments.setAttribute('parent', that.attr('id'));
 
     let topSendComment = document.createElement('div');
     topSendComment.className = 'top-send-comment';
@@ -100,6 +100,7 @@ function answerToComment(button) {
 
     let textComment = document.createElement('input');
     textComment.className = 'text-comment';
+    textComment.id = 'txt-comment-reply';
 
     let bottomSendComment = document.createElement('div');
     bottomSendComment.className = 'bottom-send-comment';
@@ -113,6 +114,7 @@ function answerToComment(button) {
     let btnSendComment = document.createElement('div');
     btnSendComment.className = 'btn-send-comment';
     btnSendComment.innerHTML = 'Оставить отзыв';
+    btnSendComment.setAttribute('onclick', "sendReplyComment(this)");
 
     topSendComment.appendChild(imgProfile);
     topSendComment.appendChild(textComment);
@@ -136,3 +138,74 @@ function answerToComment(button) {
     // });
 
 }
+
+
+function sendReplyComment(button) {
+    // let blockWithComments = document.getElementsByClassName('block_with_comments').item(0);
+    let that = $(button).closest('.send-comment');
+    let url = document.location.href;
+    let commentFromReply = document.getElementById($(that).attr('parent'));
+
+    let list = commentFromReply.getElementsByClassName('reply_block').item(0);
+
+    // let response = fetch(url + '/addComment', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json;charset=utf-8'
+    //     },
+    //     body: JSON.stringify(document.getElementById("txt-comment-reply").value)
+    // });
+
+    let productComment = document.createElement('div');
+    let imgComment = document.createElement('img');
+
+
+    let commentBlock = document.createElement('div');
+    let topComment = document.createElement('div');
+    let commentName = document.createElement('div');
+    let commentData = document.createElement('div');
+
+    let commentText = document.createElement('div');
+
+    let commentAnswer = document.createElement('div');
+    let buttonReply = document.createElement('button');
+
+
+    productComment.className = 'product-comment';
+    imgComment.className = 'photo-user';
+    commentBlock.className = 'comment-block';
+    topComment.className = 'top-comment';
+    commentName.className = 'comment-name';
+    commentData.className = 'comment-data';
+    commentText.className = 'comment-text';
+    commentAnswer.className = 'comment-answer';
+    buttonReply.className = 'reply-to-comment';
+
+    buttonReply.innerHTML = 'Ответить';
+    // commentText.innerHTML = commentFromReply.getElementsByClassName("text-comment").item(0).value;
+    commentText.innerHTML = document.getElementById('txt-comment-reply').value;
+
+    topComment.appendChild(commentName);
+    topComment.appendChild(commentData);
+
+    commentBlock.appendChild(topComment);
+    commentBlock.appendChild(commentText);
+
+    commentAnswer.appendChild(buttonReply);
+
+    commentBlock.appendChild(commentAnswer);
+
+    productComment.appendChild(imgComment);
+    productComment.appendChild(commentBlock);
+
+    list.appendChild(productComment)
+
+}
+
+function openListReply(button) {
+    let that = $(button).closest('.product-comment');
+    let list = document.getElementById($(that).attr('id')).getElementsByClassName('reply_block').item(0);
+
+    list.style.display = 'flex';
+}
+

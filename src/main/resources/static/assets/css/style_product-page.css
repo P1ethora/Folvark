@@ -168,6 +168,7 @@ cursor: pointer;
 .fon-bottom-the-product .block_with_comments .product-comment {
     margin: 20px;
     display: flex;
+    flex-direction: column;
 }
 
 .fon-bottom-the-product .block_with_comments .product-comment img{
@@ -291,4 +292,19 @@ cursor: pointer;
     width: 100%;
     margin-top: 5px;
     display: flex;
+}
+
+.reply_block {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #76c8ff;
+}
+
+.top_element_comment {
+    display: flex;
+}
+
+.open_reply {
+    margin-left: 100px;
 }
