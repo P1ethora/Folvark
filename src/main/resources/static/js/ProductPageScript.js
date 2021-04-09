@@ -29,6 +29,7 @@ $(function () {
             body: JSON.stringify(document.getElementById("txt_com").value)
         });
 
+        let topElementComment = document.createElement('div');
         let productComment = document.createElement('div');
         let imgComment = document.createElement('img');
 
@@ -43,7 +44,7 @@ $(function () {
         let commentAnswer = document.createElement('div');
         let buttonReply = document.createElement('button');
 
-
+        topElementComment.className = 'top_element_comment';
         productComment.className = 'product-comment';
         imgComment.className = 'photo-user';
         commentBlock.className = 'comment-block';
@@ -67,23 +68,25 @@ $(function () {
 
         commentBlock.appendChild(commentAnswer);
 
-        productComment.appendChild(imgComment);
-        productComment.appendChild(commentBlock);
+        topElementComment.appendChild(commentBlock);
+        topElementComment.appendChild(imgComment);
 
-        // let blockWithComments = document.getElementsByClassName('block_with_comments').item(0);
-        //
-        // blockWithComments.appendChild(productComment);
+        productComment.appendChild(topElementComment);
+
         $(".block_with_comments").prepend(productComment);
+        document.getElementById('wrb').remove();
 
     });
 });
 
 function answerToComment(button) {
 
+    let blockWithComments = document.getElementsByClassName('block_with_comments').item(0);
     let that = button.closest('.product-comment');
+    let list = that.getElementsByClassName('reply_block').item(0);
 
-    if (document.getElementsByClassName('send-comment').item(0) != null) {
-        document.getElementsByClassName('send-comment').item(0).remove();
+    if (blockWithComments.getElementsByClassName('send-comment').item(0) != null) {
+        blockWithComments.getElementsByClassName('send-comment').item(0).remove();
     }
 
     let sendComments = document.createElement('div');
@@ -144,9 +147,6 @@ function sendReplyComment(button) {
     let that = button.closest('.send-comment');
     let comment = that.closest('.product-comment');
     let url = document.location.href;
-    // let commentFromReply = document.getElementById($(that).attr('parent'));
-
-    let replyList = comment.getElementsByClassName('reply_block').item(0);
 
     // let response = fetch(url + '/addComment', {
     //     method: 'POST',
@@ -157,6 +157,7 @@ function sendReplyComment(button) {
     // });
 
     let productComment = document.createElement('div');
+    let replyToCommentBlock = document.createElement('div');
     let imgComment = document.createElement('img');
 
 
@@ -172,6 +173,7 @@ function sendReplyComment(button) {
 
 
     productComment.className = 'reply-to-comment';
+    replyToCommentBlock.className = 'reply-to-comment-block';
     imgComment.className = 'reply-photo-user';
     commentBlock.className = 'reply-comment-block';
     topComment.className = 'reply-top-comment';
@@ -196,30 +198,50 @@ function sendReplyComment(button) {
 
     commentBlock.appendChild(commentAnswer);
 
-    productComment.appendChild(imgComment);
-    productComment.appendChild(commentBlock);
+    replyToCommentBlock.appendChild(imgComment);
+    replyToCommentBlock.appendChild(commentBlock);
 
-    replyList.appendChild(productComment);
+    productComment.appendChild(replyToCommentBlock);
+
     that.remove();
-    replyList.style.display = 'flex';
-
+    comment.appendChild(productComment);
 }
 
 function openListReply(button) {
     let that = button.closest('.product-comment');
     let list = that.getElementsByClassName('reply_block').item(0);
+
+    button.setAttribute('onclick', 'closeListReply(this)');
+    button.innerHTML = 'Скрыть';
+
+    for (let el of that.children) {
+        if (el.className === 'reply-to-comment') {
+            list.appendChild(el);
+        }
+    }
     list.style.display = 'flex';
+
 }
 
 function closeListReply(button) {
     let that = button.closest('.product-comment');
     let list = that.getElementsByClassName('reply_block').item(0);
     list.style.display = 'none';
+
+    button.setAttribute('onclick', 'openListReply(this)');
+    button.innerHTML = 'Показать 9 ответов';
+
+    for (let el of that.children) {
+        if (el.className === 'reply-to-comment') {
+            el.style.display = ''
+        }
+    }
 }
 
 function replyToReply(button) {
-    if (document.getElementsByClassName('send-comment').item(0) != null) {
-        document.getElementsByClassName('send-comment').item(0).remove();
+    let blockWithComments = document.getElementsByClassName('block_with_comments').item(0);
+    if (blockWithComments.getElementsByClassName('send-comment').item(0) != null) {
+        blockWithComments.getElementsByClassName('send-comment').item(0).remove();
     }
     let that = button.closest('.reply-to-comment');
 

@@ -307,19 +307,25 @@ cursor: pointer;
 .reply-to-comment {
     margin: 20px 20px 20px 120px;
     display: flex;
+    flex-direction: column;
 }
 
-.reply-to-comment img {
+.reply-to-comment .reply-to-comment-block {
+    width: 100%;
+    display: flex;
+}
+
+.reply-to-comment .reply-to-comment-block img {
     height: 60px;
 }
 
-.reply-to-comment .reply-comment-block {
+.reply-to-comment .reply-to-comment-block .reply-comment-block {
     width: 100%;
     margin-left: 30px;
     background: #fbfbfb;
 }
 
-.reply-to-comment .reply-comment-block .reply-top-comment {
+.reply-to-comment .reply-to-comment-block .reply-comment-block .reply-top-comment {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -327,17 +333,17 @@ cursor: pointer;
     padding: 10px;
 }
 
-.reply-to-comment .reply-comment-block .reply-top-comment .reply-comment-name {
+.reply-to-comment .reply-to-comment-block .reply-comment-block .reply-top-comment .reply-comment-name {
     font-size: 18px;
     font-weight: 600;
 }
 
-.reply-to-comment .reply-comment-block .reply-comment-text {
+.reply-to-comment .reply-to-comment-block .reply-comment-block .reply-comment-text {
     margin: 10px;
     font-size: 14px;
 }
 
-.reply-to-comment .reply-comment-block .reply-comment-answer {
+.reply-to-comment .reply-to-comment-block .reply-comment-block .reply-comment-answer {
     width: 100%;
     display: flex;
     flex-direction: column;
