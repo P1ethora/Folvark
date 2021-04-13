@@ -214,11 +214,10 @@ function openListReply(button) {
     button.setAttribute('onclick', 'closeListReply(this)');
     button.innerHTML = 'Скрыть';
 
-    for (let el of that.children) {
-        if (el.className === 'reply-to-comment') {
+        for (let el of that.getElementsByClassName('reply-to-comment')) {
             list.appendChild(el);
         }
-    }
+
     list.style.display = 'flex';
 
 }
@@ -273,6 +272,7 @@ function replyToReply(button) {
     let btnSendComment = document.createElement('div');
     btnSendComment.className = 'btn-send-comment';
     btnSendComment.innerHTML = 'Оставить отзыв';
+    btnSendComment.setAttribute('onclick','sendReplyToReply(this)')
     // btnSendComment.setAttribute('onclick', "sendReplyComment(this)");
 
 
@@ -286,5 +286,61 @@ function replyToReply(button) {
     sendComments.appendChild(bottomSendComment);
 
     that.appendChild(sendComments);
+
+}
+
+function sendReplyToReply(button) {
+
+    let that = button.closest('.send-comment');
+    let comment = that.closest('.product-comment')
+
+    let productComment = document.createElement('div');
+    let replyToCommentBlock = document.createElement('div');
+    let imgComment = document.createElement('img');
+
+
+    let commentBlock = document.createElement('div');
+    let topComment = document.createElement('div');
+    let commentName = document.createElement('div');
+    let commentData = document.createElement('div');
+
+    let commentText = document.createElement('div');
+
+    let commentAnswer = document.createElement('div');
+    let buttonReply = document.createElement('button');
+
+    productComment.className = 'reply-to-comment';
+    replyToCommentBlock.className = 'reply-to-comment-block';
+    imgComment.className = 'reply-photo-user';
+    commentBlock.className = 'reply-comment-block';
+    topComment.className = 'reply-top-comment';
+    commentName.className = 'reply-comment-name';
+    commentData.className = 'reply-comment-data';
+    commentText.className = 'reply-comment-text';
+    commentAnswer.className = 'reply-comment-answer';
+    buttonReply.className = 'btn-reply-comment';
+
+    buttonReply.innerHTML = 'Ответить';
+    buttonReply.setAttribute('onclick', "replyToReply(this)");
+    // commentText.innerHTML = commentFromReply.getElementsByClassName("text-comment").item(0).value;
+    commentText.innerHTML = document.getElementById('txt-comment-reply').value;
+
+    topComment.appendChild(commentName);
+    topComment.appendChild(commentData);
+
+    commentBlock.appendChild(topComment);
+    commentBlock.appendChild(commentText);
+
+    commentAnswer.appendChild(buttonReply);
+
+    commentBlock.appendChild(commentAnswer);
+
+    replyToCommentBlock.appendChild(imgComment);
+    replyToCommentBlock.appendChild(commentBlock);
+
+    productComment.appendChild(replyToCommentBlock);
+
+    that.remove();
+    comment.appendChild(productComment);
 
 }
