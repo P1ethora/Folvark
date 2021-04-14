@@ -1,6 +1,7 @@
 package net.plethora.folvark.controller;
 
 import net.plethora.folvark.dao.DaoProductMap;
+import net.plethora.folvark.models.ProductMap;
 import net.plethora.folvark.service.ConverterJsonService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +13,9 @@ public class SearchController {
 
     private final DaoProductMap daoProductMap;
     //    private DaoNewsPortal daoNewsPortal;
-    private final ConverterJsonService converterJsonService;
+    private final ConverterJsonService<ProductMap> converterJsonService;
 
-    public SearchController(DaoProductMap daoProductMap, ConverterJsonService converterJsonService) {
+    public SearchController(DaoProductMap daoProductMap, ConverterJsonService<ProductMap> converterJsonService) {
         this.daoProductMap = daoProductMap;
         this.converterJsonService = converterJsonService;
     }

@@ -40,7 +40,10 @@ public class AuthService {
         if (getAuthUser() == null) {
             return cartService.getCart(httpSession).getIdMaps().length;
         } else {
-            return cartService.getCart(getAuthUser().getIdCart()).getIdMaps().length;
+            String[] idMaps = cartService.getCart(getAuthUser().getIdCart()).getIdMaps();
+            if(idMaps == null){
+                return 0;
+            } else return idMaps.length;
         }
     }
 

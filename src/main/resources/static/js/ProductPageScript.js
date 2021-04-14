@@ -156,6 +156,18 @@ function sendReplyComment(button) {
     //     body: JSON.stringify(document.getElementById("txt-comment-reply").value)
     // });
 
+    fetch(url + '/addReplyToComment', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(document.getElementById('txt-comment-reply').value)
+    }).then((result) => {
+        return result.json();
+    }).then((res) => {
+        if (res !== null) {
+            let obj = JSON.parse(res);
+
     let productComment = document.createElement('div');
     let replyToCommentBlock = document.createElement('div');
     let imgComment = document.createElement('img');
@@ -178,7 +190,9 @@ function sendReplyComment(button) {
     commentBlock.className = 'reply-comment-block';
     topComment.className = 'reply-top-comment';
     commentName.className = 'reply-comment-name';
+    commentName.innerHTML = obj.name;
     commentData.className = 'reply-comment-data';
+    commentData.innerHTML = obj.date;
     commentText.className = 'reply-comment-text';
     commentAnswer.className = 'reply-comment-answer';
     buttonReply.className = 'btn-reply-comment';
@@ -205,6 +219,8 @@ function sendReplyComment(button) {
 
     that.remove();
     comment.appendChild(productComment);
+        }
+    });
 }
 
 function openListReply(button) {

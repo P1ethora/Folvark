@@ -5,16 +5,14 @@
     font-weight: normal;
 }
 
-
-
 @font-face {
-    font-family: 'A_La_Russ';
+    font-family: 'A La Russ';
     src: url('fonts/ALaRuss.eot');
     src: local('A La Russ'), local('ALaRuss'),
     url('fonts/ALaRuss.eot?#iefix') format('embedded-opentype'),
     url('fonts/ALaRuss.woff') format('woff'),
     url('fonts/ALaRuss.ttf') format('truetype');
-    font-weight: 500;
+    font-weight: 400;
     font-style: normal;
 }
 
@@ -29,7 +27,7 @@
 .head{
     padding-bottom: 10px;
     letter-spacing: .05em;
-    font-family: 'A_La_Russ', sans-serif;
+    font-family: 'TriodPostnaja', sans-serif;
     position: relative;
     text-transform: none;
     text-align: center;
