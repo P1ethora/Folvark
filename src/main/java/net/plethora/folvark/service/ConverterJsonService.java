@@ -6,6 +6,7 @@ import net.plethora.folvark.models.ProductMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -19,7 +20,9 @@ public class ConverterJsonService <T> {
 
     @SneakyThrows
     public String toJSON(T object) {
-        return mapper.writeValueAsString(object);
+        String ii =  mapper.writeValueAsString(object);
+        System.out.println(ii);
+        return ii;
     }
 
     @SneakyThrows

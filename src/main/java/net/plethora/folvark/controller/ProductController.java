@@ -63,6 +63,7 @@ public class ProductController {
     @PostMapping("/product/{id}/addReplyToComment")
     public @ResponseBody String addReplyToComment(@PathVariable("id") String id, @RequestBody String replyComment){
        System.out.println("Старт");
+       System.out.println(replyComment);
         User user = authService.getAuthUser();
         CommentData commentData = new CommentData();
         commentData.setName(user.getFirstName() + " " + user.getLastName());
