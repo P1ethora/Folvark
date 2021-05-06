@@ -156,12 +156,18 @@ function sendReplyComment(button) {
     //     body: JSON.stringify(document.getElementById("txt-comment-reply").value)
     // });
 
+    let data = {
+        id: that.getAttribute('parent'),
+        text: document.getElementById('txt-comment-reply').value,
+        idResponseTo: that.getAttribute('parent'),
+    };
+
     fetch(url + '/addReplyToComment', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify(document.getElementById('txt-comment-reply').value)
+        body: JSON.stringify(data)
     }).then((result) => {
         return result.json();
     }).then((res) => {

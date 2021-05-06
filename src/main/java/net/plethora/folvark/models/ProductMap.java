@@ -7,6 +7,9 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @Document("productMap")
@@ -45,8 +48,8 @@ public class ProductMap {
     private int views; //количество просмотров
     @JsonIgnore
     private String category; //категория товара
-
-    private String idComments;
+    @JsonIgnore
+    private String idComment;
 
     public ProductMap() {
     }

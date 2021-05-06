@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -61,13 +62,23 @@ public class ProductController {
     }
 
     @PostMapping("/product/{id}/addReplyToComment")
-    public @ResponseBody String addReplyToComment(@PathVariable("id") String id, @RequestBody String replyComment){
-       System.out.println("Старт");
-       System.out.println(replyComment);
+    public @ResponseBody String addReplyToComment(@PathVariable("id") String id, @RequestBody String json){
+
         User user = authService.getAuthUser();
+
         CommentData commentData = new CommentData();
         commentData.setName(user.getFirstName() + " " + user.getLastName());
         commentData.setDate(new Date());
+
+        Comment comment = converterJsonService.formJSON(json);
+        comment.setIdUser(authService.getAuthUser().getId());
+        comment.setAttachedTo(id);
+        comment.setDate(new Date());
+
+//        commentService.getComment(comment.)
+
+        SimpleDateFormat formater = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+
        return converterJsonService.toJSON(commentData);
 
     }

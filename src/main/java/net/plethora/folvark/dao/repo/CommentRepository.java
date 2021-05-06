@@ -11,7 +11,6 @@ import java.util.List;
 public interface CommentRepository extends MongoRepository<Comment, String> {
 
     List<Comment> findByAttachedTo(String idElement);
-
     List<Comment> findByAttachedTo(String idElement, Sort sort);
 
 

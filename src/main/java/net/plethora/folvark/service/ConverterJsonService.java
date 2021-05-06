@@ -2,6 +2,7 @@ package net.plethora.folvark.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
+import net.plethora.folvark.models.Comment;
 import net.plethora.folvark.models.ProductMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class ConverterJsonService <T> {
+public class ConverterJsonService<T> {
 
     private final ObjectMapper mapper;
 
@@ -20,7 +21,7 @@ public class ConverterJsonService <T> {
 
     @SneakyThrows
     public String toJSON(T object) {
-        String ii =  mapper.writeValueAsString(object);
+        String ii = mapper.writeValueAsString(object);
         System.out.println(ii);
         return ii;
     }
@@ -34,5 +35,10 @@ public class ConverterJsonService <T> {
             string[i] = mapper.writeValueAsString(object);
         }
         return string;
+    }
+
+    @SneakyThrows
+    public Comment formJSON(String json) {
+        return mapper.readValue(json, Comment.class);
     }
 }
