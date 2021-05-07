@@ -41,7 +41,7 @@ public class AuthService {
             return cartService.getCart(httpSession).getIdMaps().length;
         } else {
             String[] idMaps = cartService.getCart(getAuthUser().getIdCart()).getIdMaps();
-            if(idMaps == null){
+            if (idMaps == null) {
                 return 0;
             } else return idMaps.length;
         }

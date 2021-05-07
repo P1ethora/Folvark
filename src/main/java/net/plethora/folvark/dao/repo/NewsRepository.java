@@ -1,13 +1,11 @@
 package net.plethora.folvark.dao.repo;
 
 import net.plethora.folvark.models.PortalNews;
-import net.plethora.folvark.models.ProductMap;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 

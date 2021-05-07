@@ -1,6 +1,4 @@
 
-
-
 .cart-fon {
     position: relative;
     margin: 80px 100px;
@@ -20,7 +18,7 @@
 
 .cart-fon .table-cart .cart-row {
     height: 100%;
-    width:100%;
+    width: 100%;
 }
 
 .cart-fon .table-cart .right-panel {
@@ -112,7 +110,7 @@
     height: 200px;
     flex-direction: row;
     align-items: center;
-   justify-content: center;
+    justify-content: center;
     border-bottom: 1px solid #d9d9d9;
     padding: 20px;
 }
@@ -160,7 +158,7 @@
     color: red;
 }
 
-.cart-fon .table-cart .table-cart-head>div:last-child {
+.cart-fon .table-cart .table-cart-head > div:last-child {
     width: 20%;
 }
 
@@ -180,5 +178,5 @@
 .cart-fon .table-cart .right-panel .btn-buy a:hover {
     transform: scale(1.02);
     z-index: 10;
-    box-shadow: 0 0 10px rgba(0,0,0,.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
 }

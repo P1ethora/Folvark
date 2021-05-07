@@ -1,48 +1,48 @@
 @font-face {
-font-family: "TriodPostnaja";
-src: url("/fonts/TriodPostnaja.ttf") format("truetype");
-font-style: normal;
-font-weight: normal;
+    font-family: "TriodPostnaja";
+    src: url("/fonts/TriodPostnaja.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
 }
 
 @font-face {
-font-family: "Ponter";
-src: url("/fonts/Ponter.ttf") format("truetype");
-font-style: normal;
-font-weight: normal;
+    font-family: "Ponter";
+    src: url("/fonts/Ponter.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
 }
 
 @font-face {
-  font-family: "Oswald";
-  src: url("/fonts/Oswald.ttf") format("truetype");
-  font-style: normal;
-  font-weight: normal;
+    font-family: "Oswald";
+    src: url("/fonts/Oswald.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-  text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
 }
 
 .top_nav {
-  width: 100%;
-  margin: auto;
-  height: 60px;
-  background: #1a181b;
-  padding: 10px 10px 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    width: 100%;
+    margin: auto;
+    height: 60px;
+    background: #1a181b;
+    padding: 10px 10px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .top_nav .left {
     width: 100%;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 .top_nav .left img {
@@ -50,32 +50,32 @@ font-weight: normal;
 }
 
 .top_nav .left .logo a {
-  display: flex;
-  flex-direction: column;
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-  margin-left: 10px;
-  margin-right: 20px;
-  font-family: 'TriodPostnaja' ,sans-serif;
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin-left: 10px;
+    margin-right: 20px;
+    font-family: 'TriodPostnaja', sans-serif;
 }
 
 .top_nav .left .logo {
-  margin-left: 20px;
+    margin-left: 20px;
 }
 
 .top_nav .left .logo a span {
-  color: white;
-  font-family: 'TriodPostnaja' ,sans-serif;
+    color: white;
+    font-family: 'TriodPostnaja', sans-serif;
 }
 
 .search-form {
     position: relative;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .top_nav .left .search-form {
@@ -121,16 +121,16 @@ font-weight: normal;
     width: 100%;
     padding: 10px 60px 10px 40px;
     font-size: 16px;
-  color: #1a181b;
-  font-weight: 700;
-  outline: none;
+    color: #1a181b;
+    font-weight: 700;
+    outline: none;
     border-radius: 10px;
     min-width: 300px;
-  border: 1px solid white;
+    border: 1px solid white;
 }
 
-.btn_area:hover{
-  text-decoration-line: underline;
+.btn_area:hover {
+    text-decoration-line: underline;
 }
 
 .top_nav .left .search-form .block-ser-butt input[type="text"]:hover {
@@ -142,52 +142,52 @@ font-weight: normal;
 }
 
 .top_nav .left .search-form .btn_area:hover {
-  box-shadow: 8px 0 25px #890000;
+    box-shadow: 8px 0 25px #890000;
 }
 
 .top_nav .right ul {
-  display: flex;
+    display: flex;
 }
 
 .top_nav .right ul li {
-  margin: 0 15px;
+    margin: 0 15px;
 }
 
 .top_nav .right ul li a {
-  font-family: 'TriodPostnaja' ,sans-serif;
-  font-size: 20px;
-  display: block;
-  padding: 8px 10px;
-  color: white;
+    font-family: 'TriodPostnaja', sans-serif;
+    font-size: 20px;
+    display: block;
+    padding: 8px 10px;
+    color: white;
 }
 
 .top_nav .right ul li a:after {
-  display: block; /*превращаем его в блочный элемент*/
-  content: ""; /*контента в данном блоке не будет поэтому в кавычках ничего не ставим*/
-  height: 1px; /*задаём высоту линии*/
-  width: 0; /*задаём начальную ширину элемента (линии)*/
-  background-color: white; /*цвет фона элемента*/
-  transition: width 0.3s ease-in-out; /*данное свойство отвечает за плавное изменение ширины. Здесь можно задать время анимации в секундах (в данном случае задано 0.4 секунды)*/
-  }
+    display: block; /*превращаем его в блочный элемент*/
+    content: ""; /*контента в данном блоке не будет поэтому в кавычках ничего не ставим*/
+    height: 1px; /*задаём высоту линии*/
+    width: 0; /*задаём начальную ширину элемента (линии)*/
+    background-color: white; /*цвет фона элемента*/
+    transition: width 0.3s ease-in-out; /*данное свойство отвечает за плавное изменение ширины. Здесь можно задать время анимации в секундах (в данном случае задано 0.4 секунды)*/
+}
 
 .top_nav .right ul li a:hover:after {
-  width: 100%;
+    width: 100%;
 }
 
 .top_nav .right ul li:last-child {
-  display: flex;
+    display: flex;
 }
 
 .top_nav .right ul li:last-child .counterPr {
-  height: 25px;
-  width: 25px;
-  color: white;
-  background: #1a181b;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #890000;
+    height: 25px;
+    width: 25px;
+    color: white;
+    background: #1a181b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #890000;
 
 }
 
@@ -197,35 +197,35 @@ font-weight: normal;
 
 .bottom_nav {
     min-width: 1000px;
-  width: 100%;
-  background: #1a181b;
-  box-shadow:  0 5px 5px -5px #890000;
-  height: 60px;
-  padding: 0 50px;
-  border-bottom: 1px solid #890000;
+    width: 100%;
+    background: #1a181b;
+    box-shadow: 0 5px 5px -5px #890000;
+    height: 60px;
+    padding: 0 50px;
+    border-bottom: 1px solid #890000;
 }
 
-.bottom_nav ul{
-  padding-right: 120px;
-  padding-left: 120px;
-  width: 100%;
-  height: 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.bottom_nav ul {
+    padding-right: 120px;
+    padding-left: 120px;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.bottom_nav ul li a{
-  text-shadow: #890000;
-  color: white;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-size: 16px;
-  font-family: 'Oswald', sans-serif;
+.bottom_nav ul li a {
+    text-shadow: #890000;
+    color: white;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
 }
 
 .bottom_nav ul li a:hover {
-  border-bottom: 1px solid white;
+    border-bottom: 1px solid white;
 }
 
 .top_nav .left .search-form .block-list-search {

@@ -4,6 +4,7 @@ import net.plethora.folvark.dao.DaoProductMap;
 import net.plethora.folvark.dao.repo.CommentRepository;
 import net.plethora.folvark.models.Comment;
 import net.plethora.folvark.models.ProductMap;
+import net.plethora.folvark.models.Reply;
 import net.plethora.folvark.models.User;
 import net.plethora.folvark.models.system.CommentData;
 import net.plethora.folvark.service.AuthService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -28,7 +30,7 @@ public class ProductController {
     private final ConverterJsonService<CommentData> converterJsonService;
 
     public ProductController(DaoProductMap daoProductMap, AuthService authService, CommentService commentService,
-                             CommentRepository commentRepository,ConverterJsonService<CommentData> converterJsonService) {
+                             CommentRepository commentRepository, ConverterJsonService<CommentData> converterJsonService) {
         this.daoProductMap = daoProductMap;
         this.authService = authService;
         this.commentService = commentService;
@@ -57,29 +59,36 @@ public class ProductController {
         Comment comment1 = new Comment();
         comment1.setText(com);
         comment1.setAttachedTo(id);
+        comment1.setAnswers(new ArrayList<>());
         commentRepository.save(comment1);
 
     }
 
     @PostMapping("/product/{id}/addReplyToComment")
-    public @ResponseBody String addReplyToComment(@PathVariable("id") String id, @RequestBody String json){
-
+    public @ResponseBody
+    String addReplyToComment(@PathVariable("id") String id, @RequestBody String json) {
+        SimpleDateFormat formater = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         User user = authService.getAuthUser();
-
+        Date date = new Date();
         CommentData commentData = new CommentData();
         commentData.setName(user.getFirstName() + " " + user.getLastName());
-        commentData.setDate(new Date());
+        commentData.setDate(formater.format(date));
 
-        Comment comment = converterJsonService.formJSON(json);
-        comment.setIdUser(authService.getAuthUser().getId());
-        comment.setAttachedTo(id);
-        comment.setDate(new Date());
+        Reply reply = converterJsonService.formJSON(json);
+        reply.setIdUser(authService.getAuthUser().getId());
+        reply.setDate(date);
+
+        Comment comment = commentService.getComment(reply.getIdComment());
+        System.out.println(comment);
+reply.setId(comment.getAnswers().size() + 1);
+        comment.getAnswers().add(reply);
+
+        commentService.saveComment(comment);
 
 //        commentService.getComment(comment.)
 
-        SimpleDateFormat formater = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
-       return converterJsonService.toJSON(commentData);
+        return converterJsonService.toJSON(commentData);
 
     }
 }

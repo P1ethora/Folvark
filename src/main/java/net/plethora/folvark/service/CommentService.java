@@ -22,12 +22,16 @@ public class CommentService {
 //    }
 
     public Comment getComment(String id) {
-       return commentRepository.findById(id).orElse(null);
+        return commentRepository.findById(id).orElse(null);
     }
 
     public List<Comment> getCommentsFromElementDESC(String idElement) {
         Sort sort = Sort.by(Sort.Direction.DESC, "id");
         return commentRepository.findByAttachedTo(idElement, sort);
+    }
+
+    public void saveComment(Comment comment) {
+        commentRepository.save(comment);
     }
 
 }

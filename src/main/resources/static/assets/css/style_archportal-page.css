@@ -24,7 +24,7 @@
 }
 
 
-.head{
+.head {
     padding-bottom: 10px;
     letter-spacing: .05em;
     font-family: 'TriodPostnaja', sans-serif;
@@ -62,7 +62,6 @@
 }
 
 
-
 .undhead {
     font-family: 'Ponter', sans-serif;
     letter-spacing: normal;
@@ -89,15 +88,15 @@
 }
 
 .el-img:hover {
-    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
 
-.el-img a{
+.el-img a {
     display: inline-block;
     overflow: hidden;
 }
 
-.el-img img{
+.el-img img {
     display: block;
     width: 100%;
     height: auto;
@@ -126,16 +125,16 @@
 
 }
 
-.icon li{
+.icon li {
     display: none;
     margin: 0 0 10px;
 }
 
-.el-img:hover .icon li{
+.el-img:hover .icon li {
     display: block;
 }
 
-.el-img .icon li a{
+.el-img .icon li a {
     color: #890000;
 }
 
@@ -163,12 +162,12 @@
     width: 100%;
 }
 
-.el-detail .el-title h3 a{
+.el-detail .el-title h3 a {
     color: #fff;
     text-decoration: none;
 }
 
-.el-detail .el-title h3 a:hover{
+.el-detail .el-title h3 a:hover {
     color: #890000;
 }
 
@@ -178,17 +177,16 @@
     flex-wrap: wrap;
     flex-direction: row;
     width: 100%;
-justify-content: flex-start;
+    justify-content: flex-start;
 }
-
 
 
 .gridGood > div {
     background-color: #1a181b;
     border: 1px solid #890000;
     height: auto;
-        margin: 10px;
-        width: 31.6%;
-        max-width: 50%!important;
-        flex-grow: 1;
-    }
+    margin: 10px;
+    width: 31.6%;
+    max-width: 50% !important;
+    flex-grow: 1;
+}

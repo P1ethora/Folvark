@@ -7,7 +7,7 @@
 
 .show-btn {
     cursor: pointer;
-    font-family: 'TriodPostnaja' ,sans-serif;
+    font-family: 'TriodPostnaja', sans-serif;
     font-size: 20px;
     display: block;
     padding: 8px 10px;
@@ -54,13 +54,13 @@
 
 
 input[type="checkbox"] {
-display: none;
+    display: none;
 }
 
 .login-container {
     position: absolute;
-    top:50%;
-    left:50%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9998;
 }
@@ -69,9 +69,9 @@ display: none;
     position: fixed;
     background: white;
     display: none;
-   width: 410px;
+    width: 410px;
     padding: 30px;
-    box-shadow: 0 0 8px rgba(0,0,0,.2);
+    box-shadow: 0 0 8px rgba(0, 0, 0, .2);
 }
 
 .login-fon {
@@ -84,7 +84,7 @@ display: none;
 }
 
 #show:checked ~ .login-container {
-display: block;
+    display: block;
 }
 
 #show:checked ~ .login-fon {
@@ -101,12 +101,12 @@ display: block;
 }
 
 .login-container .close-btn:hover {
-    box-shadow: 0 0 8px rgba(0,0,0,0);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0);
     color: red;
 }
 
 .login-container .text-login {
-    font-family: A_La_Russ,sans-serif;
+    font-family: A_La_Russ, sans-serif;
     color: black;
     letter-spacing: 1px;
     font-size: 35px;
@@ -161,7 +161,7 @@ display: block;
     margin: 30px 0;
     height: 45px;
     width: 100%;
-position: relative;
+    position: relative;
     overflow: hidden;
 }
 
@@ -179,11 +179,11 @@ position: relative;
     margin-top: -8px;
 }
 
-form .forgot-pass a{
+form .forgot-pass a {
     color: #3498db;
 }
 
-form .forgot-pass a:hover{
+form .forgot-pass a:hover {
     border-bottom: 1px solid #3498db;
 }
 
@@ -192,18 +192,18 @@ form .signup-link {
     text-align: center;
 }
 
-form .signup-link a{
+form .signup-link a {
     margin-left: 3px;
     color: #3498db;
     text-decoration: none;
 }
 
-form .signup-link a:hover{
+form .signup-link a:hover {
     border-bottom: 1px solid #3498db;
 }
 
-form .log-btn:hover .inner{
-left: 0;
+form .log-btn:hover .inner {
+    left: 0;
 }
 
 form .log-btn input {

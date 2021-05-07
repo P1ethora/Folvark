@@ -1,8 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $('#autoWidth').lightSlider({
-        autoWidth:true,
-        loop:true,
-        onSliderLoad: function() {
+        autoWidth: true,
+        loop: true,
+        onSliderLoad: function () {
             $('#autoWidth').removeClass('cS-hidden');
         }
     });

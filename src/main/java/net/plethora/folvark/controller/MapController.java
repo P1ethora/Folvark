@@ -5,7 +5,6 @@ import net.plethora.folvark.models.ProductMap;
 import net.plethora.folvark.service.AuthService;
 import net.plethora.folvark.service.PagerService;
 import net.plethora.folvark.service.ProductService;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

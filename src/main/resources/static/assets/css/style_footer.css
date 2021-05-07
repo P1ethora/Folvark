@@ -29,14 +29,14 @@ footer {
 
 .footer-container h1 {
     font-size: 25px;
-    font-family: "A_La_Russ",sans-serif;
+    font-family: "A_La_Russ", sans-serif;
 }
 
 .footer-container .name {
     display: flex;
 }
 
-.footer-container .name p{
+.footer-container .name p {
     padding-left: 4px;
 }
 
@@ -45,14 +45,13 @@ footer {
     display: flex;
 }
 
-.social-media li a{
+.social-media li a {
     color: #ffffff;
     margin-right: 25px;
     font-size: 22px;
     text-decoration: none;
     transition: .3s linear;
 }
-
 
 
 .social-media a:hover {
@@ -65,7 +64,7 @@ footer {
 
 /*RIGHT*/
 
-.right-col h1{
+.right-col h1 {
     font-size: 26px;
     padding-bottom: 10px;
     color: white;

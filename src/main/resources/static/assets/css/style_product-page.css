@@ -17,7 +17,7 @@ body {
     flex-direction: row;
 }
 
-.fon-the-product .block-inside-fon img{
+.fon-the-product .block-inside-fon img {
     max-width: 400px;
     height: auto;
     justify-content: center;
@@ -31,13 +31,15 @@ body {
     margin-left: 80px;
 }
 
-.fon-the-product .block-inside-fon .right-table-the-product .rating-area{
+.fon-the-product .block-inside-fon .right-table-the-product .rating-area {
     overflow: hidden;
     width: 265px;
 }
+
 .rating-area:not(:checked) > input {
     display: none;
 }
+
 .rating-area:not(:checked) > label {
     float: right;
     width: 42px;
@@ -48,17 +50,21 @@ body {
     color: lightgrey;
     text-shadow: 1px 1px #bbb;
 }
+
 .rating-area:not(:checked) > label:before {
     content: '★';
 }
+
 .rating-area > input:checked ~ label {
     color: gold;
     text-shadow: 1px 1px #c60;
 }
+
 .rating-area:not(:checked) > label:hover,
 .rating-area:not(:checked) > label:hover ~ label {
     color: gold;
 }
+
 .rating-area > input:checked + label:hover,
 .rating-area > input:checked + label:hover ~ label,
 .rating-area > input:checked ~ label:hover,
@@ -67,10 +73,10 @@ body {
     color: gold;
     text-shadow: 1px 1px goldenrod;
 }
+
 .rate-area > label:active {
     position: relative;
 }
-
 
 
 .fon-the-product .block-inside-fon .right-table-the-product .name-product {
@@ -84,7 +90,7 @@ body {
     margin-top: 10px;
 }
 
-.fon-the-product .block-inside-fon .right-table-the-product div{
+.fon-the-product .block-inside-fon .right-table-the-product div {
     margin-bottom: 10px;
 }
 
@@ -104,12 +110,12 @@ body {
 
 .btn-add-to-cart button {
 
-appearance: none;
+    appearance: none;
     border: 2px solid #890000;
-background: #890000;
-color: #fff;
-padding: 8px 16px;
-cursor: pointer;
+    background: #890000;
+    color: #fff;
+    padding: 8px 16px;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -125,7 +131,7 @@ cursor: pointer;
     background: red;
     transform: scale(1.1);
     z-index: 100;
-    box-shadow: 0 0 10px rgba(0,0,0,.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
 }
 
 .btn-add-to-cart button:focus {
@@ -149,7 +155,7 @@ cursor: pointer;
     justify-content: space-between;
 }
 
-.fon-bottom-the-product .block1-fon-bottom-the-product .feedback-count{
+.fon-bottom-the-product .block1-fon-bottom-the-product .feedback-count {
     font-size: 25px;
     font-family: Ponter, sans-serif;
     letter-spacing: 2px;
@@ -171,7 +177,7 @@ cursor: pointer;
     flex-direction: column;
 }
 
-.fon-bottom-the-product .block_with_comments .product-comment img{
+.fon-bottom-the-product .block_with_comments .product-comment img {
     height: 100px;
 }
 
@@ -189,12 +195,12 @@ cursor: pointer;
     padding: 10px;
 }
 
-.fon-bottom-the-product .block_with_comments .product-comment .comment-block .top-comment .comment-name{
+.fon-bottom-the-product .block_with_comments .product-comment .comment-block .top-comment .comment-name {
     font-size: 18px;
     font-weight: 600;
 }
 
-.fon-bottom-the-product .block_with_comments .product-comment .comment-block .comment-text{
+.fon-bottom-the-product .block_with_comments .product-comment .comment-block .comment-text {
     margin: 10px;
     font-size: 14px;
 }

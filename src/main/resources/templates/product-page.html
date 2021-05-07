@@ -101,18 +101,18 @@
                     </div>
                 </div>
             </div>
-            <th:block th:if = '${comment.getAnswers()}'>
-            <div class="open_reply" id="open-reply" onclick="openListReply(this)">Показать 9 ответов</div>
+            <th:block th:if = '${comment.getAnswers().size() > 0}'>
+            <div class="open_reply" id="open-reply" onclick="openListReply(this)" th:text="'Показать' + ${comment.getAnswers().size()} + 'ответов'" ></div>
             <div class="reply_block" id="reply-block">
-                <div th:each="answer : ${comment.getAnswers()}" class="product-comment" th:id="${answer.getId()}">
+                <div th:each="reply : ${comment.getAnswers()}" class="product-comment" th:id="${reply.getId()}">
                     <div class="top_element_comment">
                         <img class="photo-user" src="/images/unnamed.jpg">
                         <div class="comment-block">
                             <div class="top-comment">
                                 <div class="comment-name" id="">Отец петрович</div>
-                                <div class="comment-data">23.01.2021, 0:49</div>
+                                <div class="comment-data" th:text="${reply.getDate()}" ></div>
                             </div>
-                            <div class="comment-text" th:text="${answer.getText()}"></div>
+                            <div class="comment-text" th:text="${reply.getText()}"></div>
                             <div class="comment-answer">
                                 <button class="btn-reply-to-comment" onclick="answerToComment(this)">Ответить</button>
                             </div>

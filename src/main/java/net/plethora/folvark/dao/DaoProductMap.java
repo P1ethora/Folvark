@@ -25,12 +25,12 @@ public class DaoProductMap {
         return productMapRepository.findAll(pageable).getContent();
     }
 
-        public List<ProductMap> findAllSort(Sort sort) {
-            return productMapRepository.findAll(sort);
+    public List<ProductMap> findAllSort(Sort sort) {
+        return productMapRepository.findAll(sort);
 
     } //показать все отсортированное
 
-    public List<ProductMap> findAllByCategory(String category){
+    public List<ProductMap> findAllByCategory(String category) {
         return productMapRepository.findByCategory(category);
     }
 
@@ -41,7 +41,7 @@ public class DaoProductMap {
 
     public List<ProductMap> findByCategorySort(String category, Sort sort) {
 
-        return productMapRepository.findByCategory(category,sort);
+        return productMapRepository.findByCategory(category, sort);
     }
 
     public ProductMap findById(String id) {
