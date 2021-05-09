@@ -14,6 +14,7 @@ public class Comment {
     @Id
     private String id;
 
+    private String name;
     private Long idUser;
     private String text;
     private String attachedTo; //прикреплено к

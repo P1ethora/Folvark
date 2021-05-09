@@ -148,14 +148,6 @@ function sendReplyComment(button) {
     let comment = that.closest('.product-comment');
     let url = document.location.href;
 
-    // let response = fetch(url + '/addComment', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json;charset=utf-8'
-    //     },
-    //     body: JSON.stringify(document.getElementById("txt-comment-reply").value)
-    // });
-
     let data = {
         id: that.getAttribute('parent'),
         text: document.getElementById('txt-comment-reply').value,
@@ -172,7 +164,6 @@ function sendReplyComment(button) {
     }).then((result) => {
         return result.json();
     }).then((res) => {
-        alert(res)
         // if (res !== null) {
         //     res.forEach(function (sug) {
 
@@ -195,6 +186,7 @@ function sendReplyComment(button) {
 
 
         productComment.className = 'reply-to-comment';
+        productComment.setAttribute('id',res.id);
         replyToCommentBlock.className = 'reply-to-comment-block';
         imgComment.className = 'reply-photo-user';
         commentBlock.className = 'reply-comment-block';
@@ -256,7 +248,7 @@ function closeListReply(button) {
     list.style.display = 'none';
 
     button.setAttribute('onclick', 'openListReply(this)');
-    button.innerHTML = 'Показать 9 ответов';
+    button.innerHTML = 'Показать ' + list.childElementCount+ ' ответов';
 
     for (let el of that.children) {
         if (el.className === 'reply-to-comment') {
@@ -320,55 +312,83 @@ function replyToReply(button) {
 function sendReplyToReply(button) {
 
     let that = button.closest('.send-comment');
-    let comment = that.closest('.product-comment')
+    let parent = that.closest('.product-comment');
+    let url = document.location.href;
 
-    let productComment = document.createElement('div');
-    let replyToCommentBlock = document.createElement('div');
-    let imgComment = document.createElement('img');
+    let data = {
+        // id: that.getAttribute('parent'),
+        text: document.getElementById('txt-comment-reply').value,
+        idComment: that.getAttribute('parent'),
+        idParent: parent.getAttribute('id'),
+    };
+
+    fetch(url + '/addReplyToComment', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(data)
+    }).then((result) => {
+        return result.json();
+    }).then((res) => {
+
+        // let that = button.closest('.send-comment');
+        // let reply = that.closest('.reply-to-comment');
+        // let comment = that.closest('.product-comment');
+
+        let productComment = document.createElement('div');
+        let replyToCommentBlock = document.createElement('div');
+        let imgComment = document.createElement('img');
 
 
-    let commentBlock = document.createElement('div');
-    let topComment = document.createElement('div');
-    let commentName = document.createElement('div');
-    let commentData = document.createElement('div');
+        let commentBlock = document.createElement('div');
+        let topComment = document.createElement('div');
+        let commentName = document.createElement('div');
+        let commentData = document.createElement('div');
 
-    let commentText = document.createElement('div');
+        let commentText = document.createElement('div');
 
-    let commentAnswer = document.createElement('div');
-    let buttonReply = document.createElement('button');
+        let commentAnswer = document.createElement('div');
+        let buttonReply = document.createElement('button');
 
-    productComment.className = 'reply-to-comment';
-    replyToCommentBlock.className = 'reply-to-comment-block';
-    imgComment.className = 'reply-photo-user';
-    commentBlock.className = 'reply-comment-block';
-    topComment.className = 'reply-top-comment';
-    commentName.className = 'reply-comment-name';
-    commentData.className = 'reply-comment-data';
-    commentText.className = 'reply-comment-text';
-    commentAnswer.className = 'reply-comment-answer';
-    buttonReply.className = 'btn-reply-comment';
+        productComment.className = 'reply-to-comment';
+        productComment.setAttribute('id',res.id);
+        replyToCommentBlock.className = 'reply-to-comment-block';
+        imgComment.className = 'reply-photo-user';
+        commentBlock.className = 'reply-comment-block';
+        topComment.className = 'reply-top-comment';
+        commentName.className = 'reply-comment-name';
+        commentName.innerHTML = res.name;
+        commentData.className = 'reply-comment-data';
+        commentData.innerHTML = res.date;
+        commentText.className = 'reply-comment-text';
+        commentAnswer.className = 'reply-comment-answer';
+        buttonReply.className = 'btn-reply-comment';
 
-    buttonReply.innerHTML = 'Ответить';
-    buttonReply.setAttribute('onclick', "replyToReply(this)");
-    // commentText.innerHTML = commentFromReply.getElementsByClassName("text-comment").item(0).value;
-    commentText.innerHTML = document.getElementById('txt-comment-reply').value;
+        buttonReply.innerHTML = 'Ответить';
+        buttonReply.setAttribute('onclick', "replyToReply(this)");
+        // commentText.innerHTML = commentFromReply.getElementsByClassName("text-comment").item(0).value;
+        commentText.innerHTML = document.getElementById('txt-comment-reply').value;
 
-    topComment.appendChild(commentName);
-    topComment.appendChild(commentData);
+        topComment.appendChild(commentName);
+        topComment.appendChild(commentData);
 
-    commentBlock.appendChild(topComment);
-    commentBlock.appendChild(commentText);
+        commentBlock.appendChild(topComment);
+        commentBlock.appendChild(commentText);
 
-    commentAnswer.appendChild(buttonReply);
+        commentAnswer.appendChild(buttonReply);
 
-    commentBlock.appendChild(commentAnswer);
+        commentBlock.appendChild(commentAnswer);
 
-    replyToCommentBlock.appendChild(imgComment);
-    replyToCommentBlock.appendChild(commentBlock);
+        replyToCommentBlock.appendChild(imgComment);
+        replyToCommentBlock.appendChild(commentBlock);
 
-    productComment.appendChild(replyToCommentBlock);
+        productComment.appendChild(replyToCommentBlock);
 
-    that.remove();
-    comment.appendChild(productComment);
+        that.remove();
+        // comment.appendChild(productComment);
+        parent.getElementsByClassName('reply_block').item(0).appendChild(productComment)
 
+
+    });
 }

@@ -7,7 +7,8 @@ import java.util.Date;
 @Data
 public class Reply {
 
-    private int id;
+    private String id;
+    private String name;
     private Long idUser;
     private String text;
     private String idParent;  //Основной комментарий

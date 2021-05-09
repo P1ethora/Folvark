@@ -55,11 +55,15 @@ public class ProductController {
     @PostMapping("/product/{id}/addComment")
     public @ResponseBody
     void addComment(@PathVariable("id") String id, @RequestBody String comment) {
+        Date date = new Date();
         String com = comment.replace("\"", "");
         Comment comment1 = new Comment();
+        comment1.setName(authService.getAuthUser().getFirstName() + " "
+                + authService.getAuthUser().getLastName());
         comment1.setText(com);
         comment1.setAttachedTo(id);
         comment1.setAnswers(new ArrayList<>());
+        comment1.setDate(date);
         commentRepository.save(comment1);
 
     }
@@ -67,9 +71,11 @@ public class ProductController {
     @PostMapping("/product/{id}/addReplyToComment")
     public @ResponseBody
     String addReplyToComment(@PathVariable("id") String id, @RequestBody String json) {
+        Date date = new Date();
+        System.out.println(json);
         SimpleDateFormat formater = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         User user = authService.getAuthUser();
-        Date date = new Date();
+
         CommentData commentData = new CommentData();
         commentData.setName(user.getFirstName() + " " + user.getLastName());
         commentData.setDate(formater.format(date));
@@ -78,9 +84,10 @@ public class ProductController {
         reply.setIdUser(authService.getAuthUser().getId());
         reply.setDate(date);
 
-        Comment comment = commentService.getComment(reply.getIdComment());
+        Comment comment = commentService.getComment(reply.getIdParent());
         System.out.println(comment);
-reply.setId(comment.getAnswers().size() + 1);
+        reply.setId(String.valueOf(comment.getAnswers().size() + 1));
+        commentData.setId(reply.getId());
         comment.getAnswers().add(reply);
 
         commentService.saveComment(comment);
