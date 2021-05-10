@@ -54,8 +54,9 @@ public class ProductController {
 
     @PostMapping("/product/{id}/addComment")
     public @ResponseBody
-    void addComment(@PathVariable("id") String id, @RequestBody String comment) {
+    String addComment(@PathVariable("id") String id, @RequestBody String comment) {
         Date date = new Date();
+        SimpleDateFormat formater = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         String com = comment.replace("\"", "");
         Comment comment1 = new Comment();
         comment1.setName(authService.getAuthUser().getFirstName() + " "
@@ -64,7 +65,15 @@ public class ProductController {
         comment1.setAttachedTo(id);
         comment1.setAnswers(new ArrayList<>());
         comment1.setDate(date);
+        comment1.setIdUser(authService.getAuthUser().getId());
         commentRepository.save(comment1);
+
+        CommentData commentData = new CommentData();
+        commentData.setId(commentService.getComment(comment1.getIdUser(),date,comment1.getAttachedTo()).getId());
+        commentData.setName(comment1.getName());
+        commentData.setDate(formater.format(date));
+
+        return converterJsonService.toJSON(commentData);
 
     }
 

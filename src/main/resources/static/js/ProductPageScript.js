@@ -17,65 +17,75 @@ $(function () {
     });
 });
 
+
+
+
 $(function () {
     $(".btn-send-comment").click(function () {
         let url = document.location.href;
+        let that = document.getElementsByClassName('send-comment').item(0);
+        let textField = that.getElementsByClassName('text-comment').item(0);
 
-        let response = fetch(url + '/addComment', {
+        fetch(url + '/addComment', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
-            body: JSON.stringify(document.getElementById("txt_com").value)
+            body: JSON.stringify(textField.value)
+        }).then((result) => {
+            return result.json();
+        }).then((res) => {
+
+            let topElementComment = document.createElement('div');
+            let productComment = document.createElement('div');
+            let imgComment = document.createElement('img');
+
+
+            let commentBlock = document.createElement('div');
+            let topComment = document.createElement('div');
+            let commentName = document.createElement('div');
+            commentName.innerHTML = res.name;
+            let commentData = document.createElement('div');
+commentData.innerHTML = res.date;
+            let commentText = document.createElement('div');
+
+            let commentAnswer = document.createElement('div');
+            let buttonReply = document.createElement('button');
+
+            topElementComment.className = 'top_element_comment';
+            productComment.className = 'product-comment';
+            productComment.setAttribute('id',res.id);
+            imgComment.className = 'photo-user';
+            commentBlock.className = 'comment-block';
+            topComment.className = 'top-comment';
+            commentName.className = 'comment-name';
+            commentData.className = 'comment-data';
+            commentText.className = 'comment-text';
+            commentAnswer.className = 'comment-answer';
+            buttonReply.className = 'reply-to-comment';
+
+            buttonReply.innerHTML = 'Ответить';
+            commentText.innerHTML = document.getElementById("txt_com").value;
+
+            topComment.appendChild(commentName);
+            topComment.appendChild(commentData);
+
+            commentBlock.appendChild(topComment);
+            commentBlock.appendChild(commentText);
+
+            commentAnswer.appendChild(buttonReply);
+
+            commentBlock.appendChild(commentAnswer);
+
+            topElementComment.appendChild(commentBlock);
+            topElementComment.appendChild(imgComment);
+
+            productComment.appendChild(topElementComment);
+
+            $(".block_with_comments").prepend(productComment);
+            document.getElementById('wrb').remove();
+
         });
-
-        let topElementComment = document.createElement('div');
-        let productComment = document.createElement('div');
-        let imgComment = document.createElement('img');
-
-
-        let commentBlock = document.createElement('div');
-        let topComment = document.createElement('div');
-        let commentName = document.createElement('div');
-        let commentData = document.createElement('div');
-
-        let commentText = document.createElement('div');
-
-        let commentAnswer = document.createElement('div');
-        let buttonReply = document.createElement('button');
-
-        topElementComment.className = 'top_element_comment';
-        productComment.className = 'product-comment';
-        imgComment.className = 'photo-user';
-        commentBlock.className = 'comment-block';
-        topComment.className = 'top-comment';
-        commentName.className = 'comment-name';
-        commentData.className = 'comment-data';
-        commentText.className = 'comment-text';
-        commentAnswer.className = 'comment-answer';
-        buttonReply.className = 'reply-to-comment';
-
-        buttonReply.innerHTML = 'Ответить';
-        commentText.innerHTML = document.getElementById("txt_com").value;
-
-        topComment.appendChild(commentName);
-        topComment.appendChild(commentData);
-
-        commentBlock.appendChild(topComment);
-        commentBlock.appendChild(commentText);
-
-        commentAnswer.appendChild(buttonReply);
-
-        commentBlock.appendChild(commentAnswer);
-
-        topElementComment.appendChild(commentBlock);
-        topElementComment.appendChild(imgComment);
-
-        productComment.appendChild(topElementComment);
-
-        $(".block_with_comments").prepend(productComment);
-        document.getElementById('wrb').remove();
-
     });
 });
 

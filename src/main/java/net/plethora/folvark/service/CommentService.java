@@ -5,6 +5,7 @@ import net.plethora.folvark.models.Comment;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -32,6 +33,10 @@ public class CommentService {
 
     public void saveComment(Comment comment) {
         commentRepository.save(comment);
+    }
+
+    public Comment getComment(long idUser, Date date, String attachedTo) {
+       return commentRepository.findByIdUserAndDateAndAttachedTo( idUser,date,attachedTo).get(0);
     }
 
 }
