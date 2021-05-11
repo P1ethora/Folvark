@@ -8,6 +8,7 @@ import java.util.Date;
 public class Reply {
 
     private String id;
+    private String urlPhoto;
     private String name;
     private Long idUser;
     private String text;

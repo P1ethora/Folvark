@@ -36,6 +36,8 @@ public class User {
     private Role role;
     @Column(name = "id_cart")
     private String idCart;
+    @Column(name = "url_photo")
+    private String urlPhoto;
 
     public User(String email, String password, String firstName, String lastName, String middleName, String nickName, Status status, Role role) {
         this.email = email;

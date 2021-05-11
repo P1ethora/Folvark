@@ -18,8 +18,6 @@ $(function () {
 });
 
 
-
-
 $(function () {
     $(".btn-send-comment").click(function () {
         let url = document.location.href;
@@ -39,22 +37,23 @@ $(function () {
             let topElementComment = document.createElement('div');
             let productComment = document.createElement('div');
             let imgComment = document.createElement('img');
-
+            imgComment.setAttribute('src', res.urlImage);
 
             let commentBlock = document.createElement('div');
             let topComment = document.createElement('div');
             let commentName = document.createElement('div');
             commentName.innerHTML = res.name;
             let commentData = document.createElement('div');
-commentData.innerHTML = res.date;
+            commentData.innerHTML = res.date;
             let commentText = document.createElement('div');
 
             let commentAnswer = document.createElement('div');
             let buttonReply = document.createElement('button');
 
+
             topElementComment.className = 'top_element_comment';
             productComment.className = 'product-comment';
-            productComment.setAttribute('id',res.id);
+            productComment.setAttribute('id', res.id);
             imgComment.className = 'photo-user';
             commentBlock.className = 'comment-block';
             topComment.className = 'top-comment';
@@ -62,8 +61,8 @@ commentData.innerHTML = res.date;
             commentData.className = 'comment-data';
             commentText.className = 'comment-text';
             commentAnswer.className = 'comment-answer';
-            buttonReply.className = 'reply-to-comment';
-
+            buttonReply.className = 'btn-reply-to-comment';
+            buttonReply.setAttribute('onclick', 'answerToComment(this)');
             buttonReply.innerHTML = 'Ответить';
             commentText.innerHTML = document.getElementById("txt_com").value;
 
@@ -77,8 +76,8 @@ commentData.innerHTML = res.date;
 
             commentBlock.appendChild(commentAnswer);
 
-            topElementComment.appendChild(commentBlock);
             topElementComment.appendChild(imgComment);
+            topElementComment.appendChild(commentBlock);
 
             productComment.appendChild(topElementComment);
 
@@ -182,6 +181,7 @@ function sendReplyComment(button) {
         let productComment = document.createElement('div');
         let replyToCommentBlock = document.createElement('div');
         let imgComment = document.createElement('img');
+        imgComment.setAttribute('src', res.urlImage);
 
 
         let commentBlock = document.createElement('div');
@@ -196,7 +196,7 @@ function sendReplyComment(button) {
 
 
         productComment.className = 'reply-to-comment';
-        productComment.setAttribute('id',res.id);
+        productComment.setAttribute('id', res.id);
         replyToCommentBlock.className = 'reply-to-comment-block';
         imgComment.className = 'reply-photo-user';
         commentBlock.className = 'reply-comment-block';
@@ -258,7 +258,7 @@ function closeListReply(button) {
     list.style.display = 'none';
 
     button.setAttribute('onclick', 'openListReply(this)');
-    button.innerHTML = 'Показать ' + list.childElementCount+ ' ответов';
+    button.innerHTML = 'Показать ' + list.childElementCount + ' ответов';
 
     for (let el of that.children) {
         if (el.className === 'reply-to-comment') {
@@ -349,7 +349,7 @@ function sendReplyToReply(button) {
         let productComment = document.createElement('div');
         let replyToCommentBlock = document.createElement('div');
         let imgComment = document.createElement('img');
-
+        imgComment.setAttribute('src', res.urlImage);
 
         let commentBlock = document.createElement('div');
         let topComment = document.createElement('div');
@@ -362,7 +362,7 @@ function sendReplyToReply(button) {
         let buttonReply = document.createElement('button');
 
         productComment.className = 'reply-to-comment';
-        productComment.setAttribute('id',res.id);
+        productComment.setAttribute('id', res.id);
         replyToCommentBlock.className = 'reply-to-comment-block';
         imgComment.className = 'reply-photo-user';
         commentBlock.className = 'reply-comment-block';

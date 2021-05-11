@@ -89,11 +89,12 @@
 
         <div th:each="comment : ${comments}" class="product-comment" th:id="${comment.getId()}">
             <div class="top_element_comment">
-                <img class="photo-user" src="/images/unnamed.jpg">
+                <img class="photo-user" th:if="${comment.getUrlPhoto()}" th:src="${comment.getUrlPhoto()}">
+                <img class="photo-user" th:unless="${comment.getUrlPhoto()}" src="/images/unnamed.jpg">
                 <div class="comment-block">
                     <div class="top-comment">
                         <div class="comment-name" id="name_user" th:text="${comment.getName()}"></div>
-                        <div class="comment-data" th:text="${comment.getDate()}"></div>
+                        <div class="comment-data" th:text="${formatter.format(comment.getDate())}"></div>
                     </div>
                     <div class="comment-text" th:text="${comment.getText()}"></div>
                     <div class="comment-answer">
@@ -106,11 +107,12 @@
             <div class="reply_block" id="reply-block">
                 <div th:each="reply : ${comment.getAnswers()}" class="reply-to-comment" th:id="${reply.getId()}">
                     <div class="reply-to-comment-block">
-                        <img class="reply-photo-user" src="/images/unnamed.jpg">
+                        <img class="reply-photo-user" th:if="${reply.getUrlPhoto()}" th:src="${reply.getUrlPhoto()}">
+                        <img class="reply-photo-user" th:unless="${reply.getUrlPhoto()}" src="/images/unnamed.jpg">
                         <div class="reply-comment-block">
                             <div class="reply-top-comment">
                                 <div class="reply-comment-name" th:id="${reply.getId()}" th:text="${reply.getName()}"></div>
-                                <div class="reply-comment-data" th:text="${reply.getDate()}" ></div>
+                                <div class="reply-comment-data" th:text="${formatter.format(reply.getDate())}" ></div>
                             </div>
                             <div class="reply-comment-text" th:text="${reply.getText()}"></div>
                             <div class="reply-comment-answer">
