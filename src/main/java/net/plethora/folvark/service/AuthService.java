@@ -1,8 +1,8 @@
 package net.plethora.folvark.service;
 
 import net.plethora.folvark.dao.repo.UserRepository;
-import net.plethora.folvark.models.CartPackage;
-import net.plethora.folvark.models.CheckedCartProduct;
+import net.plethora.folvark.models.system.CartPackage;
+import net.plethora.folvark.models.system.CheckedCartProduct;
 import net.plethora.folvark.models.ProductMap;
 import net.plethora.folvark.models.User;
 import org.springframework.security.core.Authentication;

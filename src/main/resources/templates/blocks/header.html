@@ -46,7 +46,7 @@
                 </div>
                 <div class="right">
                     <ul>
-                        <li sec:authorize="isAuthenticated()"><a class="show-user" href="/persona"
+                        <li sec:authorize="isAuthenticated()"><a class="show-user" href="/profile"
                                                                  th:text="${nameUser}"></a>
                         </li>
                         <li sec:authorize="isAnonymous()" id="btn-log-in"><label for="show"

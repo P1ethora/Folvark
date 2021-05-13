@@ -1,6 +1,6 @@
 package net.plethora.folvark.controller;
 
-import net.plethora.folvark.models.CheckedCartProduct;
+import net.plethora.folvark.models.system.CheckedCartProduct;
 import net.plethora.folvark.models.ProductMap;
 import net.plethora.folvark.service.AuthService;
 import net.plethora.folvark.service.PagerService;

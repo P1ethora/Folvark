@@ -1,6 +1,6 @@
 package net.plethora.folvark.controller;
 
-import net.plethora.folvark.models.CartPackage;
+import net.plethora.folvark.models.system.CartPackage;
 import net.plethora.folvark.service.AuthService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

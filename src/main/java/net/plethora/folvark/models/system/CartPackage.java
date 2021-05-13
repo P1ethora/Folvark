@@ -1,7 +1,8 @@
-package net.plethora.folvark.models;
+package net.plethora.folvark.models.system;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import net.plethora.folvark.models.ProductMap;
 
 import java.util.List;
 

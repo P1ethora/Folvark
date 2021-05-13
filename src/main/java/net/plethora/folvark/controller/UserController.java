@@ -1,5 +1,6 @@
 package net.plethora.folvark.controller;
 
+import net.plethora.folvark.service.PersonaService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,11 +8,52 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class UserController {
 
+    private final PersonaService personaService;
 
-    @GetMapping("/persona")
-    public String getPersona(Model model) {
+    public UserController(PersonaService personaService) {
+        this.personaService = personaService;
+    }
 
-        return "persona-page";
+    @GetMapping("/profile")
+    public String getProfile(Model model) {
+model.addAttribute("elements", personaService.getElementsProfile());
+        return "profile";
+    }
+
+    @GetMapping("/coupons")
+    public String getCoupons(Model model) {
+        model.addAttribute("elements", personaService.getElementsProfile());
+        return "coupons";
+    }
+
+    @GetMapping("/favorites")
+    public String getFavorites(Model model) {
+        model.addAttribute("elements", personaService.getElementsProfile());
+        return "favorites";
+    }
+
+    @GetMapping("/messages")
+    public String getMessages(Model model) {
+        model.addAttribute("elements", personaService.getElementsProfile());
+        return "messages";
+    }
+
+    @GetMapping("/my-comments")
+    public String getMyComments(Model model) {
+        model.addAttribute("elements", personaService.getElementsProfile());
+        return "my-comments";
+    }
+
+    @GetMapping("/my-maps")
+    public String getMyMaps(Model model) {
+        model.addAttribute("elements", personaService.getElementsProfile());
+        return "my-maps";
+    }
+
+    @GetMapping("/requests")
+    public String getRequests(Model model) {
+        model.addAttribute("elements", personaService.getElementsProfile());
+        return "requests";
     }
 
 }

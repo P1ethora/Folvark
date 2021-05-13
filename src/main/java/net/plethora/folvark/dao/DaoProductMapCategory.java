@@ -1,7 +1,7 @@
 package net.plethora.folvark.dao;
 
 import net.plethora.folvark.dao.repo.ProductMapCategoryRepository;
-import net.plethora.folvark.models.ProductMapCategory;
+import net.plethora.folvark.models.enumerationmodels.ProductMapCategory;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

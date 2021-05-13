@@ -4,6 +4,8 @@ import net.plethora.folvark.dao.DaoCart;
 import net.plethora.folvark.dao.DaoProductMap;
 import net.plethora.folvark.dao.repo.UserRepository;
 import net.plethora.folvark.models.*;
+import net.plethora.folvark.models.system.CartPackage;
+import net.plethora.folvark.models.system.CheckedCartProduct;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.stereotype.Service;
 

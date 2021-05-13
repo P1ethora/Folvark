@@ -1,6 +1,6 @@
 package net.plethora.folvark.dao.repo;
 
-import net.plethora.folvark.models.PortalCategory;
+import net.plethora.folvark.models.enumerationmodels.PortalCategory;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

@@ -2,7 +2,7 @@ package net.plethora.folvark.controller;
 
 import net.plethora.folvark.dao.DaoEmailUser;
 import net.plethora.folvark.models.EmailUser;
-import net.plethora.folvark.models.ProductMapCategory;
+import net.plethora.folvark.models.enumerationmodels.ProductMapCategory;
 import net.plethora.folvark.service.AuthService;
 import net.plethora.folvark.service.ProductService;
 import org.springframework.stereotype.Controller;

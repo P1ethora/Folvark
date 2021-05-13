@@ -3,7 +3,7 @@ package net.plethora.folvark.service;
 import net.plethora.folvark.dao.DaoProductMap;
 import net.plethora.folvark.dao.DaoProductMapCategory;
 import net.plethora.folvark.models.ProductMap;
-import net.plethora.folvark.models.ProductMapCategory;
+import net.plethora.folvark.models.enumerationmodels.ProductMapCategory;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

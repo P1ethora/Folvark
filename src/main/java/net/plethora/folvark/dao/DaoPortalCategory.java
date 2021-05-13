@@ -1,7 +1,7 @@
 package net.plethora.folvark.dao;
 
 import net.plethora.folvark.dao.repo.NewsCategoryRepository;
-import net.plethora.folvark.models.PortalCategory;
+import net.plethora.folvark.models.enumerationmodels.PortalCategory;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

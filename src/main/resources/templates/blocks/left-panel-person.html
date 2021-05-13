@@ -1,0 +1,5 @@
+<div th:fragment="left-panel-person" class="left-panel-person" >
+    <ul class="menu-person" >
+        <li th:each="el : ${elements}"><a th:href="'/' + ${el.getUrlName()}" th:text="${el.getName()}" ></a></li>
+    </ul>
+</div>

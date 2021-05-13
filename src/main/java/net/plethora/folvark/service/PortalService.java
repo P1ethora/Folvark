@@ -2,7 +2,7 @@ package net.plethora.folvark.service;
 
 import net.plethora.folvark.dao.DaoNewsPortal;
 import net.plethora.folvark.dao.DaoPortalCategory;
-import net.plethora.folvark.models.PortalCategory;
+import net.plethora.folvark.models.enumerationmodels.PortalCategory;
 import net.plethora.folvark.models.PortalNews;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
