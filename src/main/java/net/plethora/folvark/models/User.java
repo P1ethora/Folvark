@@ -6,6 +6,7 @@ import net.plethora.folvark.models.state.Role;
 import net.plethora.folvark.models.state.Status;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -26,8 +27,8 @@ public class User {
     private String lastName;
     @Column(name = "middle_name")
     private String middleName;
-    @Column(name = "nick_name")
-    private String nickName;
+    @Column(name = "login_name")
+    private String loginName;
     @Enumerated(value = EnumType.STRING)
     @Column(name = "status")
     private Status status;
@@ -38,14 +39,20 @@ public class User {
     private String idCart;
     @Column(name = "url_photo")
     private String urlPhoto;
+    @Column(name = "birthday")
+    private Date birthday;
+    @Column(name = "gender")
+    private boolean gender;
+    @Column(name ="number_phone" )
+    private String numberPhone;
 
-    public User(String email, String password, String firstName, String lastName, String middleName, String nickName, Status status, Role role) {
+    public User(String email, String password, String firstName, String lastName, String middleName, String loginName, Status status, Role role) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleName = middleName;
-        this.nickName = nickName;
+        this.loginName = loginName;
         this.status = status;
         this.role = role;
     }
