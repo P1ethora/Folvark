@@ -2,6 +2,7 @@ package net.plethora.folvark.models;
 
 
 import lombok.Data;
+import net.plethora.folvark.models.state.Gender;
 import net.plethora.folvark.models.state.Role;
 import net.plethora.folvark.models.state.Status;
 
@@ -41,8 +42,9 @@ public class User {
     private String urlPhoto;
     @Column(name = "birthday")
     private Date birthday;
+    @Enumerated(value = EnumType.STRING)
     @Column(name = "gender")
-    private boolean gender;
+    private Gender gender;
     @Column(name ="number_phone" )
     private String numberPhone;
 

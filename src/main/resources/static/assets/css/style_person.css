@@ -28,7 +28,8 @@
 .right-panel-profile {
     min-height: 600px;
     min-width: 800px;
-}
+    margin: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);}
 
 .right-panel-profile .name-element-person {
     width: 100%;
@@ -38,8 +39,45 @@
 
 .right-panel-profile .panel-profile {
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.right-panel-profile .panel-profile
+.right-panel-profile .panel-profile .panel {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.right-panel-profile .panel-profile .panel .field-element-profile{
+    display: flex;
+    justify-content: space-between;
+}
+
+.right-panel-profile .panel-profile .panel-edit {
+    height: 100%;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.right-panel-profile .panel-profile .panel-photo {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-panel-profile .panel-profile .panel-photo .profile-photo{
+    height: 300px;
+    width: 300px;
+}
+
+.right-panel-profile .panel-profile .panel-photo .profile-photo img{
+    height: 100%;
+    width: 100%;
+}

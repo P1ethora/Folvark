@@ -33,7 +33,7 @@ public class UserController {
         model.addAttribute("birthday", user.getBirthday());
         model.addAttribute("numberPhone", user.getNumberPhone());
         model.addAttribute("urlPhoto", user.getUrlPhoto());
-        model.addAttribute("gender", user.isGender());
+        model.addAttribute("gender", user.getGender());
         model.addAttribute("email", user.getEmail());
 
         model.addAttribute("fieldFirstName", "Имя");
