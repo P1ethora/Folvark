@@ -13,6 +13,7 @@
           th:href="@{/assets/css/style_footer.css}"/>
     <link rel="stylesheet" type="text/css" media="all"
           th:href="@{/fontawesome/css/all.min.css}"/>
+    <script type="text/javascript" th:src="@{/js/Profile.js}"></script>
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
@@ -27,7 +28,7 @@
                 <div class="date-register"></div>
                 <div class="rating-user"></div>
                 <div class="buttons-profile">
-                    <div class="edit-profile">Редактировать</div>
+                    <div class="edit-profile" onclick="openEdit(this)" >Редактировать</div>
                     <div class="reset-password">Сбросить пароль</div>
                 </div>
             </div>
@@ -76,7 +77,7 @@
                     <input th:value="${numberPhone}">
                     <input th:value="${email}">
                     <div class="buttons-profile">
-                        <button type="submit" class="save-profile"></button>
+                        <button type="submit" class="save-profile">Сохранить</button>
                     </div>
                 </form>
             </div>

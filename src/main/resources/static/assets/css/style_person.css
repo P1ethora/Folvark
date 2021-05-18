@@ -65,6 +65,11 @@
     padding: 40px;
 }
 
+.right-panel-profile .panel-profile .panel-edit form{
+    display: flex;
+    flex-direction: column;
+}
+
 .right-panel-profile .panel-profile .panel-photo {
     height: 100%;
     width: 100%;
@@ -80,4 +85,15 @@
 .right-panel-profile .panel-profile .panel-photo .profile-photo img{
     height: 100%;
     width: 100%;
+}
+
+.right-panel-profile .panel-profile .panel-photo .buttons-profile .edit-profile {
+    margin: 10px;
+    border: 1px solid #890000;
+    width: 100px;
+    height: 50px;
+}
+
+.right-panel-profile .panel-profile .panel-photo .buttons-profile .edit-profile:hover {
+    cursor: pointer;
 }
