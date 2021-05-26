@@ -20,51 +20,55 @@
 <div class="center-block">
     <div th:insert="blocks/left-panel-person :: left-panel-person"></div>
     <div class="right-panel-profile">
-        <div class="name-element-person"><h3 th:text="${nameElement}"></h3></div>
+<!--        <div class="name-element-person"><h2 th:text="${nameElement}"></h2></div>-->
         <div class="panel-profile">
             <div class="panel-photo">
                 <div class="profile-photo" th:if="${urlPhoto}"><img th:src="${urlPhoto}"></div>
                 <div class="profile-photo" th:unless="${urlPhoto}"><img src="/images/unnamed.jpg"></div>
-                <div class="date-register"></div>
-                <div class="rating-user"></div>
+                <div class="date-register">Дата регистрации: 04.03.2021</div>
+                <div class="rating-user">Звание: <div class="name-rating" >Всевидящий</div></div>
+            </div>
+            <div class="panel">
+                    <div class="field-element-profile">
+                        <div class="name-element-profile" th:text="${fieldLoginName}+':'"></div>
+                        <div class="element-profile" th:text="${loginName}"></div>
+                    </div>
+                    <div class="field-element-profile">
+                        <div class="name-element-profile" th:text="${fieldFirstName}+':'"></div>
+                        <div class="element-profile" th:text="${firstName}"></div>
+                    </div>
+                    <div class="field-element-profile">
+                        <div class="name-element-profile" th:text="${fieldLastName}+':'"></div>
+                        <div class="element-profile" th:text="${lastName}"></div>
+                    </div>
+                    <div class="field-element-profile">
+                        <div class="name-element-profile" th:text="${fieldMiddleName}+':'"></div>
+                        <div class="element-profile" th:text="${middleName}"></div>
+                    </div>
+                    <div class="field-element-profile">
+                        <div class="name-element-profile" th:text="${fieldBirthday}+':'"></div>
+                        <div class="element-profile" th:text="${birthday}"></div>
+                    </div>
+                    <div class="field-element-profile">
+                        <div class="name-element-profile" th:text="${fieldGender}+':'"></div>
+                        <div class="element-profile" th:text="${gender}"></div>
+                    </div>
+                    <div class="field-element-profile">
+                        <div class="name-element-profile" th:text="${fieldNumberPhone}+':'"></div>
+                        <div class="element-profile" th:text="${numberPhone}"></div>
+                    </div>
+                    <div class="field-element-profile">
+                        <div class="name-element-profile" th:text="${fieldEmail}+':'"></div>
+                        <div class="element-profile" th:text="${email}"></div>
+                    </div>
+                <div class="field-element-profile-about">
+                    <div class="name-element-profile" th:text="${fieldAbout}+':'"></div>
+                    <div class="element-profile-about" th:text="${about}"></div>
+                </div>
                 <div class="buttons-profile">
                     <div class="edit-profile" onclick="openEdit(this)" >Редактировать</div>
                     <div class="reset-password">Сбросить пароль</div>
                 </div>
-            </div>
-            <div class="panel">
-                    <div class="field-element-profile">
-                        <div class="name-element-profile" th:text="${fieldLoginName}"></div>
-                        <div class="element-profile" th:text="${loginName}"></div>
-                    </div>
-                    <div class="field-element-profile">
-                        <div class="name-element-profile" th:text="${fieldFirstName}"></div>
-                        <div class="element-profile" th:text="${firstName}"></div>
-                    </div>
-                    <div class="field-element-profile">
-                        <div class="name-element-profile" th:text="${fieldLastName}"></div>
-                        <div class="element-profile" th:text="${lastName}"></div>
-                    </div>
-                    <div class="field-element-profile">
-                        <div class="name-element-profile" th:text="${fieldMiddleName}"></div>
-                        <div class="element-profile" th:text="${middleName}"></div>
-                    </div>
-                    <div class="field-element-profile">
-                        <div class="name-element-profile" th:text="${fieldBirthday}"></div>
-                        <div class="element-profile" th:text="${birthday}"></div>
-                    </div>
-                    <div class="field-element-profile">
-                        <div class="name-element-profile" th:text="${fieldGender}"></div>
-                        <div class="element-profile" th:text="${gender}"></div>
-                    </div>
-                    <div class="field-element-profile">
-                        <div class="name-element-profile" th:text="${fieldNumberPhone}"></div>
-                        <div class="element-profile" th:text="${numberPhone}"></div>
-                    </div>
-                    <div class="field-element-profile">
-                        <div class="name-element-profile" th:text="${fieldEmail}"></div>
-                        <div class="element-profile" th:text="${email}"></div>
-                    </div>
             </div>
             <div class="panel-edit">
                 <form>

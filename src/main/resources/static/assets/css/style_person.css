@@ -29,12 +29,18 @@
     min-height: 600px;
     min-width: 800px;
     margin: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);}
+    width: 100%;
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);*/
+}
 
 .right-panel-profile .name-element-person {
     width: 100%;
     text-align: center;
     margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: 500;
+    font-family: 'A_La_Russ', sans-serif;
 }
 
 .right-panel-profile .panel-profile {
@@ -45,16 +51,47 @@
 }
 
 .right-panel-profile .panel-profile .panel {
-    height: 100%;
+    height: 65%;
+    border-radius: 3px;
     width: 100%;
     display: flex;
     flex-direction: column;
     padding: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.right-panel-profile .panel-profile .panel div{
+    font-size: 20px;
+    font-family: Oswald, sans-serif;
+    margin-bottom: 5px;
 }
 
 .right-panel-profile .panel-profile .panel .field-element-profile{
     display: flex;
     justify-content: space-between;
+}
+
+.right-panel-profile .panel-profile .panel .field-element-profile .element-profile {
+    width: 50%;
+}
+
+.right-panel-profile .panel-profile .panel .field-element-profile .name-element-profile {
+    width: 50%;
+    opacity: 0.7;
+}
+
+.right-panel-profile .panel-profile .panel  .field-element-profile-about {
+    margin-top: 20px;
+    opacity: 0.7;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-panel-profile .panel-profile .panel .element-profile-about {
+    white-space: normal;
+    width: 100%;
 }
 
 .right-panel-profile .panel-profile .panel-edit {
@@ -72,14 +109,19 @@
 
 .right-panel-profile .panel-profile .panel-photo {
     height: 100%;
-    width: 100%;
+    width: 35%;
+    border-radius: 3px;
     display: flex;
     flex-direction: column;
+    text-align: center;
+    align-items: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .right-panel-profile .panel-profile .panel-photo .profile-photo{
-    height: 300px;
-    width: 300px;
+    height: 200px;
+    width: 200px;
+    margin: 20px auto 30px;
 }
 
 .right-panel-profile .panel-profile .panel-photo .profile-photo img{
@@ -87,13 +129,71 @@
     width: 100%;
 }
 
-.right-panel-profile .panel-profile .panel-photo .buttons-profile .edit-profile {
-    margin: 10px;
-    border: 1px solid #890000;
-    width: 100px;
-    height: 50px;
+.buttons-profile {
+display: flex;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
-.right-panel-profile .panel-profile .panel-photo .buttons-profile .edit-profile:hover {
+.buttons-profile .edit-profile {
+    color: #FFFFFF;
+    background: #890000;
+    display: flex;
+    width: 140px;
+    height: 35px;
+    font-size: 16px!important;
+    border-radius: 4px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons-profile .reset-password {
+    color: #FFFFFF;
+    display: flex;
+    background: #890000;
+    width: 150px;
+    font-size: 16px!important;
+    height: 35px;
+    border-radius: 4px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-left: 40px;
+}
+
+.buttons-profile .reset-password:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.buttons-profile .edit-profile:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.date-register {
+    font-family: Oswald, sans-serif;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    opacity: 0.7;
+}
+
+.rating-user {
+    font-family: Oswald, sans-serif;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    opacity: 0.7;
+}
+
+.rating-user .name-rating{
+    color: #890000;
+}
+
+.rating-user .name-rating:hover{
+    color: #890000 ;
+    opacity: 1.0;
     cursor: pointer;
 }

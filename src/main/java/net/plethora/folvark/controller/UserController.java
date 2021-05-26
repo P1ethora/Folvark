@@ -35,6 +35,7 @@ public class UserController {
         model.addAttribute("urlPhoto", user.getUrlPhoto());
         model.addAttribute("gender", user.getGender());
         model.addAttribute("email", user.getEmail());
+        model.addAttribute("about", "Любитель легких денег и искатель артефактов ушедшей эпохи");
 
         model.addAttribute("fieldFirstName", "Имя");
         model.addAttribute("fieldLoginName", "Логин");
@@ -44,6 +45,7 @@ public class UserController {
         model.addAttribute("fieldNumberPhone", "Номер телефона");
         model.addAttribute("fieldGender", "Пол");
         model.addAttribute("fieldEmail", "Электронная почта");
+        model.addAttribute("fieldAbout", "О себе");
         return "profile";
     }
 

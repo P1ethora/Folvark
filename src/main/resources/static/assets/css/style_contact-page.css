@@ -28,7 +28,7 @@ section:before {
     background: white;
 }
 
-section .container-contact {
+.container-contact {
     position: relative;
     min-width: 1100px;
     min-height: 550px;
@@ -36,7 +36,7 @@ section .container-contact {
     z-index: 1000;
 }
 
-section .container-contact .contact-info {
+.container-contact .contact-info {
     position: absolute;
     top: 40px;
     width: 350px;
@@ -51,18 +51,18 @@ section .container-contact .contact-info {
     box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
 }
 
-section .container-contact .contact-info h2 {
+.container-contact .contact-info h2 {
     font-family: 'A_La_Russ', sans-serif;
     font-size: 30px;
     font-weight: 500;
 }
 
-section .container-contact .contact-info .info {
+.container-contact .contact-info .info {
     position: relative;
     margin: 20px 0;
 }
 
-section .container-contact .contact-info .info li {
+.container-contact .contact-info .info li {
     position: relative;
     list-style: none;
     display: flex;
@@ -71,28 +71,28 @@ section .container-contact .contact-info .info li {
     align-items: flex-start;
 }
 
-section .container-contact .contact-info .info li span:nth-child(1) {
+.container-contact .contact-info .info li span:nth-child(1) {
     width: 30px;
     min-width: 30px;
 }
 
-section .container-contact .contact-info .info li span:nth-child(1) a {
+.container-contact .contact-info .info li span:nth-child(1) a {
     max-width: 100%;
     opacity: 0.5;
 }
 
-section .container-contact .contact-info .info li span:nth-child(2) {
+.container-contact .contact-info .info li span:nth-child(2) {
     margin-left: 10px;
     font-weight: 300;
     opacity: 0.5;
 }
 
-section .container-contact .contact-info .info li:hover span:nth-child(1) a,
-section .container-contact .contact-info .info li:hover span:nth-child(2) {
+.container-contact .contact-info .info li:hover span:nth-child(1) a,
+.container-contact .contact-info .info li:hover span:nth-child(2) {
     opacity: 1;
 }
 
-section .container-contact .contact-form {
+.container-contact .contact-form {
     position: absolute;
     background: white;
     margin-left: 150px;
@@ -102,14 +102,14 @@ section .container-contact .contact-form {
     box-shadow: 0 50px 50px rgba(0, 0, 0, .5);
 }
 
-section .container-contact .contact-form h2 {
+.container-contact .contact-form h2 {
     font-family: 'A_La_Russ', sans-serif;
     color: black;
     font-size: 30px;
     font-weight: 500;
 }
 
-section .container-contact .contact-form .formBox {
+.container-contact .contact-form .formBox {
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -117,21 +117,21 @@ section .container-contact .contact-form .formBox {
     padding-top: 30px;
 }
 
-section .container-contact .contact-form .formBox .inputBox {
+.container-contact .contact-form .formBox .inputBox {
     position: relative;
     margin: 0 0 35px 0;
 }
 
-section .container-contact .contact-form .formBox .inputBox.w50 {
+.container-contact .contact-form .formBox .inputBox.w50 {
     width: 47%;
 }
 
-section .container-contact .contact-form .formBox .inputBox.w100 {
+.container-contact .contact-form .formBox .inputBox.w100 {
     width: 100%;
 }
 
-section .container-contact .contact-form .formBox .inputBox input,
-section .container-contact .contact-form .formBox .inputBox textarea {
+.container-contact .contact-form .formBox .inputBox input,
+.container-contact .contact-form .formBox .inputBox textarea {
     width: 100% !important;
     padding: 5px 0;
     font-size: 18px;
@@ -143,11 +143,11 @@ section .container-contact .contact-form .formBox .inputBox textarea {
     outline: none;
 }
 
-section .container-contact .contact-form .formBox .inputBox textarea {
+.container-contact .contact-form .formBox .inputBox textarea {
     min-height: 120px;
 }
 
-section .container-contact .contact-form .formBox .inputBox span {
+.container-contact .contact-form .formBox .inputBox span {
     position: absolute;
     left: 0;
     font-size: 18px;
@@ -159,10 +159,10 @@ section .container-contact .contact-form .formBox .inputBox span {
 
 }
 
-section .container-contact .contact-form .formBox .inputBox input:focus ~ span,
-section .container-contact .contact-form .formBox .inputBox textarea:focus ~ span,
-section .container-contact .contact-form .formBox .inputBox input:valid ~ span,
-section .container-contact .contact-form .formBox .inputBox textarea:valid ~ span {
+.container-contact .contact-form .formBox .inputBox input:focus ~ span,
+.container-contact .contact-form .formBox .inputBox textarea:focus ~ span,
+.container-contact .contact-form .formBox .inputBox input:valid ~ span,
+.container-contact .contact-form .formBox .inputBox textarea:valid ~ span {
     transform: translateY(-20px);
     font-size: 12px;
     font-weight: 400;
@@ -170,7 +170,7 @@ section .container-contact .contact-form .formBox .inputBox textarea:valid ~ spa
     color: #890000;
 }
 
-section .container-contact .contact-form .formBox .inputBox input[type="submit"] {
+.container-contact .contact-form .formBox .inputBox input[type="submit"] {
     position: relative;
     cursor: pointer;
     background: #890000;
@@ -181,7 +181,7 @@ section .container-contact .contact-form .formBox .inputBox input[type="submit"]
     padding: 12px;
 }
 
-section .container-contact .contact-form .formBox .inputBox input[type="submit"]:hover {
+.container-contact .contact-form .formBox .inputBox input[type="submit"]:hover {
     color: white;
     background: red;
 }
