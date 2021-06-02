@@ -1,11 +1,14 @@
 package net.plethora.folvark.controller;
 
+import net.plethora.folvark.models.ProductMap;
 import net.plethora.folvark.models.User;
 import net.plethora.folvark.service.AuthService;
 import net.plethora.folvark.service.PersonaService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -75,7 +78,12 @@ public class UserController {
 
     @GetMapping("/my-maps")
     public String getMyMaps(Model model) {
+        String idBugMap = authService.getAuthUser().getIdBugMap();
+        List<ProductMap> products = personaService.getPurchasedMap(idBugMap);
+
         model.addAttribute("elements", personaService.getElementsProfile());
+        model.addAttribute("products", products);
+        model.addAttribute("countProduct", products.size());
         return "my-maps";
     }
 

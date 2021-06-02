@@ -1,0 +1,19 @@
+.left-block-profile {
+    margin-top: 20px;
+}
+
+.menu-person li {
+    font-size: 16px;
+    font-family: "Ponter", sans-serif;
+    margin-top: 15px;
+}
+
+.menu-person li a{
+    margin-top: 15px;
+    color: #1a181b;
+}
+
+.menu-person li a:hover{
+    color: #890000;
+    cursor: pointer;
+}

@@ -19,6 +19,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private static final String[] PUBLIC_MATCHERS = {
+            "/",
+            "/assets/**",
+            "/fontawesome/**",
+            "/fonts/**",
+            "/images/**",
+            "/js/**",
+            "/slick-1.8.1/**"
+    };
+
+
+
     private final UserDetailsService userDetailsService;
 
     public SecurityConfig(@Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService) {

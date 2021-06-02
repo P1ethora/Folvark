@@ -1,11 +1,14 @@
 package net.plethora.folvark.controller;
 
+import lombok.AllArgsConstructor;
 import net.plethora.folvark.dao.DaoUser;
+import net.plethora.folvark.models.BagMap;
 import net.plethora.folvark.models.Cart;
 import net.plethora.folvark.models.User;
 import net.plethora.folvark.models.state.Role;
 import net.plethora.folvark.models.state.Status;
 import net.plethora.folvark.service.CartService;
+import net.plethora.folvark.service.PersonaService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,18 +16,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+@AllArgsConstructor
 @Controller
 public class LoginController {
 
     private final DaoUser daoUser;
     private final PasswordEncoder passwordEncoder;
     private final CartService cartService;
-
-    public LoginController(DaoUser daoUser, PasswordEncoder passwordEncoder, CartService cartService) {
-        this.daoUser = daoUser;
-        this.passwordEncoder = passwordEncoder;
-        this.cartService = cartService;
-    }
+    private final PersonaService personaService;
 
     @GetMapping("/register")
     public String openRegister() {
@@ -51,10 +50,18 @@ public class LoginController {
                 user.setLastName(lastName);
                 user.setRole(Role.USER);
                 user.setStatus(Status.ACTIVE);
+
                 Cart cart = new Cart();
                 cartService.SaveCart(cart);
                 user.setIdCart(cart.getId());
+
+                BagMap bagMap = new BagMap();
+                personaService.saveBugMap(bagMap);
+                user.setIdBugMap(bagMap.getId());
+
                 daoUser.saveUser(user);
+
+
                 return "redirect:/login";
             }
         }
