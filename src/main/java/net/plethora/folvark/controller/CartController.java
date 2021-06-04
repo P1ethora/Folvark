@@ -1,11 +1,11 @@
 package net.plethora.folvark.controller;
 
+import net.plethora.folvark.models.state.ProductState;
 import net.plethora.folvark.models.system.CartPackage;
 import net.plethora.folvark.service.AuthService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -28,6 +28,7 @@ public class CartController {
         model.addAttribute("products", cartPackage.getProductMaps());
         model.addAttribute("allPrice", cartPackage.getAllPrice());
         model.addAttribute("countProducts", countProduct);
+
         return "cart-page";
     }
 
@@ -39,10 +40,18 @@ public class CartController {
         return viewCart(httpSession, model);
     }
 
-    @GetMapping("/persona/edit-profile")
-    public String editProfile() {
-
-        return "edit-profile-page";
+    @PostMapping("/maps/addToCart")
+    public @ResponseBody
+    void addNewWorker(@RequestBody String jsonString, HttpSession httpSession) {
+        authService.checkCart(httpSession);
+        String idProduct = jsonString.replace("\"", "");
+        authService.addProductToCart(idProduct, httpSession);
     }
+
+//    @GetMapping("/persona/edit-profile")
+//    public String editProfile() {
+//
+//        return "edit-profile-page";
+//    }
 
 }

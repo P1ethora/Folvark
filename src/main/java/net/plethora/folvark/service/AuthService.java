@@ -1,10 +1,15 @@
 package net.plethora.folvark.service;
 
+import lombok.AllArgsConstructor;
+import net.plethora.folvark.dao.repo.BagMapRepository;
 import net.plethora.folvark.dao.repo.UserRepository;
+import net.plethora.folvark.models.BagMap;
+import net.plethora.folvark.models.Cart;
 import net.plethora.folvark.models.system.CartPackage;
 import net.plethora.folvark.models.system.CheckedCartProduct;
 import net.plethora.folvark.models.ProductMap;
 import net.plethora.folvark.models.User;
+import net.plethora.folvark.models.system.FavoritesPack;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -16,16 +21,14 @@ import java.util.List;
 /**
  * Methods of this class return values according to authentication
  */
+@AllArgsConstructor
 @Service
 public class AuthService {
 
     private final CartService cartService;
     private final UserRepository userRepository;
-
-    public AuthService(CartService cartService, UserRepository userRepository) {
-        this.cartService = cartService;
-        this.userRepository = userRepository;
-    }
+    private final FavoritesService favoritesService;
+    private final BagMapRepository bagMapRepository;
 
     public User getAuthUser() {
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
@@ -38,12 +41,12 @@ public class AuthService {
 
     public int countProduct(HttpSession httpSession) {
         if (getAuthUser() == null) {
-            return cartService.getCart(httpSession).getIdMaps().length;
+            return cartService.getCart(httpSession).getIdMaps().size();
         } else {
-            String[] idMaps = cartService.getCart(getAuthUser().getIdCart()).getIdMaps();
-            if (idMaps == null) {
+            List<String> idMaps = cartService.getCart(getAuthUser().getIdCart()).getIdMaps();
+            if (cartService.getCart(getAuthUser().getIdCart()).getIdMaps() == null) {
                 return 0;
-            } else return idMaps.length;
+            } else return idMaps.size();
         }
     }
 
@@ -55,17 +58,38 @@ public class AuthService {
         }
     }
 
-    public List<CheckedCartProduct> checkProductForCart(List<ProductMap> products, HttpSession httpSession) {
+//    public List<CheckedCartProduct> checkProductForCart(List<ProductMap> products, HttpSession httpSession) {
+//
+//        List<CheckedCartProduct> checkedCartProducts;
+//
+//        if (getAuthUser() == null) {
+//            checkedCartProducts = cartService.checkProductForCart(products, cartService.getCart(httpSession));
+//        } else {
+//            checkedCartProducts = cartService.checkProductForCart(products, cartService.getCart(getAuthUser().getIdCart()));
+//        }
+//        return checkedCartProducts;
+//    }
+
+//TODO test
+    public List<CheckedCartProduct> checkProduct(List<ProductMap> products, HttpSession httpSession) {
 
         List<CheckedCartProduct> checkedCartProducts;
 
         if (getAuthUser() == null) {
-            checkedCartProducts = cartService.checkProductForCart(products, cartService.getCart(httpSession));
+            checkedCartProducts = cartService.checkProductForCart(products,cartService.getCart(httpSession), null,null);
+           // checkedCartProducts = cartService.checkProductForCart(products, cartService.getCart(httpSession));
         } else {
-            checkedCartProducts = cartService.checkProductForCart(products, cartService.getCart(getAuthUser().getIdCart()));
+            User user = getAuthUser();
+            Cart cart = cartService.getCart(user.getIdCart());
+            FavoritesPack favoritesPack = favoritesService.getById(user.getIdFavoritesPack());
+            BagMap bagMap = bagMapRepository.findById(user.getIdBugMap()).orElse(null);
+
+            checkedCartProducts = cartService.checkProductForCart(products,cart, favoritesPack,bagMap);
         }
         return checkedCartProducts;
     }
+
+
 
     public void addProductToCart(String idProduct, HttpSession httpSession) {
 

@@ -1,8 +1,10 @@
 package net.plethora.folvark.controller;
 
+import lombok.AllArgsConstructor;
 import net.plethora.folvark.models.system.CheckedCartProduct;
 import net.plethora.folvark.models.ProductMap;
 import net.plethora.folvark.service.AuthService;
+import net.plethora.folvark.service.CartService;
 import net.plethora.folvark.service.PagerService;
 import net.plethora.folvark.service.ProductService;
 import org.springframework.stereotype.Controller;
@@ -12,18 +14,14 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+@AllArgsConstructor
 @Controller
 public class MapController {
 
     private final PagerService pagerService;
     private final ProductService productService;
     private final AuthService authService;
-
-    public MapController(PagerService pagerService, ProductService productService, AuthService authService) {
-        this.pagerService = pagerService;
-        this.authService = authService;
-        this.productService = productService;
-    }
+    private final CartService cartService;
 
     @GetMapping("/maps")
 //    @PreAuthorize("hasAuthority('developers:read')")
@@ -49,17 +47,10 @@ public class MapController {
         return "map-page";
     }
 
-    @PostMapping("/maps/addToCart")
-    public @ResponseBody
-    void addNewWorker(@RequestBody String jsonString, HttpSession httpSession) {
-        authService.checkCart(httpSession);
-        String idProduct = jsonString.replace("\"", "");
-        authService.addProductToCart(idProduct, httpSession);
-    }
-
     private void attribute(HttpSession httpSession, Model model, List<ProductMap> products, String category, String sort, String page) {
 
-        List<CheckedCartProduct> checkedCartProducts = authService.checkProductForCart(products, httpSession);
+        //List<CheckedCartProduct> checkedCartProducts = authService.checkProductForCart(products, httpSession);
+        List<CheckedCartProduct> checkedCartProducts = authService.checkProduct(products,httpSession);
         int countProduct = authService.countProduct(httpSession);
 
         model.addAttribute("countProducts", countProduct);

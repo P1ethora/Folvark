@@ -45,10 +45,12 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     @Column(name = "gender")
     private Gender gender;
-    @Column(name ="number_phone" )
+    @Column(name = "number_phone")
     private String numberPhone;
-    @Column(name ="id_bagmap")
+    @Column(name = "id_bagmap")
     private String idBugMap;
+    @Column(name = "id_favorites")
+    private String idFavoritesPack;
 
     public User(String email, String password, String firstName, String lastName, String middleName, String loginName, Status status, Role role) {
         this.email = email;

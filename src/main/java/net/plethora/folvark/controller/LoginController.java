@@ -7,7 +7,9 @@ import net.plethora.folvark.models.Cart;
 import net.plethora.folvark.models.User;
 import net.plethora.folvark.models.state.Role;
 import net.plethora.folvark.models.state.Status;
+import net.plethora.folvark.models.system.FavoritesPack;
 import net.plethora.folvark.service.CartService;
+import net.plethora.folvark.service.FavoritesService;
 import net.plethora.folvark.service.PersonaService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
 
 @AllArgsConstructor
 @Controller
@@ -24,6 +28,7 @@ public class LoginController {
     private final PasswordEncoder passwordEncoder;
     private final CartService cartService;
     private final PersonaService personaService;
+    private final FavoritesService favoritesService;
 
     @GetMapping("/register")
     public String openRegister() {
@@ -52,6 +57,7 @@ public class LoginController {
                 user.setStatus(Status.ACTIVE);
 
                 Cart cart = new Cart();
+                cart.setIdMaps(new ArrayList<>());
                 cartService.SaveCart(cart);
                 user.setIdCart(cart.getId());
 
@@ -59,8 +65,11 @@ public class LoginController {
                 personaService.saveBugMap(bagMap);
                 user.setIdBugMap(bagMap.getId());
 
+                FavoritesPack favoritesPack = new FavoritesPack();
+                favoritesPack.setIdFavorites(new ArrayList<>());
+                favoritesService.saveFavPack(favoritesPack);
+                user.setIdFavoritesPack(favoritesPack.getId());
                 daoUser.saveUser(user);
-
 
                 return "redirect:/login";
             }

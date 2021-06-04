@@ -24,7 +24,8 @@ function flyProduct(element) {
     let buttAddCart = element.closest('.add-to-cart');
     let prod = element.closest('.product-flex');
     buttAddCart.getElementsByTagName('a').item(0).removeAttribute('onclick');
-    prod.className = 'product-flex-added';
+    buttAddCart.className='add-to-cart-none'
+    //prod.className = 'product-flex-added';
     prod.style.border = '1px solid #00a550';
     incr.innerHTML = +incr.innerHTML + 1
 }

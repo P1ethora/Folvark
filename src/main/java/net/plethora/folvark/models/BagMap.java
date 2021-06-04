@@ -5,15 +5,14 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @Getter
 @Setter
-@Document("carts")
-public class Cart {
+@Document("bags")
+public class BagMap {
 
     @Id
     private String id;
-    private List<String> idMaps;
-
+    private ArrayList<String> maps;
 }

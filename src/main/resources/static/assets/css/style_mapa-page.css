@@ -137,7 +137,8 @@
 
 }
 
-.product-flex .add-to-cart {
+.product-flex .add-to-cart,
+.add-to-cart-none {
     text-decoration: none;
     background: #890000;
     font-size: 15px;
@@ -152,12 +153,22 @@
     font-family: Oswald, sans-serif;
 }
 
+
 .product-flex .add-to-cart:hover {
     cursor: pointer;
     text-decoration: underline;
 }
 
 .product-flex:hover .add-to-cart {
+    bottom: 0;
+}
+
+.add-to-cart-none {
+    background: #00a550;
+    bottom: -100px;
+}
+
+.product-flex:hover .add-to-cart-none {
     bottom: 0;
 }
 
@@ -395,4 +406,33 @@
 
 .product-flex-added:hover .add-to-cart {
     bottom: 0;
+}
+
+.favorite-btn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+}
+
+.favorite-btn div {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-btn div i {
+    position: absolute;
+    color: #890000;
+}
+
+.favorite-btn div i:hover {
+    cursor: pointer;
 }

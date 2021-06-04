@@ -39,4 +39,5 @@ public class ConverterJsonService<T> {
     public Reply formJSON(String json) {
         return mapper.readValue(json, Reply.class);
     }
+
 }

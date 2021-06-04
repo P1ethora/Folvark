@@ -1,31 +1,31 @@
 package net.plethora.folvark.service;
 
+import lombok.AllArgsConstructor;
 import net.plethora.folvark.dao.DaoCart;
 import net.plethora.folvark.dao.DaoProductMap;
 import net.plethora.folvark.dao.repo.UserRepository;
-import net.plethora.folvark.models.*;
+import net.plethora.folvark.models.BagMap;
+import net.plethora.folvark.models.Cart;
+import net.plethora.folvark.models.ProductMap;
+import net.plethora.folvark.models.User;
+import net.plethora.folvark.models.state.ProductState;
 import net.plethora.folvark.models.system.CartPackage;
 import net.plethora.folvark.models.system.CheckedCartProduct;
-import org.apache.commons.lang3.ArrayUtils;
+import net.plethora.folvark.models.system.FavoritesPack;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class CartService {
 
-    private DaoCart daoCart;
-    private UserRepository userRepository;
-    private DaoProductMap daoProductMap;
-
-    public CartService(DaoCart daoCart, UserRepository userRepository, DaoProductMap daoProductMap) {
-        this.daoCart = daoCart;
-        this.userRepository = userRepository;
-        this.daoProductMap = daoProductMap;
-    }
+    private final DaoCart daoCart;
+    private final UserRepository userRepository;
+    private final DaoProductMap daoProductMap;
+    private final ProductService productService;
 
     public void SaveCart(Cart cart) {
         daoCart.saveCart(cart);
@@ -33,19 +33,16 @@ public class CartService {
 
     void addProductToCart(String idProduct, Cart cart) {
 
-        if (cart.getIdMaps() == null || cart.getIdMaps().length == 0) {
-            cart.setIdMaps(new String[1]);
-        } else {
-            cart.setIdMaps(Arrays.copyOf(cart.getIdMaps(), cart.getIdMaps().length + 1));
+        if (cart.getIdMaps() == null || cart.getIdMaps().size() == 0) {
+            cart.setIdMaps(new ArrayList<>());
         }
-
-        cart.getIdMaps()[cart.getIdMaps().length - 1] = idProduct;
+        cart.getIdMaps().add(idProduct);
         daoCart.editCart(cart);
     }
 
     void removeProduct(String idCart, String idItem) {
         Cart cart = daoCart.findCart(idCart);
-        cart.setIdMaps(ArrayUtils.removeElement(cart.getIdMaps(), idItem));
+        cart.getIdMaps().remove(idItem);
         daoCart.editCart(cart);
     }
 
@@ -64,28 +61,80 @@ public class CartService {
      * @param cart user or session
      * @return proven products
      */
-    List<CheckedCartProduct> checkProductForCart(List<ProductMap> list, Cart cart) {
-        List<CheckedCartProduct> checkedCartProducts = new ArrayList<>();
-        boolean ok = false;
+//    List<CheckedCartProduct> checkProductForCart(List<ProductMap> list, Cart cart) {
+//        List<CheckedCartProduct> checkedCartProducts = new ArrayList<>();
+//        boolean ok = false;
+//
+//        if (cart.getIdMaps() == null || cart.getIdMaps().size() <= 0) {
+//            for (ProductMap productMap : list) {
+//                checkedCartProducts.add(new CheckedCartProduct(productMap, false));
+//            }
+//        } else {
+//            for (ProductMap productMap : list) {
+//                for (String idProductInCart : cart.getIdMaps()) {
+//                    if (productMap.getId().equals(idProductInCart)) {
+//                        ok = true;
+//                        checkedCartProducts.add(new CheckedCartProduct(productMap, true));
+//                        break;
+//                    }
+//                }
+//                if (!ok) {
+//                    checkedCartProducts.add(new CheckedCartProduct(productMap, false));
+//                }
+//                ok = false;
+//            }
+//        }
+//
+//        return checkedCartProducts;
+//    }
 
-        if (cart.getIdMaps() == null || cart.getIdMaps().length <= 0) {
-            for (ProductMap productMap : list) {
-                checkedCartProducts.add(new CheckedCartProduct(productMap, false));
+
+    public List<CheckedCartProduct> checkProductForCart(List<ProductMap> list, Cart cart, FavoritesPack favoritesPack, BagMap bagMap) {
+
+        List<CheckedCartProduct> checkedCartProducts = new ArrayList<>();
+
+        for (ProductMap productMap : list) {
+            CheckedCartProduct checkedCartProduct = new CheckedCartProduct();
+
+            if (bagMap != null) {
+                if (bagMap.getMaps() == null) {
+                    bagMap.setMaps(new ArrayList<>());
+                }
             }
-        } else {
-            for (ProductMap productMap : list) {
-                for (String idProductInCart : cart.getIdMaps()) {
-                    if (productMap.getId().equals(idProductInCart)) {
-                        ok = true;
-                        checkedCartProducts.add(new CheckedCartProduct(productMap, true));
-                        break;
+            if (favoritesPack != null) {
+                if (favoritesPack.getIdFavorites() == null) {
+                    favoritesPack.setIdFavorites(new ArrayList<>());
+                }
+            }
+            if (cart.getIdMaps() == null) {
+                cart.setIdMaps(new ArrayList<>());
+            }
+
+            if (bagMap != null && bagMap.getMaps().stream().filter(p -> p.equals(productMap.getId())).findFirst().orElse(null) != null) {
+                checkedCartProduct.setProductState(ProductState.BOUGHT);
+            } else {
+
+                if (cart.getIdMaps().stream().filter(p -> p.equals(productMap.getId())).findFirst().orElse(null) != null) {
+                    checkedCartProduct.setProductState(ProductState.CART);
+                }
+
+                if (favoritesPack != null && favoritesPack.getIdFavorites().stream().filter(p -> p.equals(productMap.getId())).findFirst().orElse(null) != null) {
+                    if (checkedCartProduct.getProductState() == ProductState.CART) {
+                        checkedCartProduct.setProductState(ProductState.CART_AND_FAVORITE);
+                    } else {
+                        checkedCartProduct.setProductState(ProductState.FAVORITE);
                     }
                 }
-                if (!ok) {
-                    checkedCartProducts.add(new CheckedCartProduct(productMap, false));
-                }
-                ok = false;
+
             }
+
+            if (checkedCartProduct.getProductState() == null) {
+                checkedCartProduct.setProductState(ProductState.TRADE);
+            }
+
+            checkedCartProduct.setProductMap(productMap);
+            checkedCartProducts.add(checkedCartProduct);
+
         }
 
         return checkedCartProducts;
@@ -114,7 +163,7 @@ public class CartService {
     private void checkAvailabilityCart(HttpSession httpSession) {
         if (httpSession.getAttribute("idCart") == null || daoCart.findCart((String) httpSession.getAttribute("idCart")) == null) {
             Cart cart = new Cart();
-            cart.setIdMaps(new String[0]);
+            cart.setIdMaps(new ArrayList<>());
             SaveCart(cart);
             httpSession.setAttribute("idCart", cart.getId());
         }
@@ -122,7 +171,7 @@ public class CartService {
 
     private void checkAvailabilityCart(User user) {
         Cart cart = new Cart();
-        cart.setIdMaps(new String[0]);
+        cart.setIdMaps(new ArrayList<>());
         SaveCart(cart);
         user.setIdCart(cart.getId());
         userRepository.save(user);
@@ -132,7 +181,7 @@ public class CartService {
         List<ProductMap> productMaps = new ArrayList<>();
         double allPrice = 0;
 
-        if (cart.getIdMaps().length > 0) {
+        if (cart.getIdMaps().size() > 0) {
             for (String id : cart.getIdMaps()) {
                 ProductMap productMap = daoProductMap.findById(id);
                 if (productMap != null) {
