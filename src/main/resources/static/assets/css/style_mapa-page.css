@@ -104,7 +104,7 @@
     overflow: hidden;
     position: relative;
     width: 200px;
-    height: auto;
+    height: 300px;
 }
 
 .product-img .icon li a {
@@ -196,15 +196,6 @@
 .product-detail .product-price {
     font-family: 'Ponter', sans-serif;
     margin-top: 7px;
-}
-
-.icon {
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    bottom: 40px;
-    right: 10px;
-    z-index: 1;
 }
 
 .icon {
@@ -354,59 +345,59 @@
 
 /*IF PRODUCT ADDED TO CART*/
 
-.product-flex-added {
-    background: #1a181b;
-    border: 1px solid #00a550;
-    margin: 10px;
-    width: 200px;
-    height: auto;
-    min-width: 200px;
-    overflow: hidden;
-}
+/*.product-flex-added {*/
+/*    background: #1a181b;*/
+/*    border: 1px solid #00a550;*/
+/*    margin: 10px;*/
+/*    width: 200px;*/
+/*    height: auto;*/
+/*    min-width: 200px;*/
+/*    overflow: hidden;*/
+/*}*/
 
-.product-flex-added .add-to-cart {
-    text-decoration: none;
-    background: #00a550;
-    font-size: 15px;
-    text-align: center;
-    width: 100%;
-    padding: 10px 0;
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: -100px;
-    transition: all .3s;
-    font-family: Oswald, sans-serif;
-}
+/*.product-flex-added .add-to-cart {*/
+/*    text-decoration: none;*/
+/*    background: #00a550;*/
+/*    font-size: 15px;*/
+/*    text-align: center;*/
+/*    width: 100%;*/
+/*    padding: 10px 0;*/
+/*    display: block;*/
+/*    position: absolute;*/
+/*    left: 0;*/
+/*    bottom: -100px;*/
+/*    transition: all .3s;*/
+/*    font-family: Oswald, sans-serif;*/
+/*}*/
 
 /*.product-flex-added .add-to-cart:hover {*/
 /*    cursor: pointer;*/
 /*    text-decoration: underline;*/
 /*}*/
 
-.product-flex-added .add-to-cart {
+/*.product-flex-added .add-to-cart {*/
 
-}
+/*}*/
 
-.product-flex-added:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
-}
+/*.product-flex-added:hover {*/
+/*    box-shadow: 0 0 10px rgba(0, 0, 0, .3);*/
+/*}*/
 
-.product-flex-added:hover .icon li {
-    transform: translateX(0px);
-}
+/*.product-flex-added:hover .icon li {*/
+/*    transform: translateX(0px);*/
+/*}*/
 
-.product-flex-added:hover .icon li:nth-child(2) {
-    transition-delay: .10s;
-}
+/*.product-flex-added:hover .icon li:nth-child(2) {*/
+/*    transition-delay: .10s;*/
+/*}*/
 
-.product-flex-added:hover .icon li:nth-child(3) {
-    transition-delay: .20s;
-}
+/*.product-flex-added:hover .icon li:nth-child(3) {*/
+/*    transition-delay: .20s;*/
+/*}*/
 
-.product-flex-added:hover .add-to-cart {
-    bottom: 0;
-}
+/*.product-flex-added:hover .add-to-cart {*/
+/*    bottom: 0;*/
+/*}*/
 
 .favorite-btn {
     position: absolute;

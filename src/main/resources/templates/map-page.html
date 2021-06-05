@@ -76,21 +76,21 @@
                 <th:block th:each="el : ${products}">
                     <th:block th:switch="${el.getProductState().name()}">
 
-                        <div th:case="'BOUGHT'">
-                            <div th:insert="blocks/element/map/product-map-bought :: product-map"></div>
-                        </div>
-                        <div th:case="'CART'">
-                            <div th:insert="blocks/element/map/product-map-cart :: product-map"></div>
-                        </div>
-                        <div th:case="'FAVORITE'">
-                            <div th:insert="blocks/element/map/product-map-favorite :: product-map"></div>
-                        </div>
-                        <div th:case="'CART_AND_FAVORITE'">
-                            <div th:insert="blocks/element/map/product-map-favorite-cart :: product-map"></div>
-                        </div>
-                        <div th:case="'TRADE'">
-                            <div th:insert="blocks/element/map/product-map :: product-map"></div>
-                        </div>
+                        <th:block th:case="'BOUGHT'">
+                            <th:block th:insert="blocks/element/map/product-map-bought :: product-map"></th:block>
+                        </th:block>
+                        <th:block th:case="'CART'">
+                            <th:block th:insert="blocks/element/map/product-map-cart :: product-map"></th:block>
+                        </th:block>
+                        <th:block th:case="'FAVORITE'">
+                            <th:block th:insert="blocks/element/map/product-map-favorite :: product-map"></th:block>
+                        </th:block>
+                        <th:block th:case="'CART_AND_FAVORITE'">
+                            <th:block th:insert="blocks/element/map/product-map-favorite-cart :: product-map"></th:block>
+                        </th:block>
+                        <th:block th:case="'TRADE'">
+                            <th:block th:insert="blocks/element/map/product-map :: product-map"></th:block>
+                        </th:block>
 
                     </th:block>
                 </th:block>

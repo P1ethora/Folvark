@@ -3,6 +3,7 @@ package net.plethora.folvark.controller;
 import lombok.AllArgsConstructor;
 import net.plethora.folvark.models.ProductMap;
 import net.plethora.folvark.models.User;
+import net.plethora.folvark.models.system.CheckedCartProduct;
 import net.plethora.folvark.service.AuthService;
 import net.plethora.folvark.service.FavoritesService;
 import net.plethora.folvark.service.PersonaService;
@@ -63,8 +64,8 @@ public class UserController {
     public String getFavorites(Model model) {
         User user = authService.getAuthUser();
 
-        Iterable<ProductMap> productMaps = favoritesService.getFavoritesProduct(user.getIdFavoritesPack());
-        long count = productMaps.spliterator().getExactSizeIfKnown();
+        List<CheckedCartProduct> productMaps = authService.getFavorites();
+        int count = productMaps.size();
         model.addAttribute("header", "Избранное");
         model.addAttribute("elements", personaService.getElementsProfile());
         model.addAttribute("products", productMaps);
@@ -104,6 +105,7 @@ public class UserController {
     public String getMyMaps(Model model) {
         String idBugMap = authService.getAuthUser().getIdBugMap();
         List<ProductMap> products = personaService.getPurchasedMap(idBugMap);
+
 
         model.addAttribute("elements", personaService.getElementsProfile());
         model.addAttribute("products", products);

@@ -58,26 +58,12 @@ public class AuthService {
         }
     }
 
-//    public List<CheckedCartProduct> checkProductForCart(List<ProductMap> products, HttpSession httpSession) {
-//
-//        List<CheckedCartProduct> checkedCartProducts;
-//
-//        if (getAuthUser() == null) {
-//            checkedCartProducts = cartService.checkProductForCart(products, cartService.getCart(httpSession));
-//        } else {
-//            checkedCartProducts = cartService.checkProductForCart(products, cartService.getCart(getAuthUser().getIdCart()));
-//        }
-//        return checkedCartProducts;
-//    }
-
-//TODO test
     public List<CheckedCartProduct> checkProduct(List<ProductMap> products, HttpSession httpSession) {
 
         List<CheckedCartProduct> checkedCartProducts;
 
         if (getAuthUser() == null) {
             checkedCartProducts = cartService.checkProductForCart(products,cartService.getCart(httpSession), null,null);
-           // checkedCartProducts = cartService.checkProductForCart(products, cartService.getCart(httpSession));
         } else {
             User user = getAuthUser();
             Cart cart = cartService.getCart(user.getIdCart());
@@ -108,6 +94,16 @@ public class AuthService {
             cartPackage = cartService.getCartPackage(cartService.getCart(getAuthUser().getIdCart()));
         }
         return cartPackage;
+    }
+
+    public List<CheckedCartProduct> getFavorites() {
+        User user = getAuthUser();
+        Iterable<ProductMap> productMaps = favoritesService.getFavoritesProduct(user.getIdFavoritesPack());
+
+        Cart cart = cartService.getCart(user.getIdCart());
+        FavoritesPack favoritesPack = favoritesService.getById(user.getIdFavoritesPack());
+
+        return cartService.getFavoriteMap(productMaps,cart,favoritesPack);
     }
 
     /**

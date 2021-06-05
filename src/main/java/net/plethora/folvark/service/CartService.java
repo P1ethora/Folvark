@@ -54,41 +54,6 @@ public class CartService {
         return daoCart.findCart(idCart);
     }
 
-    /**
-     * Green highlight product if it's in the shopping cart
-     *
-     * @param list products db
-     * @param cart user or session
-     * @return proven products
-     */
-//    List<CheckedCartProduct> checkProductForCart(List<ProductMap> list, Cart cart) {
-//        List<CheckedCartProduct> checkedCartProducts = new ArrayList<>();
-//        boolean ok = false;
-//
-//        if (cart.getIdMaps() == null || cart.getIdMaps().size() <= 0) {
-//            for (ProductMap productMap : list) {
-//                checkedCartProducts.add(new CheckedCartProduct(productMap, false));
-//            }
-//        } else {
-//            for (ProductMap productMap : list) {
-//                for (String idProductInCart : cart.getIdMaps()) {
-//                    if (productMap.getId().equals(idProductInCart)) {
-//                        ok = true;
-//                        checkedCartProducts.add(new CheckedCartProduct(productMap, true));
-//                        break;
-//                    }
-//                }
-//                if (!ok) {
-//                    checkedCartProducts.add(new CheckedCartProduct(productMap, false));
-//                }
-//                ok = false;
-//            }
-//        }
-//
-//        return checkedCartProducts;
-//    }
-
-
     public List<CheckedCartProduct> checkProductForCart(List<ProductMap> list, Cart cart, FavoritesPack favoritesPack, BagMap bagMap) {
 
         List<CheckedCartProduct> checkedCartProducts = new ArrayList<>();
@@ -114,17 +79,7 @@ public class CartService {
                 checkedCartProduct.setProductState(ProductState.BOUGHT);
             } else {
 
-                if (cart.getIdMaps().stream().filter(p -> p.equals(productMap.getId())).findFirst().orElse(null) != null) {
-                    checkedCartProduct.setProductState(ProductState.CART);
-                }
-
-                if (favoritesPack != null && favoritesPack.getIdFavorites().stream().filter(p -> p.equals(productMap.getId())).findFirst().orElse(null) != null) {
-                    if (checkedCartProduct.getProductState() == ProductState.CART) {
-                        checkedCartProduct.setProductState(ProductState.CART_AND_FAVORITE);
-                    } else {
-                        checkedCartProduct.setProductState(ProductState.FAVORITE);
-                    }
-                }
+                checkCartAndFavorite(productMap, cart, favoritesPack, checkedCartProduct);
 
             }
 
@@ -138,6 +93,45 @@ public class CartService {
         }
 
         return checkedCartProducts;
+    }
+
+    public List<CheckedCartProduct> getFavoriteMap(Iterable<ProductMap> list, Cart cart, FavoritesPack favoritesPack) {
+
+        List<CheckedCartProduct> checkedCartProducts = new ArrayList<>();
+        for (ProductMap productMap : list) {
+            CheckedCartProduct checkedCartProduct = new CheckedCartProduct();
+
+            if (favoritesPack != null) {
+                if (favoritesPack.getIdFavorites() == null) {
+                    favoritesPack.setIdFavorites(new ArrayList<>());
+                }
+            }
+            if (cart.getIdMaps() == null) {
+                cart.setIdMaps(new ArrayList<>());
+            }
+
+            checkCartAndFavorite(productMap, cart, favoritesPack, checkedCartProduct);
+
+            checkedCartProduct.setProductMap(productMap);
+            checkedCartProducts.add(checkedCartProduct);
+
+        }
+
+        return checkedCartProducts;
+    }
+
+    private void checkCartAndFavorite(ProductMap productMap, Cart cart, FavoritesPack favoritesPack, CheckedCartProduct checkedCartProduct) {
+        if (cart.getIdMaps().stream().filter(p -> p.equals(productMap.getId())).findFirst().orElse(null) != null) {
+            checkedCartProduct.setProductState(ProductState.CART);
+        }
+
+        if (favoritesPack != null && favoritesPack.getIdFavorites().stream().filter(p -> p.equals(productMap.getId())).findFirst().orElse(null) != null) {
+            if (checkedCartProduct.getProductState() == ProductState.CART) {
+                checkedCartProduct.setProductState(ProductState.CART_AND_FAVORITE);
+            } else {
+                checkedCartProduct.setProductState(ProductState.FAVORITE);
+            }
+        }
     }
 
 
