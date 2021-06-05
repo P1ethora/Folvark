@@ -3,15 +3,14 @@
     height: 100%;
     display: flex;
     padding: 10px;
-    justify-content: center;
-    align-items: flex-start
 }
 
 .left-panel-person {
     display: flex;
     flex-direction: column;
-    margin: auto 20px;
-    vertical-align: middle;
+    margin-top: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .left-panel-person li{
@@ -54,7 +53,6 @@
 
 .right-panel-profile .panel-profile .panel {
     background: white;
-    height: 65%;
     border-radius: 3px;
     width: 100%;
     display: flex;
@@ -113,13 +111,13 @@
 
 .right-panel-profile .panel-profile .panel-photo {
     background: white;
-    height: 100%;
     width: 35%;
     border-radius: 3px;
     display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
+    height: max-content;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
