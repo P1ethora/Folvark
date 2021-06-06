@@ -15,13 +15,31 @@
           th:href="@{/fontawesome/css/all.min.css}"/>
     <link rel="stylesheet" type="text/css" media="all"
           th:href="@{/assets/css/style_left-panel-person.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/assets/css/style_mapa-page.css}"/>
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
-<div class="center-block" >
-<div th:insert="blocks/left-panel-person :: left-panel-person"></div>
-<div class="right-panel-person" ></div>
+<div class="center-block">
+    <th:block th:insert="blocks/left-panel-person :: left-panel-person"></th:block>
+    <div class="right-panel-person">
+        <div class="products">
+            <div class="container-flex">
+                <div class="header-request">
+                    <div class="underhead">
+                        <div class="count_maps">Всего запросов</div>
+                    </div>
+                    <div class="buttons-profile">
+                        <div class="button-person">Сделать Запрос</div>
+                    </div>
+                </div>
+                <div class="box-products">
+<th:block th:insert="blocks/element/request :: request-user" ></th:block>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-    <footer th:insert="blocks/footer :: footer"></footer>
+<footer th:insert="blocks/footer :: footer"></footer>
 </body>
 </html>
