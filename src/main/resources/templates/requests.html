@@ -26,14 +26,15 @@
         <div class="products">
             <div class="container-flex">
                 <div class="header-request">
-                    <div class="underhead">
-                        <div class="count_maps">Всего запросов</div>
-                    </div>
                     <div class="buttons-profile">
-                        <div class="button-person">Сделать Запрос</div>
+                        <div class="button-person"><a href="/requests/new-request" >Сделать Запрос</a></div>
                     </div>
+                    <div class="count_req">Всего запросов: 4</div>
                 </div>
                 <div class="box-products">
+<th:block th:insert="blocks/element/request :: request-user" ></th:block>
+<th:block th:insert="blocks/element/request :: request-user" ></th:block>
+<th:block th:insert="blocks/element/request :: request-user" ></th:block>
 <th:block th:insert="blocks/element/request :: request-user" ></th:block>
                 </div>
             </div>

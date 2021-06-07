@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/assets/css/style_person.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/assets/css/style_login.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/assets/css/style_header.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/assets/css/style_footer.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/fontawesome/css/all.min.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/assets/css/style_left-panel-person.css}"/>
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/assets/css/style_mapa-page.css}"/>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div class="center-block">
+    <th:block th:insert="blocks/left-panel-person :: left-panel-person"></th:block>
+    <div class="right-panel-person">
+        <div class="products">
+            <div class="create-request-area" >
+                <h2>Новый запрос</h2>
+            <form action="/requests/new-request" class="request-form">
+                <div class="request-field-create">
+                    <div class="create-name">Страна:</div>
+                    <select name="country"> <!--Supplement an id here instead of using 'name'-->
+                        <option value="value1" selected>Беларусь</option>
+                        <option value="value2">Латвия</option>
+                        <option value="value3">Литва</option>
+                        <option value="value3">Польша</option>
+                        <option value="value3">Россия</option>
+                    </select></div>
+                <div class="request-field-create">
+                    <div class="create-name">Регион:</div>
+                    <select name="region"> <!--Supplement an id here instead of using 'name'-->
+                        <option value="value1" selected>Минская обл</option>
+                        <option value="value2">Брестская обл</option>
+                        <option value="value3">Витебская обл</option>
+                        <option value="value3">Гродненская обл</option>
+                        <option value="value3">Гомельская обл</option>
+                        <option value="value3">Могилевская обл</option>
+                    </select>
+                </div>
+                <div class="request-field-create">
+                    <div class="create-name">Город:</div>
+                    <select name="city"> <!--Supplement an id here instead of using 'name'-->
+                        <option value="value1" selected>Минск</option>
+                        <option value="value2">Брест</option>
+                        <option value="value3">Витебск</option>
+                        <option value="value3">Гродно</option>
+                        <option value="value3">Гомель</option>
+                        <option value="value3">Могилев</option>
+                    </select>
+                </div>
+                <div class="request-field-create">
+                    <div class="create-name">Тип:</div>
+                    <select name="type"> <!--Supplement an id here instead of using 'name'-->
+                        <option value="value1" selected>ПГМ</option>
+                        <option value="value2">Планы городов</option>
+                        <option value="value3">План подземных коммуникаций</option>
+                        <option value="value3">Карты Рабоче-крестьянской Красной армии</option>
+                        <option value="value3">АФС Люфтваффе</option>
+                        <option value="value3">Карты боевых позиций времен ВОВ</option>
+                    </select>
+                </div>
+                <div class="request-field-create">
+                    <div class="create-name">Год:</div>
+                    <select name="age"> <!--Supplement an id here instead of using 'name'-->
+                        <option value="value1" selected>не выбран</option>
+                        <option value="value2">1700</option>
+                        <option value="value3">1800</option>
+                        <option value="value3">1850</option>
+                        <option value="value3">1900</option>
+                    </select>
+                </div>
+                <div class="request-field-create">
+                    <div class="create-name">Комментарий:</div>
+                    <textarea name="comment"></textarea>
+                </div>
+                <div class="button-request">
+                    <div class="button-person">Отправить</div>
+                    <div class="button-person">Отмена</div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

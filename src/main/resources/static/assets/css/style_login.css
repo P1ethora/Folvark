@@ -225,3 +225,60 @@ form .log-btn input {
     z-index: 10;
     box-shadow: 0 0 10px rgba(0, 0, 0, .5);
 }
+.request-user {
+    width: 400px;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #e8e9ec;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-family: Oswald, sans-serif;
+}
+
+.request-user .request-field{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.request-user .request-field div{
+    width: 100%;
+    text-align: left;
+}
+
+.state-request {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-state {
+    display: flex;
+}
+
+.left-state .state-field{
+    color: #bbbbbb;
+}
+
+.right-state {
+    display: flex;
+}
+
+.right-state .state-field {
+    color: #bbbbbb;
+}
+
+.request-name {
+    color: #bbbbbb;
+}
+
+.count_req {
+    margin-left: 20px;
+    font-size: 12px;
+    letter-spacing: normal;
+    font-family: Ponter, sans-serif;
+    color: #333333;
+}

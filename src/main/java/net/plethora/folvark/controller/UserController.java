@@ -119,4 +119,10 @@ public class UserController {
         return "requests";
     }
 
+    @GetMapping("/requests/new-request")
+    public String getCreateRequest(Model model) {
+        model.addAttribute("elements", personaService.getElementsProfile());
+        return "create-request";
+    }
+
 }
